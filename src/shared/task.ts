@@ -3,7 +3,7 @@ import { Allow, Entity, Fields, Validators } from 'remult';
 
 @Entity('tasks', 
     {
-        allowApiCrud: Allow.authenticated,
+        allowApiCrud: Allow.everyone,
     }
 )
 export class Task {
