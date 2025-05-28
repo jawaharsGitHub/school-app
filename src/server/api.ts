@@ -1,12 +1,12 @@
 import { remultApi, remultExpress  } from 'remult/remult-express';
-import { task } from '../shared/Task';
+import { Task } from '../shared/Task';
 //import { JsonDataProvider } from 'remult'; 
 
 import { JsonDataProvider } from "remult"
 import { JsonEntityFileStorage } from "remult/server"
 
 export const api = remultApi({
-  entities: [task],
+  entities: [Task],
   dataProvider: async () =>
     new JsonDataProvider(new JsonEntityFileStorage("./db"))
 

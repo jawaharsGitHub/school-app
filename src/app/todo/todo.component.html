@@ -1,0 +1,12 @@
+<h1>todos!</h1>
+
+
+        <div *ngFor="let todo of task">
+            <input type="checkbox" [(ngModel)]="todo.completed">
+            {{ todo.id }} {{ todo.title }} - {{ todo.completed ? 'Done' : 'Pending' }}
+        </div>
+
+
+
+
+
