@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "dev-node": "tsx watch src/server",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -18,14 +19,18 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "express": "^5.1.0",
+    "remult": "^3.0.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "tsx": "^4.19.4",
     "zone.js": "~0.14.10"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.4",
     "@angular/cli": "^18.2.4",
     "@angular/compiler-cli": "^18.2.0",
+    "@types/express": "^5.0.2",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
