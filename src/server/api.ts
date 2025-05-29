@@ -17,7 +17,10 @@ export const api = remultApi({
   admin: true, // Enable admin access for all entities
   controllers: [StudentController, TaskController],
   dataProvider: async () =>
-    new JsonDataProvider(new JsonEntityFileStorage("./db"))
+    new JsonDataProvider(new JsonEntityFileStorage("./db")),
+  getUser: async (req) => {
+    return req.session!["user"];
+  }
 
 });
 // This code sets up an Express.js server with Remult for handling API requests.

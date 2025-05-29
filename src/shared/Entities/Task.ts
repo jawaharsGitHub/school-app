@@ -3,8 +3,8 @@ import { Allow, Entity, Fields, Validators } from 'remult';
 
 @Entity('tasks', 
     {
-        //allowApiCrud: Allow.authenticated,
-        //allowApiRead: true,
+        allowApiCrud: Allow.authenticated,
+        allowApiRead: true,
 
     }
 )
