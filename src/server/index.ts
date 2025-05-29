@@ -41,7 +41,7 @@ app.listen(3002, () => {
 });
 
 app.get("/api", (req, res) => {
-  res.send("Hello, World!");
+  res.send("Welcome to Uthavu School App API");
 });
 
 app.post('/api/students/:id/photo', multer({ storage }).single('studentPhoto'), async (req, res) => {

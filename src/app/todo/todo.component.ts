@@ -3,6 +3,7 @@ import { Task } from '../../shared/Entities/Task';
 import { remult } from 'remult';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { StudentController } from '../../shared/Controller/StudentController';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class TodoComponent {
   task: Task[] = [];
 
   taskRepo = remult.repo(Task);
-
+  newTaskTitle = '';
 
   ngOnInit() {
     this.taskRepo.find({
@@ -26,6 +27,31 @@ export class TodoComponent {
     }).then(tasks => {
       this.task = tasks;
     });
+  }
+
+  async addTask() {
+
+    try {
+      if (this.newTaskTitle.trim() === '') {
+      return;
+    }
+    
+    // StudentController.searchStudentbyName(this.newTaskTitle).then(students => {
+    //   alert(JSON.stringify(students));
+    // });
+
+          
+    const newTask = await this.taskRepo.insert({
+      title: this.newTaskTitle
+    });
+    this.task.push(newTask);
+    this.newTaskTitle = ''; // Clear the input field after adding the task
+    }
+    catch (error : any) {
+      alert(error.message);
+      
+    }
+    
   }
   
 

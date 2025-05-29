@@ -1,6 +1,11 @@
 <h1>todos!</h1>
 
-
+        <main>
+            <form>
+                <input type="text" placeholder="Add a new task" [(ngModel)]="newTaskTitle" name="taskInput" />
+                <button (click)="addTask()">Add Task</button>
+                </form> 
+        </main>
         <div *ngFor="let todo of task">
             <input type="checkbox" [(ngModel)]="todo.completed">
             {{ todo.id }} {{ todo.title }} - {{ todo.completed ? 'Done' : 'Pending' }}
