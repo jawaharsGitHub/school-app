@@ -1,10 +1,10 @@
 import { remultApi, remultExpress  } from 'remult/remult-express';
-import { Task } from '../shared/Task';
+import { Task } from '../shared/Entities/Task';
 //import { JsonDataProvider } from 'remult'; 
 
 import { JsonDataProvider } from "remult"
 import { JsonEntityFileStorage } from "remult/server"
-import { Student } from '../shared/Student';
+import { Student } from '../shared/Entities/Student';
 //import { StudentPhotoController } from '../shared/Controller/StudentController';
 
 export const api = remultApi({

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Task } from '../../shared/Task';
+import { Task } from '../../shared/Entities/Task';
 import { remult } from 'remult';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
