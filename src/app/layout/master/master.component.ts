@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
-import { remult } from 'remult';
+import { remult, UserInfo } from 'remult';
+import { retry } from 'rxjs';
 
 @Component({
   selector: 'app-master',
@@ -15,8 +17,23 @@ export class MasterComponent {
 remult = remult; // Initialize Remult instance
 
 
-constructor(private router: Router) {
+constructor(private router: Router, private http: HttpClient) {
+  // You can initialize any services or perform setup here if needed
 }
+
+ ngOnInit() {  
+    
+    this.http.get<UserInfo>('api/currentUser')
+    .pipe(retry(50)) 
+    .subscribe(
+      (user) => 
+      {
+        console.log('Current user:', user);
+        this.remult.user = user; // Set the current user in Remult
+      }
+      
+    );
+  }
 
   logout() {
   this.remult.user = undefined;

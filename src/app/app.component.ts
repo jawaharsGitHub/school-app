@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 // import { UserInfo } from '../shared/Entities/UserInfo';
 import { UserInfo } from 'remult';
 import { MasterComponent } from "./layout/master/master.component";
+import { retry } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,9 @@ export class AppComponent {
   }
   ngOnInit() {  
     
-    this.http.get<UserInfo>('api/currentUser').subscribe(
+    this.http.get<UserInfo>('api/currentUser')
+    .pipe(retry(50)) 
+    .subscribe(
       (user) => 
       {
         console.log('Current user:', user);
