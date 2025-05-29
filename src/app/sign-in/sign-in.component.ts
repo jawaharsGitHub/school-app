@@ -15,6 +15,8 @@ import { remult } from 'remult'; // Import Remult for data management
 export class SignInComponent implements OnInit {
   signInForm!: FormGroup; // Declare a FormGroup for the form
   remult = remult; // Initialize Remult instance for data management
+  loginError: string | null = null;
+
   constructor(private fb: FormBuilder, private http: HttpClient) { } // Inject FormBuilder
 
   ngOnInit(): void {
@@ -23,6 +25,11 @@ export class SignInComponent implements OnInit {
       username: ['', Validators.required], // Add required validator
       password: ['', Validators.required]
     });
+
+    this.signInForm.valueChanges.subscribe(() => {
+  this.loginError = null;
+});
+
   }
 
   onSubmit(): void {
@@ -36,11 +43,18 @@ export class SignInComponent implements OnInit {
         next: (user) => {
           this.remult.user = user; // Set the user in Remult
           console.log('Login successful!', user);
+          this.loginError = null; // Clear error if login succeeds
           // Handle successful login, e.g., redirect to dashboard or show success message
         },
         error: (error) => {
           console.error('Login failed', error);
+          if (error.status === 401) {
+    this.loginError = 'Invalid username or password';
+  } else {
+    this.loginError = 'An unexpected error occurred. Please try again later.';
+  }
           // Handle login failure, e.g., show error message to user
+          
         }
       });
     } else {

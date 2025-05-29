@@ -24,7 +24,7 @@ authRouter.post("/api/login", async (req, res) => {
         return;
       }
 
-      req.session!["user"] = user;
+      //req.session!["user"] = user;
       res.json(user);
     });
   } catch (error) {
@@ -38,7 +38,7 @@ authRouter.post("/api/login", async (req, res) => {
 });
 
 
-authRouter.post("/register", async (req, res) => {
+authRouter.post("api/register", async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
   try {
@@ -67,5 +67,10 @@ authRouter.post("/register", async (req, res) => {
       res.status(500).json({ message: "Unknown error" });
     }
   }
+});
+
+
+authRouter.get("/api/currentUser", (req, res) => {
+    res.json(req.session!["user"]);
 });
 

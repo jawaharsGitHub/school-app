@@ -7,6 +7,9 @@
     <div class="signin-form-card">
       <h2>Welcome Back!</h2>
       <p>Please sign in to continue</p>
+      <div *ngIf="loginError" class="alert alert-danger mt-2" style="color:red; border: 1px solid red;">
+  {{ loginError }}
+</div>
 
       <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
