@@ -74,3 +74,10 @@ authRouter.get("/api/currentUser", (req, res) => {
     res.json(req.session!["user"]);
 });
 
+authRouter.post("/api/logout", (req, res) => {
+  // In a real application, you would clear the session or token
+  // Here we just send a success response
+  req.session!["user"] = null; // Clear user session
+  res.json({ message: "Logged out successfully" });
+});
+
