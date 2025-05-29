@@ -43,7 +43,7 @@ export class SignInComponent implements OnInit {
 
         next: (user) => {
           this.remult.user = user; // Set the user in Remult
-           this.router.navigate(['/']);
+           this.router.navigate(['/todo']); // Redirect to the todo page after successful login
           console.log('Login successful!', user);
           this.loginError = null; // Clear error if login succeeds
           // Handle successful login, e.g., redirect to dashboard or show success message
