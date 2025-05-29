@@ -8,11 +8,12 @@ import { SignInComponent } from "./sign-in/sign-in.component";
 import { HttpClient } from '@angular/common/http';
 // import { UserInfo } from '../shared/Entities/UserInfo';
 import { UserInfo } from 'remult';
+import { MasterComponent } from "./layout/master/master.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, TodoComponent, StudentFormComponent, SignInComponent],
+  imports: [CommonModule, RouterOutlet, TodoComponent, StudentFormComponent, SignInComponent, MasterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

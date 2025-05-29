@@ -1,0 +1,20 @@
+<div class="container-fluid p-0">
+  <div class="row no-gutters" style="min-height: 100vh">
+    <!-- Sidebar -->
+    <div class="col-auto bg-dark text-white p-3" style="width: 220px;">
+      <h5>Menu</h5>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a routerLink="/todo" routerLinkActive="active" class="nav-link text-white">Todos</a>
+        </li>
+        <!-- Add more nav items here -->
+      </ul>
+      <button (click)="logout()" class="btn btn-sm btn-outline-light mt-2">Logout</button>
+    </div>
+
+    <!-- Main content -->
+    <div class="col p-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

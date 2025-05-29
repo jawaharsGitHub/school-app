@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { HttpClient } from '@angular/common/http';
 import { UserInfo } from 'remult';
 import { remult } from 'remult'; // Import Remult for data management
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -17,7 +18,7 @@ export class SignInComponent implements OnInit {
   remult = remult; // Initialize Remult instance for data management
   loginError: string | null = null;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) { } // Inject FormBuilder
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) { } // Inject FormBuilder
 
   ngOnInit(): void {
     // Initialize the form with controls and validators
@@ -42,6 +43,7 @@ export class SignInComponent implements OnInit {
 
         next: (user) => {
           this.remult.user = user; // Set the user in Remult
+           this.router.navigate(['/']);
           console.log('Login successful!', user);
           this.loginError = null; // Clear error if login succeeds
           // Handle successful login, e.g., redirect to dashboard or show success message

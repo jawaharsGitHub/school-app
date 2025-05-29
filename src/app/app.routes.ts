@@ -1,3 +1,18 @@
-import { Routes } from '@angular/router';
+import { Routes } from "@angular/router";
+import { MasterComponent } from "./layout/master/master.component";
+import { SignInComponent } from "./sign-in/sign-in.component";
+import { TodoComponent } from "./todo/todo.component";
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: 'login', component: SignInComponent },
+  {
+    path: '', 
+    component: MasterComponent,
+    //canActivate: [AuthGuard], // optional
+    children: [
+      { path: 'todo', component: TodoComponent },
+      { path: '', redirectTo: 'todo', pathMatch: 'full' }
+    ]
+  },
+  { path: '**', redirectTo: 'login' }
+];
