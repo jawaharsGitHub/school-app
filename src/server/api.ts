@@ -4,9 +4,12 @@ import { Task } from '../shared/Task';
 
 import { JsonDataProvider } from "remult"
 import { JsonEntityFileStorage } from "remult/server"
+import { Student } from '../shared/Student';
+//import { StudentPhotoController } from '../shared/Controller/StudentController';
 
 export const api = remultApi({
-  entities: [Task],
+  entities: [Task, Student],
+  //controllers: [StudentPhotoController],
   dataProvider: async () =>
     new JsonDataProvider(new JsonEntityFileStorage("./db"))
 
