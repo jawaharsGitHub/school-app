@@ -9,7 +9,7 @@ export const authRouter: Router = express.Router();
 authRouter.use(express.json());
 
 
-authRouter.post("/login", async (req, res) => {
+authRouter.post("/api/login", async (req, res) => {
   const { username, password } = req.body;
 
   try {

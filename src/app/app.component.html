@@ -1,9 +1,7 @@
-<ng-container *ngIf="!remult.authenticated()">
+<ng-container *ngIf="remult.authenticated()">
   <app-todo></app-todo>
 </ng-container>
 
 <ng-container *ngIf="!remult.authenticated()">
-  <h1>Todo List</h1>
-
-  <main></main>
+  <app-sign-in></app-sign-in>
 </ng-container>

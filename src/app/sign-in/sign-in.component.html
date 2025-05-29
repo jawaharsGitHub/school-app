@@ -1,0 +1,48 @@
+<div class="signin-container">
+  <div class="image-column">
+    <img src="assets/images/school.jpg" alt="School building" class="school-image">
+  </div>
+
+  <div class="form-column">
+    <div class="signin-form-card">
+      <h2>Welcome Back!</h2>
+      <p>Please sign in to continue</p>
+
+      <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">Email or Username</label>
+          <input
+            id="username"
+            type="text"
+            formControlName="username"
+            placeholder="Enter your email or username"
+            required
+          />
+          <div *ngIf="signInForm.get('username')?.invalid && signInForm.get('username')?.touched" class="error-message">
+            Email or Username is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            placeholder="Enter your password"
+            required
+          />
+          <div *ngIf="signInForm.get('password')?.invalid && signInForm.get('password')?.touched" class="error-message">
+            Password is required.
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="signInForm.invalid">Sign In</button>
+
+        <p class="forgot-password">
+          <a href="#">Forgot Password?</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>
