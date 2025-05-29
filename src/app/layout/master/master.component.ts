@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { remult } from 'remult';
 
 @Component({
   selector: 'app-master',
   standalone: true,
-  imports: [RouterOutlet ],
+  imports: [RouterOutlet, RouterModule],
   templateUrl: './master.component.html',
   styleUrl: './master.component.css'
 })

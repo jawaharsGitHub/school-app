@@ -1,20 +1,36 @@
-<div class="container-fluid p-0">
-  <div class="row no-gutters" style="min-height: 100vh">
+<div class="container-fluid p-0 vh-100 d-flex flex-column">
+  <!-- Top bar -->
+  <div class="d-flex justify-content-end align-items-center bg-light p-2 border-bottom">
+    <button (click)="logout()" class="btn btn-outline-danger btn-sm">Logout</button>
+  </div>
+
+  <!-- Main content area -->
+  <div class="d-flex flex-grow-1">
     <!-- Sidebar -->
-    <div class="col-auto bg-dark text-white p-3" style="width: 220px;">
+    <nav class="bg-dark text-white p-3" style="width: 220px;">
       <h5>Menu</h5>
       <ul class="nav flex-column">
         <li class="nav-item">
           <a routerLink="/todo" routerLinkActive="active" class="nav-link text-white">Todos</a>
         </li>
-        <!-- Add more nav items here -->
+        <li class="nav-item">
+          <a routerLink="/dashboard" routerLinkActive="active" class="nav-link text-white">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/profile" routerLinkActive="active" class="nav-link text-white">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/settings" routerLinkActive="active" class="nav-link text-white">Settings</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/reports" routerLinkActive="active" class="nav-link text-white">Reports</a>
+        </li>
       </ul>
-      <button (click)="logout()" class="btn btn-sm btn-outline-light mt-2">Logout</button>
-    </div>
+    </nav>
 
-    <!-- Main content -->
-    <div class="col p-4">
+    <!-- Routed content -->
+    <main class="flex-grow-1 p-4">
       <router-outlet></router-outlet>
-    </div>
+    </main>
   </div>
 </div>

@@ -23,8 +23,8 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
     // Initialize the form with controls and validators
     this.signInForm = this.fb.group({
-      username: ['', Validators.required], // Add required validator
-      password: ['', Validators.required]
+      username: ['j@s.com', Validators.required], // Add required validator
+      password: ['123456', Validators.required]
     });
 
     this.signInForm.valueChanges.subscribe(() => {
