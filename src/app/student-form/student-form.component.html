@@ -1,0 +1,107 @@
+<div style="padding: 20px; font-family: sans-serif;">
+  <h1>Student Management (Angular)</h1>
+  <p style="color: blue;">{{ statusMessage }}</p>
+
+  <h2>1. Create New Student</h2>
+  <form [formGroup]="studentForm" (ngSubmit)="onCreateStudent()">
+    <input type="text" placeholder="First Name" formControlName="firstName" required />
+    <input type="text" placeholder="Last Name" formControlName="lastName" required />
+    <button type="submit" [disabled]="studentForm.invalid">Create Student</button>
+  </form>
+  <ng-container *ngIf="currentStudentId">
+    <p>Current Student ID for Uploads: <strong>{{ currentStudentId }}</strong></p>
+  </ng-container>
+
+  <h2>2. Upload Profile Photo</h2>
+  <p>Select a student above (or create one) to enable photo upload.</p>
+  <form [formGroup]="photoForm">
+    <input
+      type="file"
+      (change)="onFileSelected($event, 'studentPhoto')"
+      accept="image/*"
+      [disabled]="!currentStudentId"
+    />
+    <button (click)="onUploadPhoto()" [disabled]="!currentStudentId || photoForm.invalid">
+      Upload Photo
+    </button>
+  </form>
+
+  <h2>3. Upload Student Proofs</h2>
+  <p>Select a student above (or create one) to enable proof upload.</p>
+  <form [formGroup]="proofsForm">
+    <select formControlName="proofType" [disabled]="!currentStudentId">
+      <option *ngFor="let type of proofTypes" [value]="type">{{ type }}</option>
+    </select>
+    <input
+      type="file"
+      (change)="onFileSelected($event, 'proofFiles')"
+      accept="image/*,.pdf"
+      multiple
+      [disabled]="!currentStudentId"
+    />
+    <button (click)="onUploadProofs()" [disabled]="!currentStudentId || proofsForm.invalid">
+      Upload Proof(s)
+    </button>
+  </form>
+
+  <h2>Current Students</h2>
+  <ng-container *ngIf="students.length === 0; else studentList">
+    <p>No students found. Create one!</p>
+  </ng-container>
+  <ng-template #studentList>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+      <thead>
+        <tr style="background-color: #f2f2f2;">
+          <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">ID</th>
+          <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Name</th>
+          <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Photo</th>
+          <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td style="border: 1px solid #ddd; padding: 8px;">{{ student.id }}</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">{{ student.firstName }} {{ student.lastName }}</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">
+            <ng-container *ngIf="student.photoUrl; else noPhoto">
+              <img [src]="student.photoUrl" alt="Profile" style="width: 50px; height: 50px; object-fit: cover;" />
+            </ng-container>
+            <ng-template #noPhoto><span>No Photo</span></ng-template>
+          </td>
+          <td style="border: 1px solid #ddd; padding: 8px;">
+            <button (click)="selectStudentForUpload(student.id)">Select for Upload</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+
+  <h2>Student Proofs</h2>
+  <ng-container *ngIf="proofs.length === 0; else proofList">
+    <p>No proofs uploaded yet.</p>
+  </ng-container>
+  <ng-template #proofList>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+      <thead>
+        <tr style="background-color: #f2f2f2;">
+          <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Proof ID</th>
+          <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Student ID</th>
+          <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Type</th>
+          <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">File</th>
+          <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Upload Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let proof of proofs">
+          <td style="border: 1px solid #ddd; padding: 8px;">{{ proof.id }}</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">{{ proof.studentId }}</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">{{ proof.proofType }}</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">
+            <a [href]="proof.fileUrl" target="_blank" rel="noopener noreferrer">{{ proof.fileName }}</a>
+          </td>
+          <td style="border: 1px solid #ddd; padding: 8px;">{{ proof.uploadDate | date:'shortDate' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+</div>
