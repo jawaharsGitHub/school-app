@@ -6,9 +6,15 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs'; // For file system operations (saving the photo)
 //import { StudentPhotoController } from "../shared/Controller/StudentController";
+import session from 'cookie-session';
+import { authRouter } from "./auth";
+
 
 
 const app = express();
+app.use(session({
+  secret: 'my_secret'
+}));
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -27,6 +33,7 @@ const storage = multer.diskStorage({
 
 app.use(express.json()); // To parse JSON request bodies
 app.use(api);
+app.use(authRouter); // Use the auth router for authentication endpoints
 const openApiDocument = api.openApiDoc({ title: "remult-react-todo" });
 app.get("/api/openApi.json", (req, res) => {res.json(openApiDocument)});
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(openApiDocument));

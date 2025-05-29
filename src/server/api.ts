@@ -8,10 +8,12 @@ import { Student } from '../shared/Entities/Student';
 import { StudentProof } from '../shared/Entities/StudentProof';
 import { StudentController } from '../shared/Controller/StudentController';
 import { TaskController } from '../shared/Controller/TaskController';
+//import { AuthController } from '../shared/Controller/AuthController';
+import { UserInfo } from '../shared/Entities/UserInfo';
 //import { StudentPhotoController } from '../shared/Controller/StudentController';
 
 export const api = remultApi({
-  entities: [Task, Student, StudentProof],
+  entities: [Task, Student, StudentProof, UserInfo],
   admin: true, // Enable admin access for all entities
   controllers: [StudentController, TaskController],
   dataProvider: async () =>

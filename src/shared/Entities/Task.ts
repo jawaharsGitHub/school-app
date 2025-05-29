@@ -4,6 +4,8 @@ import { Allow, Entity, Fields, Validators } from 'remult';
 @Entity('tasks', 
     {
         allowApiCrud: Allow.authenticated,
+        allowApiRead: true,
+
     }
 )
 export class Task {
@@ -13,6 +15,13 @@ export class Task {
     validate : Validators.required()
   })  
   title: string = '';
+  
   @Fields.boolean()
   completed: boolean = false;
+
+   @Fields.createdAt()
+    createdAt = new Date();
+
+    @Fields.string({ allowApiUpdate: false })
+    userId = '';
 }
