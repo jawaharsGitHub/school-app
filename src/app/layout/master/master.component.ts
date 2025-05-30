@@ -6,11 +6,12 @@ import { UserInfo } from '../../../shared/Entities/UserInfo'; // Adjust the path
 import { retry } from 'rxjs';
 import { HeaderComponent } from "../../header/header.component";
 import { SideNavComponent } from "../../side-nav/side-nav.component";
+import { MainComponent } from "../../main/main.component";
 
 @Component({
   selector: 'app-master',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, HeaderComponent, SideNavComponent],
+  imports: [RouterOutlet, RouterModule, HeaderComponent, SideNavComponent, MainComponent],
   templateUrl: './master.component.html',
   styleUrl: './master.component.css'
 })
