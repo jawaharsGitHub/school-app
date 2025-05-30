@@ -12,8 +12,8 @@ export const routes: Routes = [
     component: MasterComponent,
     //canActivate: [AuthGuard], // Optional: protect access, if we enable this, remult.user is undefined
     children: [
-      { path: 'main', component: MainComponent },
-      { path: '', redirectTo: 'main', pathMatch: 'full' }
+      { path: 'dashboard', component: MainComponent },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },
   { path: '**', redirectTo: 'login' }
