@@ -4,11 +4,13 @@ import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { remult } from 'remult';
 import { UserInfo } from '../../../shared/Entities/UserInfo'; // Adjust the path as necessary
 import { retry } from 'rxjs';
+import { HeaderComponent } from "../../header/header.component";
+import { SideNavComponent } from "../../side-nav/side-nav.component";
 
 @Component({
   selector: 'app-master',
   standalone: true,
-  imports: [RouterOutlet, RouterModule],
+  imports: [RouterOutlet, RouterModule, HeaderComponent, SideNavComponent],
   templateUrl: './master.component.html',
   styleUrl: './master.component.css'
 })
