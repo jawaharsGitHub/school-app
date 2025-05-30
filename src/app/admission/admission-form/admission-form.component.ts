@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'; // For reactive forms
 import { ActivatedRoute, Router } from '@angular/router'; // For routing parameters and navigation
-import { Remult } from 'remult'; // Import Remult for data access
+import { Remult, remult } from 'remult'; // Import Remult for data access
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // For icons
 
 import { AdmissionApplication, ApplicationStatus } from '../../../shared/Entities/AdmissionApplication'; // Import the AdmissionApplication model and ApplicationStatus enum
@@ -19,7 +19,7 @@ import { AdmissionApplication, ApplicationStatus } from '../../../shared/Entitie
   templateUrl: './admission-form.component.html',
   styleUrls: ['./admission-form.component.css']
 })
-export class AdmissionApplicationFormComponent implements OnInit {
+export class AdmissionFormComponent implements OnInit {
   admissionForm!: FormGroup;
   applicationId: string | null = null;
   isEditMode = false;
@@ -32,12 +32,12 @@ export class AdmissionApplicationFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder, // Inject FormBuilder
-    private remult: Remult, // Inject Remult
+    //private remult: Remult, // Inject Remult
     private route: ActivatedRoute, // To get route parameters
     private router: Router // For navigation
   ) {
 
-    this.applicationRepo = this.remult.repo(AdmissionApplication); // Initialize the repository for AdmissionApplication
+    this.applicationRepo = remult.repo(AdmissionApplication); // Initialize the repository for AdmissionApplication
    }
 
   ngOnInit(): void {

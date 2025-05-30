@@ -5,6 +5,7 @@ import { TodoComponent } from "./todo/todo.component";
 import { AuthGuard } from "../auth.guard";
 import { MainComponent } from "./main/main.component";
 import { AdmissionListComponent } from "./admission/admission-list/admission-list.component";
+import { AdmissionFormComponent } from "./admission/admission-form/admission-form.component";
 
 export const routes: Routes = [
   { path: 'login', component: SignInComponent },
@@ -15,6 +16,7 @@ export const routes: Routes = [
     children: [
       { path: 'dashboard', component: MainComponent },
       { path: 'admin/admissions', component: AdmissionListComponent },
+      { path: 'admin/admissions/new', component: AdmissionFormComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },
