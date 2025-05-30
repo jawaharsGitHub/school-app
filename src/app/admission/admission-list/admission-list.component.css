@@ -1,0 +1,12 @@
+/* src/app/admission/admission-list/admission-list.component.css */
+/* Add any custom styles here. Bootstrap handles most of it. */
+/* Example: Custom padding for icons or button groups if needed */
+.btn-group .btn {
+  margin-right: 5px; /* Spacing between buttons in a group */
+}
+.btn-group .btn:last-child {
+  margin-right: 0;
+}
+.dropdown-menu {
+  z-index: 1050; /* Ensure dropdown appears above other content if overlapping */
+}

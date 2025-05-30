@@ -4,6 +4,7 @@ import { SignInComponent } from "./sign-in/sign-in.component";
 import { TodoComponent } from "./todo/todo.component";
 import { AuthGuard } from "../auth.guard";
 import { MainComponent } from "./main/main.component";
+import { AdmissionListComponent } from "./admission/admission-list/admission-list.component";
 
 export const routes: Routes = [
   { path: 'login', component: SignInComponent },
@@ -13,6 +14,7 @@ export const routes: Routes = [
     //canActivate: [AuthGuard], // Optional: protect access, if we enable this, remult.user is undefined
     children: [
       { path: 'dashboard', component: MainComponent },
+      { path: 'admission', component: AdmissionListComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },

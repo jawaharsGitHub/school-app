@@ -1,0 +1,152 @@
+<div class="container mt-4">
+  <h2><fa-icon [icon]="isEditMode ? 'pencil' : 'plus'"></fa-icon> {{ isEditMode ? 'Edit' : 'Add' }} Admission Application</h2>
+
+  <div class="card mt-3">
+    <div class="card-body">
+      <form [formGroup]="admissionForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="applicantName" class="form-label">Applicant Name <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              id="applicantName"
+              formControlName="applicantName"
+              class="form-control"
+              [class.is-invalid]="admissionForm.get('applicantName')?.invalid && admissionForm.get('applicantName')?.touched"
+            />
+            <div *ngIf="admissionForm.get('applicantName')?.invalid && admissionForm.get('applicantName')?.touched" class="invalid-feedback">
+              Applicant Name is required (min 3 characters).
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="applicantDob" class="form-label">Date of Birth <span class="text-danger">*</span></label>
+            <input
+              type="date"
+              id="applicantDob"
+              formControlName="applicantDob"
+              class="form-control"
+              [class.is-invalid]="admissionForm.get('applicantDob')?.invalid && admissionForm.get('applicantDob')?.touched"
+            />
+            <div *ngIf="admissionForm.get('applicantDob')?.invalid && admissionForm.get('applicantDob')?.touched" class="invalid-feedback">
+              Date of Birth is required.
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="gradeApplyingFor" class="form-label">Grade Applying For <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              id="gradeApplyingFor"
+              formControlName="gradeApplyingFor"
+              class="form-control"
+              [class.is-invalid]="admissionForm.get('gradeApplyingFor')?.invalid && admissionForm.get('gradeApplyingFor')?.touched"
+            />
+            <div *ngIf="admissionForm.get('gradeApplyingFor')?.invalid && admissionForm.get('gradeApplyingFor')?.touched" class="invalid-feedback">
+              Grade Applying For is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="applicationDate" class="form-label">Application Date <span class="text-danger">*</span></label>
+            <input
+              type="date"
+              id="applicationDate"
+              formControlName="applicationDate"
+              class="form-control"
+              readonly
+            />
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="parentName" class="form-label">Parent/Guardian Name <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              id="parentName"
+              formControlName="parentName"
+              class="form-control"
+              [class.is-invalid]="admissionForm.get('parentName')?.invalid && admissionForm.get('parentName')?.touched"
+            />
+            <div *ngIf="admissionForm.get('parentName')?.invalid && admissionForm.get('parentName')?.touched" class="invalid-feedback">
+              Parent/Guardian Name is required.
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="contactEmail" class="form-label">Contact Email <span class="text-danger">*</span></label>
+            <input
+              type="email"
+              id="contactEmail"
+              formControlName="contactEmail"
+              class="form-control"
+              [class.is-invalid]="admissionForm.get('contactEmail')?.invalid && admissionForm.get('contactEmail')?.touched"
+            />
+            <div *ngIf="admissionForm.get('contactEmail')?.invalid && admissionForm.get('contactEmail')?.touched" class="invalid-feedback">
+              Valid Email is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="contactPhone" class="form-label">Contact Phone <span class="text-danger">*</span></label>
+            <input
+              type="tel"
+              id="contactPhone"
+              formControlName="contactPhone"
+              class="form-control"
+              placeholder="e.g., 1234567890"
+              [class.is-invalid]="admissionForm.get('contactPhone')?.invalid && admissionForm.get('contactPhone')?.touched"
+            />
+            <div *ngIf="admissionForm.get('contactPhone')?.invalid && admissionForm.get('contactPhone')?.touched" class="invalid-feedback">
+              Phone number must be 10 digits.
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="status" class="form-label">Application Status <span class="text-danger">*</span></label>
+            <select
+              id="status"
+              formControlName="status"
+              class="form-select"
+              [class.is-invalid]="admissionForm.get('status')?.invalid && admissionForm.get('status')?.touched"
+            >
+              <option *ngFor="let status of applicationStatuses" [value]="status">{{ status }}</option>
+            </select>
+            <div *ngIf="admissionForm.get('status')?.invalid && admissionForm.get('status')?.touched" class="invalid-feedback">
+              Status is required.
+            </div>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label for="internalNotes" class="form-label">Internal Notes</label>
+            <textarea
+              id="internalNotes"
+              formControlName="internalNotes"
+              class="form-control"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <div class="col-md-12 mb-3">
+            <label class="form-label">Documents</label>
+            <div class="alert alert-info">
+              For a real app, integrate a file upload service here. For now, this form does not handle file uploads.
+              You might implement a separate component for document management associated with the application ID.
+            </div>
+            </div>
+        </div>
+
+        <div *ngIf="submissionError" class="alert alert-danger mt-3" role="alert">
+          {{ submissionError }}
+        </div>
+
+        <div class="d-flex justify-content-end mt-4">
+          <button type="button" class="btn btn-secondary me-2" (click)="onCancel()">
+            <fa-icon icon="times"></fa-icon> Cancel
+          </button>
+          <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+            <fa-icon [icon]="isLoading ? 'spinner' : 'save'" *ngIf="isLoading" spin></fa-icon>
+            <fa-icon [icon]="isLoading ? 'spinner' : 'save'" *ngIf="!isLoading"></fa-icon>
+            {{ isLoading ? 'Saving...' : (isEditMode ? 'Update Application' : 'Add Application') }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
