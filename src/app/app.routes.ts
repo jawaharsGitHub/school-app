@@ -17,6 +17,7 @@ export const routes: Routes = [
       { path: 'dashboard', component: MainComponent },
       { path: 'admin/admissions', component: AdmissionListComponent },
       { path: 'admin/admissions/new', component: AdmissionFormComponent },
+      { path: 'admin/admissions/edit/:id', component: AdmissionFormComponent }, // <--- Important!
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },

@@ -115,7 +115,7 @@ export class AdmissionFormComponent implements OnInit {
         // Update properties from form values
         Object.assign(application, this.admissionForm.value);
         application.applicantDob = new Date(this.admissionForm.value.applicantDob); // Convert string back to Date
-        application.applicationDate = new Date(this.admissionForm.value.applicationDate); // Convert string back to Date
+        //application.applicationDate = new Date(this.admissionForm.value.applicationDate); // Convert string back to Date
       } else {
         // Create a new entity instance
         application = this.applicationRepo.create();
