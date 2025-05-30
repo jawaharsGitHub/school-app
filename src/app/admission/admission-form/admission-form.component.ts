@@ -12,6 +12,8 @@ import { AdmissionApplication, ApplicationStatus } from '../../../shared/Entitie
 import { BasicDetailsFormComponent } from '../basic-details-form/basic-details-form.component';
 import { ContactsFormComponent } from '../contacts-form/contacts-form.component';
 import { DocumentsFormComponent } from '../documents-form/documents-form.component';
+import { StepperComponent } from "../../stepper/stepper.component";
+import { CdkStepperModule, CdkStepper } from '@angular/cdk/stepper';
 
 
 @Component({
@@ -23,8 +25,11 @@ import { DocumentsFormComponent } from '../documents-form/documents-form.compone
     FontAwesomeModule,
     BasicDetailsFormComponent,
     ContactsFormComponent,
-    DocumentsFormComponent
-  ],
+    DocumentsFormComponent,
+    StepperComponent,
+    CdkStepperModule,
+    CdkStepper
+],
   templateUrl: './admission-form.component.html',
   styleUrls: ['./admission-form.component.css']
 })

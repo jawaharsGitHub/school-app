@@ -7,54 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   selector: 'app-contacts-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, FontAwesomeModule],
-  template: `
-    <div [formGroup]="contactsForm">
-      <h4>Contact Details</h4>
-      <div class="row">
-        <div class="col-md-12 mb-3">
-          <label for="parentName" class="form-label">Parent/Guardian Name <span class="text-danger">*</span></label>
-          <input
-            type="text"
-            id="parentName"
-            formControlName="parentName"
-            class="form-control"
-            [class.is-invalid]="contactsForm.get('parentName')?.invalid && contactsForm.get('parentName')?.touched"
-          />
-          <div *ngIf="contactsForm.get('parentName')?.invalid && contactsForm.get('parentName')?.touched" class="invalid-feedback">
-            Parent/Guardian Name is required.
-          </div>
-        </div>
-
-        <div class="col-md-6 mb-3">
-          <label for="contactEmail" class="form-label">Contact Email <span class="text-danger">*</span></label>
-          <input
-            type="email"
-            id="contactEmail"
-            formControlName="contactEmail"
-            class="form-control"
-            [class.is-invalid]="contactsForm.get('contactEmail')?.invalid && contactsForm.get('contactEmail')?.touched"
-          />
-          <div *ngIf="contactsForm.get('contactEmail')?.invalid && contactsForm.get('contactEmail')?.touched" class="invalid-feedback">
-            Valid Email is required.
-          </div>
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="contactPhone" class="form-label">Contact Phone <span class="text-danger">*</span></label>
-          <input
-            type="tel"
-            id="contactPhone"
-            formControlName="contactPhone"
-            class="form-control"
-            placeholder="e.g., 1234567890"
-            [class.is-invalid]="contactsForm.get('contactPhone')?.invalid && contactsForm.get('contactPhone')?.touched"
-          />
-          <div *ngIf="contactsForm.get('contactPhone')?.invalid && contactsForm.get('contactPhone')?.touched" class="invalid-feedback">
-            Phone number must be 10 digits.
-          </div>
-        </div>
-      </div>
-    </div>
-  `,
+  templateUrl: './contacts-form.component.html',
   styles: [`
     /* Add specific styles for this form section if needed */
   `]
