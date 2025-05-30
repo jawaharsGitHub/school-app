@@ -1,15 +1,21 @@
 
-    <div [formGroup]="documentsForm">
-      <div class="alert alert-info">
-        <fa-icon icon="info-circle"></fa-icon>
-        This section is for managing associated documents.
-        <br>
-        For now, this is conceptual. In a real app, you'd integrate file upload logic here,
-        possibly listing uploaded files and allowing new ones to be added.
-      </div>
-      <div class="mb-3">
-        <label for="fileUpload" class="form-label">Upload New Document (Conceptual)</label>
-        <input type="file" id="fileUpload" class="form-control" disabled>
-        <small class="form-text text-muted">File upload requires backend integration.</small>
-      </div>
+  <div [formGroup]="documentsForm" style="display: flex;">
+    <div class="alert alert-info">
+      <fa-icon icon="info-circle"></fa-icon>
+      This section is for managing associated documents.
+      <br />
+      For now, this is conceptual. In a real app, you'd integrate file upload
+      logic here, possibly listing uploaded files and allowing new ones to be
+      added.
     </div>
+    <div class="mb-3">
+      <label for="fileUpload" class="form-label"
+        >Upload New Document (Conceptual)</label
+      >
+      <input type="file" id="fileUpload" class="form-control" />
+      <small class="form-text text-muted"
+        >File upload requires backend integration.</small
+      >
+    </div>
+  </div>
+
