@@ -6,6 +6,7 @@ import { AuthGuard } from "../auth.guard";
 import { MainComponent } from "./main/main.component";
 import { AdmissionListComponent } from "./admission/admission-list/admission-list.component";
 import { AdmissionFormComponent } from "./admission/admission-form/admission-form.component";
+import { WizardManagerMainComponent } from "./admission/wizard-manager-main/wizard-manager-main.component";
 
 export const routes: Routes = [
   { path: 'login', component: SignInComponent },
@@ -16,8 +17,8 @@ export const routes: Routes = [
     children: [
       { path: 'dashboard', component: MainComponent },
       { path: 'admin/admissions', component: AdmissionListComponent },
-      { path: 'admin/admissions/new', component: AdmissionFormComponent },
-      { path: 'admin/admissions/edit/:id', component: AdmissionFormComponent }, // <--- Important!
+      { path: 'admin/admissions/new', component: WizardManagerMainComponent },
+      { path: 'admin/admissions/edit/:id', component: WizardManagerMainComponent }, // <--- Important!
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },

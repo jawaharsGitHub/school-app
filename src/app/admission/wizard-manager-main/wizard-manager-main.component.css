@@ -1,0 +1,41 @@
+.wizard-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .wizard-steps {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 0;
+  }
+  
+  .wizard-steps li {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #eee;
+    margin-right: 5px;
+    font-weight: bold;
+  }
+  
+  .wizard-steps li.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .wizard-content {
+    margin-bottom: 20px;
+  }
+  
+  .wizard-navigation {
+    display: flex;
+    justify-content: space-between;
+  }
+  

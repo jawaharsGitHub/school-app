@@ -1,0 +1,24 @@
+<div class="preview-container">
+    <h2>Preview Your Profile</h2>
+
+    <div class="preview-section">
+      <h3>Account Information</h3>
+      <p><strong>Username:</strong> {{ userProfile.accountInfo.username }}</p>
+      <p><strong>Email:</strong> {{ userProfile.accountInfo.email }}</p>
+    </div>
+
+    <div class="preview-section">
+      <h3>Personal Details</h3>
+      <p><strong>First Name:</strong> {{ userProfile.personalDetails.firstName }}</p>
+      <p><strong>Last Name:</strong> {{ userProfile.personalDetails.lastName }}</p>
+      <p><strong>Date of Birth:</strong> {{ userProfile.personalDetails.dateOfBirth }}</p>
+    </div>
+
+    <div class="preview-section">
+      <h3>Profile Picture</h3>
+      @if (imageURL()){
+            <img [src]="imageURL()" alt="Profile Picture" class="profile-picture" />
+      }
+
+    </div>
+  </div>

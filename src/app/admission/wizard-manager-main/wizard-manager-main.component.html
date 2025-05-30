@@ -1,0 +1,60 @@
+<div class="wizard-container">
+    <!-- Step Indicators -->
+    <ul class="wizard-steps">
+      <li  *ngFor="let step of steps; let i = index" [class.active]="i === currentStepIndex" style="width: 400px;">
+        
+          <span  class="step-number" style="cursor: pointer;" (click)="goToStep(i)" >{{step.label  }}</span>
+      </li>
+    </ul>
+
+    <!-- Step Content -->
+    <div class="wizard-content">
+      <ng-container [ngSwitch]="currentStepIndex">
+        <!-- Step 1: Account Information -->
+        <app-account-info
+          *ngSwitchCase="0"
+          [accountInfo]="userProfile.accountInfo"
+          (accountInfoChange)="onAccountInfoChange($event)"
+          (stepValidity)="onStepValidityChange($event)"
+        ></app-account-info>
+
+        <!-- Step 2: Personal Details -->
+        <app-personal-details
+          *ngSwitchCase="1"
+          [personalDetails]="userProfile.personalDetails"
+          (personalDetailsChange)="onPersonalDetailsChange($event)"
+          (stepValidity)="onStepValidityChange($event)"
+        ></app-personal-details>
+
+<!--        [userProfile]=""-->
+
+        <!-- Step 3: Profile Picture -->
+        <app-profile-picture
+          *ngSwitchCase="2"
+        (profilePictureChange)="onProfilePictureChange($event)"
+        (stepValidity)="onStepValidityChange($event)"
+          ></app-profile-picture>
+
+        <!-- Step 4: Preview and Confirm -->
+        <app-preview
+          *ngSwitchCase="3"
+          [imageURL]="userProfile.profilePicture.urlDisplay"
+          [userProfile]="userProfile"
+        ></app-preview>
+      </ng-container>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="wizard-navigation">
+      <button *ngIf="!isFirstStep" class="btn btn-secondary" (click)="previousStep()">Back</button>
+      <button
+        *ngIf="!isLastStep"
+        class="btn btn-primary"
+        (click)="nextStep()"
+        
+      >
+        Next
+      </button> 
+      <button *ngIf="isLastStep" class="btn btn-success" (click)="onSubmit()">Submit</button>
+    </div>
+  </div>
