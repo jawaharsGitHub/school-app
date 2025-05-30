@@ -9,8 +9,7 @@ export const routes: Routes = [
   {
     path: '', 
     component: MasterComponent,
-    canActivate: [AuthGuard], // Optional: protect access
-    //canActivate: [AuthGuard], // optional
+    //canActivate: [AuthGuard], // Optional: protect access, if we enable this, remult.user is undefined
     children: [
       { path: 'todo', component: TodoComponent },
       { path: '', redirectTo: 'todo', pathMatch: 'full' }
