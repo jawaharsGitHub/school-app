@@ -71,6 +71,7 @@ authRouter.post("api/register", async (req, res) => {
 
 
 authRouter.get("/api/currentUser", (req, res) => {
+    console.log("Current user request:", req.session);
     res.json(req.session!["user"]);
 });
 
