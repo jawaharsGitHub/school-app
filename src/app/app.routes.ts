@@ -5,8 +5,7 @@ import { TodoComponent } from "./todo/todo.component";
 import { AuthGuard } from "../auth.guard";
 import { MainComponent } from "./main/main.component";
 import { AdmissionListComponent } from "./admission/admission-list/admission-list.component";
-import { AdmissionFormComponent } from "./admission/admission-form/admission-form.component";
-import { WizardManagerMainComponent } from "./admission/wizard-manager-main/wizard-manager-main.component";
+import { AdmissionMainComponent } from "./admission/admission-form-main/admission-form-main.component";
 
 export const routes: Routes = [
   { path: 'login', component: SignInComponent },
@@ -17,8 +16,8 @@ export const routes: Routes = [
     children: [
       { path: 'dashboard', component: MainComponent },
       { path: 'admin/admissions', component: AdmissionListComponent },
-      { path: 'admin/admissions/new', component: WizardManagerMainComponent },
-      { path: 'admin/admissions/edit/:id', component: WizardManagerMainComponent }, // <--- Important!
+      { path: 'admin/admissions/new', component: AdmissionMainComponent },
+      { path: 'admin/admissions/edit/:id', component: AdmissionMainComponent }, // <--- Important!
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },

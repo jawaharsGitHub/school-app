@@ -1,6 +1,6 @@
 // src/app/admission/personal-details-form/personal-details-form.component.ts
 
-import { Component, Input, Output, EventEmitter, ViewChild, OnInit, DoCheck, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, OnInit, DoCheck, AfterViewInit, OnDestroy, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms'; // Import FormsModule and NgForm
 
@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
 })
 export class PersonalDetailsFormComponent implements OnInit, OnDestroy {
 
-  personalDetailsForm!: FormGroup;
+  @Input() personalDetailsForm!: FormGroup;
   private formStatusSubscription!: Subscription;
   
   @Input() personalDetails!: PersonalDetails; // Input for the personal details object
@@ -26,7 +26,7 @@ export class PersonalDetailsFormComponent implements OnInit, OnDestroy {
 
    //@Output() formStatusChange = new EventEmitter<boolean>();
 
-  @ViewChild('personalDetailsNgForm') personalDetailsNgForm!: NgForm; // Access the NgForm instance
+  //@ViewChild('personalDetailsNgForm') personalDetailsNgForm!: NgForm; // Access the NgForm instance
 
   // Dropdown options
   genders = ['Male', 'Female', 'Non-binary', 'Prefer not to say'];
@@ -40,55 +40,55 @@ export class PersonalDetailsFormComponent implements OnInit, OnDestroy {
   
   ngOnInit(): void {
     // Initialize personalDetails if it's not provided by the parent
-    this.personalDetailsForm = this.fb.group({
-      firstName: [createEmptyPersonalDetails().firstName, Validators.required],
-      middleName: [createEmptyPersonalDetails().middleName || ''], // Optional, so no required validator
-      lastName: [createEmptyPersonalDetails().lastName, Validators.required],
-      dateOfBirth: [createEmptyPersonalDetails().dateOfBirth, Validators.required],
-      gender: [createEmptyPersonalDetails().gender, Validators.required],
-      nationality: [createEmptyPersonalDetails().nationality, Validators.required],
-      placeOfBirthCity: [createEmptyPersonalDetails().placeOfBirthCity, Validators.required],
-      placeOfBirthState: [createEmptyPersonalDetails().placeOfBirthState, Validators.required],
-      placeOfBirthCountry: [createEmptyPersonalDetails().placeOfBirthCountry, Validators.required],
-      nationalIdType: [createEmptyPersonalDetails().nationalIdType, Validators.required],
-      nationalIdNumber: [
-        createEmptyPersonalDetails().nationalIdNumber,
-        [Validators.required, Validators.pattern(/^\d{12}$/)] // Example: 12 digits for Aadhaar
-      ],
-      religion: [createEmptyPersonalDetails().religion || ''],
-      casteCategory: [createEmptyPersonalDetails().casteCategory || ''],
-      motherTongue: [createEmptyPersonalDetails().motherTongue || ''],
-      bloodGroup: [createEmptyPersonalDetails().bloodGroup || ''],
-      hasDisability: [createEmptyPersonalDetails().hasDisability],
-      // disabilityDetails is conditional, so initialize with empty string and no initial validator
-      disabilityDetails: [createEmptyPersonalDetails().disabilityDetails || '']
-    });
+    // this.personalDetailsForm = this.fb.group({
+    //   firstName: [createEmptyPersonalDetails().firstName, Validators.required],
+    //   middleName: [createEmptyPersonalDetails().middleName || ''], // Optional, so no required validator
+    //   lastName: [createEmptyPersonalDetails().lastName, Validators.required],
+    //   dateOfBirth: [createEmptyPersonalDetails().dateOfBirth, Validators.required],
+    //   gender: [createEmptyPersonalDetails().gender, Validators.required],
+    //   nationality: [createEmptyPersonalDetails().nationality, Validators.required],
+    //   placeOfBirthCity: [createEmptyPersonalDetails().placeOfBirthCity, Validators.required],
+    //   placeOfBirthState: [createEmptyPersonalDetails().placeOfBirthState, Validators.required],
+    //   placeOfBirthCountry: [createEmptyPersonalDetails().placeOfBirthCountry, Validators.required],
+    //   nationalIdType: [createEmptyPersonalDetails().nationalIdType, Validators.required],
+    //   nationalIdNumber: [
+    //     createEmptyPersonalDetails().nationalIdNumber,
+    //     [Validators.required, Validators.pattern(/^\d{12}$/)] // Example: 12 digits for Aadhaar
+    //   ],
+    //   religion: [createEmptyPersonalDetails().religion || ''],
+    //   casteCategory: [createEmptyPersonalDetails().casteCategory || ''],
+    //   motherTongue: [createEmptyPersonalDetails().motherTongue || ''],
+    //   bloodGroup: [createEmptyPersonalDetails().bloodGroup || ''],
+    //   hasDisability: [createEmptyPersonalDetails().hasDisability],
+    //   // disabilityDetails is conditional, so initialize with empty string and no initial validator
+    //   disabilityDetails: [createEmptyPersonalDetails().disabilityDetails || '']
+    // });
 
     // 2. Subscribe to valueChanges for dynamic validation (e.g., hasDisability)
-    this.formStatusSubscription = this.personalDetailsForm.valueChanges.subscribe(() => {
-      // Emit the form's validity status to the parent whenever any value changes
-      console.log('Form value changed:', this.personalDetailsForm.value);
-      this.stepValidity.emit(this.personalDetailsForm.valid);
-      this.personalDetailsChange.emit(this.personalDetailsForm.value as PersonalDetails); // Emit the updated personal details
-    });
+    // this.formStatusSubscription = this.personalDetailsForm.valueChanges.subscribe(() => {
+    //   // Emit the form's validity status to the parent whenever any value changes
+    //   console.log('Form value changed:', this.personalDetailsForm.value);
+    //   this.stepValidity.emit(this.personalDetailsForm.valid);
+    //   this.personalDetailsChange.emit(this.personalDetailsForm.value as PersonalDetails); // Emit the updated personal details
+    // });
 
     // 3. Handle conditional validation for 'disabilityDetails'
-    this.personalDetailsForm.get('hasDisability')?.valueChanges.subscribe(hasDisability => {
-      const disabilityDetailsControl = this.personalDetailsForm.get('disabilityDetails');
-      if (disabilityDetailsControl) { // Check if control exists
-        if (hasDisability) {
-          disabilityDetailsControl.setValidators(Validators.required);
-        } else {
-          disabilityDetailsControl.clearValidators();
-        }
-        disabilityDetailsControl.updateValueAndValidity(); // Recalculate validation status
-      }
-    });
+    // this.personalDetailsForm.get('hasDisability')?.valueChanges.subscribe(hasDisability => {
+    //   const disabilityDetailsControl = this.personalDetailsForm.get('disabilityDetails');
+    //   if (disabilityDetailsControl) { // Check if control exists
+    //     if (hasDisability) {
+    //       disabilityDetailsControl.setValidators(Validators.required);
+    //     } else {
+    //       disabilityDetailsControl.clearValidators();
+    //     }
+    //     disabilityDetailsControl.updateValueAndValidity(); // Recalculate validation status
+    //   }
+    // });
 
-    this.personalDetailsForm.markAllAsTouched();
+    //this.personalDetailsForm.markAllAsTouched();
    
     // Emit initial form validity state
-    this.stepValidity.emit(this.personalDetailsForm.valid);
+    //this.stepValidity.emit(this.personalDetailsForm.valid);
 
     
 

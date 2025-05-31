@@ -30,7 +30,7 @@ constructor(private router: Router, private http: HttpClient) {
        .get<UserInfo>('api/currentUser')
        .pipe(retry(50))
        .subscribe((user) => {
-         console.log('Current user123:', user);
+         console.log('Current user master com:', user);
          this.remult.user = {
            id: String(user.id),
            name: user.firstName + ' ' + user.lastName,

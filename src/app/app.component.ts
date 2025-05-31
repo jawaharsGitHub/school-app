@@ -30,7 +30,7 @@ export class AppComponent {
       .get<UserInfo>('api/currentUser')
       .pipe(retry(50))
       .subscribe((user) => {
-        console.log('Current user123:', user);
+        console.log('Current user app component:', user);
         this.remult.user = {
           id: String(user.id),
           name: user.firstName + ' ' + user.lastName,

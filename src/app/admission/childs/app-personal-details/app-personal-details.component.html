@@ -1,6 +1,6 @@
 <form [formGroup]="personalDetailsForm">
   <div class="row">
-    <div class="col-md-4 mb-3">
+    <div class="col-md-4 mb-3" class="form-group">
       <label for="firstName"
         >First Name <span class="text-danger">*</span></label
       >
@@ -19,7 +19,7 @@
       </div> -->
     </div>
 
-    <div class="col-md-4 mb-3">
+    <div class="col-md-4 mb-3" class="form-group">
       <label for="middleName">Middle Name</label>
       <input
         type="text"
@@ -29,7 +29,7 @@
       />
     </div>
 
-    <div class="col-md-4 mb-3">
+    <div class="col-md-4 mb-3" class="form-group">
       <label for="lastName">Last Name <span class="text-danger">*</span></label>
       <input
         type="text"
@@ -48,7 +48,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" class="form-group">
       <label for="dob">Date of Birth <span class="text-danger">*</span></label>
       <input
         type="date"
@@ -66,7 +66,7 @@
       </div> -->
     </div>
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" class="form-group">
       <label for="gender">Gender <span class="text-danger">*</span></label>
       <select
         id="gender"
@@ -87,7 +87,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" class="form-group">
       <label for="nationality"
         >Nationality <span class="text-danger">*</span></label
       >
@@ -107,7 +107,7 @@
       </div> -->
     </div>
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" class="form-group">
       <label for="placeOfBirthCity"
         >Place of Birth (City) <span class="text-danger">*</span></label
       >
@@ -129,7 +129,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" class="form-group">
       <label for="placeOfBirthState"
         >Place of Birth (State/Province)
         <span class="text-danger">*</span></label
@@ -150,7 +150,7 @@
       </div> -->
     </div>
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" class="form-group">
       <label for="placeOfBirthCountry"
         >Place of Birth (Country) <span class="text-danger">*</span></label
       >
@@ -172,7 +172,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" class="form-group">
       <label for="nationalIdType"
         >National ID Type <span class="text-danger">*</span></label
       >
@@ -196,7 +196,7 @@
       </div> -->
     </div>
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" class="form-group">
       <label for="nationalIdNumber"
         >National ID Number <span class="text-danger">*</span></label
       >
@@ -219,7 +219,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" class="form-group">
       <label for="religion">Religion</label>
       <input
         type="text"
@@ -229,7 +229,7 @@
       />
     </div>
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" class="form-group">
       <label for="casteCategory">Caste Category</label>
       <select
         id="casteCategory"
@@ -245,7 +245,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" class="form-group">
       <label for="motherTongue">Mother Tongue</label>
       <input
         type="text"
@@ -255,7 +255,7 @@
       />
     </div>
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-3" class="form-group">
       <label for="bloodGroup">Blood Group</label>
       <select id="bloodGroup" formControlName="bloodGroup" class="form-select">
         <option value="">Select Blood Group</option>
@@ -265,7 +265,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-2 mb-3">
+    <div class="col-md-2 mb-3" class="form-check">
          <label class="form-check-label" for="hasDisability">
           Has Disability?
         </label>
@@ -280,7 +280,7 @@
       </div>
     </div>
 
-    <div class="col-md-6 mb-3" *ngIf="getControl('hasDisability')?.value">
+    <div class="col-md-6 mb-3" *ngIf="getControl('hasDisability')?.value" class="form-group">
       <label for="disabilityDetails"
         >Disability Details <span class="text-danger">*</span></label
       >

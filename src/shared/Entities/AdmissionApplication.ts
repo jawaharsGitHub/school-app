@@ -45,7 +45,7 @@ export class AdmissionApplication {
   @Fields.string({
     validate: Validators.email
   })
-  contactEmail = '';
+  email = '';
 
     @Fields.string({
     // CORRECTED: Use a custom validate function with a RegExp test

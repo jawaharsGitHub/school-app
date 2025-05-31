@@ -24,12 +24,11 @@ import { Subscription } from 'rxjs';
   styleUrl: './app-account-info.component.scss',
 })
 export class AppAccountInfoComponent implements OnInit {
-  @Input() accountInfo = createEmptyAccountInfo();
+  //@Input() accountInfo = createEmptyAccountInfo();
   @Output() accountInfoChange = new EventEmitter<AccountInfo>();
   @Output() stepValidity = new EventEmitter<boolean>();
-  //@ViewChild('accountInfoNgForm') accountInfoForm!: NgForm;
 
-  accountDetailsForm!: FormGroup;
+  @Input() accountDetailsForm!: FormGroup;
   private formStatusSubscription!: Subscription;
 
   constructor(private fb: FormBuilder) {}
@@ -37,25 +36,25 @@ export class AppAccountInfoComponent implements OnInit {
   ngOnInit(): void {
     // Initialize the form with default values from accountInfo
 
-    let emptyAccountInfo = createEmptyAccountInfo();
-    this.accountDetailsForm = this.fb.group({
-      username: [emptyAccountInfo.username, Validators.required],
-      email: [
-        emptyAccountInfo.email || '',
-        [Validators.required, Validators.email],
-      ],
-    });
-    this.formStatusSubscription =
-      this.accountDetailsForm.valueChanges.subscribe(() => {
-        // Emit the form's validity status to the parent whenever any value changes
-        console.log('Form value changed:', this.accountDetailsForm.value);
-        this.stepValidity.emit(this.accountDetailsForm.valid);
-        this.accountInfoChange.emit(
-          this.accountDetailsForm.value as AccountInfo
-        ); // Emit the updated personal details
-      });
+    // let emptyAccountInfo = createEmptyAccountInfo();
+    // this.accountDetailsForm = this.fb.group({
+    //   username: [emptyAccountInfo.username, Validators.required],
+    //   email: [
+    //     emptyAccountInfo.email || '',
+    //     [Validators.required, Validators.email],
+    //   ],
+    // });
+    // this.formStatusSubscription =
+    //   this.accountDetailsForm.valueChanges.subscribe(() => {
+    //     // Emit the form's validity status to the parent whenever any value changes
+    //     console.log('Form value changed:', this.accountDetailsForm.value);
+    //     this.stepValidity.emit(this.accountDetailsForm.valid);
+    //     this.accountInfoChange.emit(
+    //       this.accountDetailsForm.value as AccountInfo
+    //     ); // Emit the updated personal details
+    //   });
 
-    this.accountDetailsForm.markAllAsTouched();
+    // this.accountDetailsForm.markAllAsTouched();
   }
 
   getControl(name: string): AbstractControl | null {

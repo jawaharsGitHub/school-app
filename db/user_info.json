@@ -1,1 +1,77 @@
-[{"createdAt":"2025-05-29T19:35:34.190Z","updatedAt":"2025-05-29T19:35:34.190Z","firstName":"j","lastName":"s","email":"j@s.com","phone":"9566807986","address":"address","city":"city","country":"country","dateOfBirth":"1984-10-09T18:30:00.000Z","password":"123456","isActive":true,"id":1},{"createdAt":"2025-05-29T19:51:06.611Z","updatedAt":"2025-05-29T19:51:06.611Z","firstName":"fn","lastName":"ln","email":null,"phone":"123456","address":"add","city":"cc","country":"cry","dateOfBirth":"2001-11-01T18:30:00.000Z","password":"","isActive":true,"id":2},{"createdAt":"2025-05-29T20:04:59.184Z","updatedAt":"2025-05-29T20:04:59.184Z","firstName":"John","lastName":"Doe","email":"john@example.com","phone":null,"address":null,"city":null,"country":null,"dateOfBirth":"","password":"secret123","isActive":true,"id":3},{"createdAt":"2025-05-29T20:06:59.741Z","updatedAt":"2025-05-29T20:06:59.741Z","firstName":"John","lastName":"Doe","email":"john@example1.com","phone":null,"address":null,"city":null,"country":null,"dateOfBirth":"","password":"secret123","isActive":true,"id":4},{"createdAt":"2025-05-29T21:02:06.476Z","updatedAt":"2025-05-29T21:02:06.476Z","firstName":"1","lastName":"2","email":"3","phone":null,"address":null,"city":null,"country":null,"dateOfBirth":"","password":"4","isActive":true,"id":5}]
+[
+  {
+    "createdAt": "2025-05-29T19:35:34.190Z",
+    "updatedAt": "2025-05-29T19:35:34.190Z",
+    "firstName": "j",
+    "lastName": "s",
+    "email": "j@s.com",
+    "phone": "9566807986",
+    "address": "address",
+    "city": "city",
+    "country": "country",
+    "dateOfBirth": "1984-10-09T18:30:00.000Z",
+    "password": "123456",
+    "isActive": true,
+    "id": 1
+  },
+  {
+    "createdAt": "2025-05-29T19:51:06.611Z",
+    "updatedAt": "2025-05-29T19:51:06.611Z",
+    "firstName": "fn",
+    "lastName": "ln",
+    "email": null,
+    "phone": "123456",
+    "address": "add",
+    "city": "cc",
+    "country": "cry",
+    "dateOfBirth": "2001-11-01T18:30:00.000Z",
+    "password": "",
+    "isActive": true,
+    "id": 2
+  },
+  {
+    "createdAt": "2025-05-29T20:04:59.184Z",
+    "updatedAt": "2025-05-29T20:04:59.184Z",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john@example.com",
+    "phone": null,
+    "address": null,
+    "city": null,
+    "country": null,
+    "dateOfBirth": "",
+    "password": "secret123",
+    "isActive": true,
+    "id": 3
+  },
+  {
+    "createdAt": "2025-05-29T20:06:59.741Z",
+    "updatedAt": "2025-05-29T20:06:59.741Z",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john@example1.com",
+    "phone": null,
+    "address": null,
+    "city": null,
+    "country": null,
+    "dateOfBirth": "",
+    "password": "secret123",
+    "isActive": true,
+    "id": 4
+  },
+  {
+    "createdAt": "2025-05-29T21:02:06.476Z",
+    "updatedAt": "2025-05-29T21:02:06.476Z",
+    "firstName": "1",
+    "lastName": "2",
+    "email": "3",
+    "phone": null,
+    "address": null,
+    "city": null,
+    "country": null,
+    "dateOfBirth": "",
+    "password": "4",
+    "isActive": true,
+    "id": 5
+  }
+]

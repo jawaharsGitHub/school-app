@@ -1,0 +1,78 @@
+<h2>
+  <fa-icon [icon]="isEditMode ? 'pencil' : 'plus'"></fa-icon>
+  {{ isEditMode ? "Edit" : "Add" }} Admission Application
+</h2>
+<div class="wizard-container">
+  <!-- Step Indicators -->
+  <ul class="wizard-steps">
+    <li
+      (click)="goToStep(i)"
+      *ngFor="let step of steps; let i = index"
+      [class.active]="i === currentStepIndex"
+      style="width: 220px; cursor: pointer"
+    >
+      <span class="step-number">{{ step.label }}</span>
+
+      @if(i === 3) { @if (allStepsValid) { &nbsp;<fa-icon
+        [icon]="'thumbs-up'"
+        class="valid-icon-color"
+      ></fa-icon>
+      } @else { &nbsp;<fa-icon
+        [icon]="'thumbs-down'"
+        class="invalid-icon-color"
+      ></fa-icon>
+      } } @else { @if (!step.isValid) { &nbsp;<fa-icon
+        [icon]="'exclamation-circle'"
+        class="invalid-icon-color"
+      ></fa-icon>
+      } @else { &nbsp;<fa-icon
+        [icon]="'check-circle'"
+        class="valid-icon-color"
+      ></fa-icon>
+      } }
+    </li>
+  </ul>
+
+  <!-- Step Content -->
+  <form [formGroup]="mainWizardForm">
+    <div class="wizard-content" >
+      <app-account-info
+        [hidden]="currentStepIndex !== 0"
+        [accountDetailsForm]="accountDetailsForm"
+      ></app-account-info>
+
+      <app-personal-details
+        [hidden]="currentStepIndex !== 1"
+        [personalDetailsForm]="personalDetailsForm"
+      ></app-personal-details>
+
+      <app-profile-picture
+        [hidden]="currentStepIndex !== 2"
+        [profilePictureForm]="profilePictureForm"
+      ></app-profile-picture>
+
+      <app-preview
+        [hidden]="currentStepIndex !== 3"
+        [imageURL]="userProfile.profilePicture.urlDisplay"
+        [userProfile]="userProfile"
+      ></app-preview>
+    </div>
+  </form>
+
+  <!-- Navigation Controls -->
+  <div class="wizard-navigation">
+    <button
+      *ngIf="!isFirstStep"
+      class="btn btn-secondary"
+      (click)="previousStep()"
+    >
+      Back
+    </button>
+    <button *ngIf="!isLastStep" class="btn btn-primary" (click)="nextStep()">
+      Next
+    </button>
+    <button *ngIf="isLastStep" class="btn btn-success" (click)="onSubmit()">
+      Submit
+    </button>
+  </div>
+</div>

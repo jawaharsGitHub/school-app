@@ -1,6 +1,7 @@
 import {
   Component,
   EventEmitter,
+  Input,
   input,
   OnInit,
   Output,
@@ -20,7 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   styleUrl: './app-profile-picture.component.css',
 })
 export class AppProfilePictureComponent implements OnInit {
-  profilePictureForm!: FormGroup;
+  @Input() profilePictureForm!: FormGroup;
   
   profilePicture: WritableSignal<Aviator[]> = signal([]); // Signal holding an array of Aviator objects
   @Output() profilePictureChange = new EventEmitter<Aviator>();
@@ -30,12 +31,12 @@ export class AppProfilePictureComponent implements OnInit {
 
   ngOnInit(): void {
     // Initialize the form group with your file control
-    this.profilePictureForm = this.fb.group({
-      // The initial value can be null, and you add Validators.required
-      profilePictureFile: [null, Validators.required]
-    });
+    // this.profilePictureForm = this.fb.group({
+    //   // The initial value can be null, and you add Validators.required
+    //   profilePictureFile: [null, Validators.required]
+    // });
 
-    this.profilePictureForm.markAllAsTouched();
+    //this.profilePictureForm.markAllAsTouched();
 
     // You might want to update your parent component about validity
     // this.profilePictureForm.statusChanges.subscribe(status => {
@@ -53,15 +54,15 @@ export class AppProfilePictureComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         // Update the form control's value (you can use the file object or its URL)
-        this.profilePictureForm.get('profilePictureFile')?.setValue(file); // Set the file itself as value
-        // Update your display model (profilePicture() method)
-        // If profilePicture() comes from a service or parent, update it there.
-        // Assuming profilePicture() refers to a property that you can update locally:
-        // this.profilePictureData[0].urlDisplay = e.target.result;
+        // this.profilePictureForm.get('profilePictureFile')?.setValue(file); // Set the file itself as value
+        // // Update your display model (profilePicture() method)
+        // // If profilePicture() comes from a service or parent, update it there.
+        // // Assuming profilePicture() refers to a property that you can update locally:
+        // // this.profilePictureData[0].urlDisplay = e.target.result;
 
-        // Manually trigger touch for validation display if needed on selection
-        this.profilePictureForm.get('profilePictureFile')?.markAsTouched();
-        this.profilePictureForm.get('profilePictureFile')?.markAsDirty();
+        // // Manually trigger touch for validation display if needed on selection
+        // this.profilePictureForm.get('profilePictureFile')?.markAsTouched();
+        // this.profilePictureForm.get('profilePictureFile')?.markAsDirty();
       };
 
       const imageObj: Aviator = {
