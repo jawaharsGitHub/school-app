@@ -8,7 +8,7 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 // Import the specific icons you want to use globally
 import { faGear, faFileLines, faChartBar, faUserCheck, faUser, faCircleUser, faUsers, faBook, faGraduationCap, faMoneyBill, faUserGraduate, faIdCard, faGaugeHigh, faSpinner,
   faPlus, faEye, faPencil, faTrash, faFilter, faSearch, faSave, faTimes, faCheckCircle, faXmarkCircle, faRightToBracket,
-  faInfoCircle, faExclamationCircle
+  faInfoCircle, faExclamationCircle, faThumbsUp, faThumbsDown, faClock, faCalendar, faBell, faFlag, faLock, faUnlock, faArrowRight, faArrowLeft, faArrowUp, faArrowDown
  } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter } from '@fortawesome/free-brands-svg-icons'; // Example for brand icons
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons'; // Example for regular icons with alias
@@ -31,7 +31,7 @@ export const appConfig: ApplicationConfig = {
           faUsers, faBook, faFacebookF, faTwitter, farStar, faUserGraduate, 
           faPlus, faEye, faPencil, faTrash, faFilter, faSearch, faSave, faTimes,
         faSpinner, faCheckCircle, faXmarkCircle, faIdCard, faRightToBracket,
-              faGraduationCap, faMoneyBill,  faExclamationCircle
+              faGraduationCap, faMoneyBill,  faExclamationCircle, faThumbsUp, faThumbsDown, faClock, faCalendar, faBell, faFlag, faLock, faUnlock, faArrowRight, faArrowLeft, faArrowUp, faArrowDown
         );
         return library;
       }

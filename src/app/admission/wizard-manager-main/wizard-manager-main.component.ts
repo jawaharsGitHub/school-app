@@ -95,6 +95,13 @@ this.steps[this.currentStepIndex].isValid = isValid;
     this.userProfile.profilePicture.file = profilePicture.file;
   }
 
+  get allStepsValid(): boolean {
+    // check all stpes except last step
+
+
+  return this.steps.slice(0, this.steps.length - 1).every(s => s.isValid);
+}
+
   onSubmit(): void {
     console.log('User Profile Submitted:', this.userProfile);
     alert('Profile submitted successfully!');
