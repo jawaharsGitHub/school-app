@@ -1,31 +1,297 @@
-<div class="form-group">
-    <label for="firstName">First Name:</label>
-    <input
-      type="text"
-      id="firstName"
-      class="form-control"
-      [(ngModel)]="personalDetails.firstName"
-      (ngModelChange)="personalDetailsChange.emit(personalDetails); validateForm()"
-    />
+<form #personalDetailsNgForm="ngForm">
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <label for="firstName">First Name <span class="text-danger">*</span></label>
+      <input
+        type="text"
+        id="firstName"
+        name="firstName" class="form-control"
+        [(ngModel)]="personalDetails.firstName"
+        (ngModelChange)="onInputChange()"
+        required
+        #firstNameField="ngModel" [class.is-invalid]="firstNameField.invalid && (firstNameField.dirty || firstNameField.touched)"
+      />
+      <div *ngIf="firstNameField.invalid && (firstNameField.dirty || firstNameField.touched)" class="invalid-feedback">
+        <div *ngIf="firstNameField.errors?.['required']">First Name is required.</div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="middleName">Middle Name</label>
+      <input
+        type="text"
+        id="middleName"
+        name="middleName"
+        class="form-control"
+        [(ngModel)]="personalDetails.middleName"
+        (ngModelChange)="onInputChange()"
+      />
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="lastName">Last Name <span class="text-danger">*</span></label>
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        class="form-control"
+        [(ngModel)]="personalDetails.lastName"
+        (ngModelChange)="onInputChange()"
+        required
+        #lastNameField="ngModel"
+        [class.is-invalid]="lastNameField.invalid && (lastNameField.dirty || lastNameField.touched)"
+      />
+      <div *ngIf="lastNameField.invalid && (lastNameField.dirty || lastNameField.touched)" class="invalid-feedback">
+        <div *ngIf="lastNameField.errors?.['required']">Last Name is required.</div>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="lastName">Last Name:</label>
-    <input
-      type="text"
-      id="lastName"
-      class="form-control"
-      [(ngModel)]="personalDetails.lastName"
-      (ngModelChange)="personalDetailsChange.emit(personalDetails); validateForm()"
-    />
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="dob">Date of Birth <span class="text-danger">*</span></label>
+      <input
+        type="date"
+        id="dob"
+        name="dateOfBirth"
+        class="form-control"
+        [(ngModel)]="personalDetails.dateOfBirth"
+        (ngModelChange)="onInputChange()"
+        required
+        #dobField="ngModel"
+        [class.is-invalid]="dobField.invalid && (dobField.dirty || dobField.touched)"
+      />
+      <div *ngIf="dobField.invalid && (dobField.dirty || dobField.touched)" class="invalid-feedback">
+        <div *ngIf="dobField.errors?.['required']">Date of Birth is required.</div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="gender">Gender <span class="text-danger">*</span></label>
+      <select
+        id="gender"
+        name="gender"
+        class="form-select"
+        [(ngModel)]="personalDetails.gender"
+        (ngModelChange)="onInputChange()"
+        required
+        #genderField="ngModel"
+        [class.is-invalid]="genderField.invalid && (genderField.dirty || genderField.touched)"
+      >
+        <option value="" disabled selected>Select Gender</option>
+        <option *ngFor="let g of genders" [value]="g">{{ g }}</option>
+      </select>
+      <div *ngIf="genderField.invalid && (genderField.dirty || genderField.touched)" class="invalid-feedback">
+        <div *ngIf="genderField.errors?.['required']">Gender is required.</div>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="dob">Date of Birth:</label>
-    <input
-      type="date"
-      id="dob"
-      class="form-control"
-      [(ngModel)]="personalDetails.dateOfBirth"
-      (ngModelChange)="personalDetailsChange.emit(personalDetails); validateForm()"
-    />
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="nationality">Nationality <span class="text-danger">*</span></label>
+      <input
+        type="text"
+        id="nationality"
+        name="nationality"
+        class="form-control"
+        [(ngModel)]="personalDetails.nationality"
+        (ngModelChange)="onInputChange()"
+        required
+        #nationalityField="ngModel"
+        [class.is-invalid]="nationalityField.invalid && (nationalityField.dirty || nationalityField.touched)"
+      />
+      <div *ngIf="nationalityField.invalid && (nationalityField.dirty || nationalityField.touched)" class="invalid-feedback">
+        <div *ngIf="nationalityField.errors?.['required']">Nationality is required.</div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="placeOfBirthCity">Place of Birth (City) <span class="text-danger">*</span></label>
+      <input
+        type="text"
+        id="placeOfBirthCity"
+        name="placeOfBirthCity"
+        class="form-control"
+        [(ngModel)]="personalDetails.placeOfBirthCity"
+        (ngModelChange)="onInputChange()"
+        required
+        #placeOfBirthCityField="ngModel"
+        [class.is-invalid]="placeOfBirthCityField.invalid && (placeOfBirthCityField.dirty || placeOfBirthCityField.touched)"
+      />
+      <div *ngIf="placeOfBirthCityField.invalid && (placeOfBirthCityField.dirty || placeOfBirthCityField.touched)" class="invalid-feedback">
+        <div *ngIf="placeOfBirthCityField.errors?.['required']">Place of Birth (City) is required.</div>
+      </div>
+    </div>
   </div>
-  
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="placeOfBirthState">Place of Birth (State/Province) <span class="text-danger">*</span></label>
+      <input
+        type="text"
+        id="placeOfBirthState"
+        name="placeOfBirthState"
+        class="form-control"
+        [(ngModel)]="personalDetails.placeOfBirthState"
+        (ngModelChange)="onInputChange()"
+        required
+        #placeOfBirthStateField="ngModel"
+        [class.is-invalid]="placeOfBirthStateField.invalid && (placeOfBirthStateField.dirty || placeOfBirthStateField.touched)"
+      />
+      <div *ngIf="placeOfBirthStateField.invalid && (placeOfBirthStateField.dirty || placeOfBirthStateField.touched)" class="invalid-feedback">
+        <div *ngIf="placeOfBirthStateField.errors?.['required']">Place of Birth (State/Province) is required.</div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="placeOfBirthCountry">Place of Birth (Country) <span class="text-danger">*</span></label>
+      <input
+        type="text"
+        id="placeOfBirthCountry"
+        name="placeOfBirthCountry"
+        class="form-control"
+        [(ngModel)]="personalDetails.placeOfBirthCountry"
+        (ngModelChange)="onInputChange()"
+        required
+        #placeOfBirthCountryField="ngModel"
+        [class.is-invalid]="placeOfBirthCountryField.invalid && (placeOfBirthCountryField.dirty || placeOfBirthCountryField.touched)"
+      />
+      <div *ngIf="placeOfBirthCountryField.invalid && (placeOfBirthCountryField.dirty || placeOfBirthCountryField.touched)" class="invalid-feedback">
+        <div *ngIf="placeOfBirthCountryField.errors?.['required']">Place of Birth (Country) is required.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="nationalIdType">National ID Type <span class="text-danger">*</span></label>
+      <select
+        id="nationalIdType"
+        name="nationalIdType"
+        class="form-select"
+        [(ngModel)]="personalDetails.nationalIdType"
+        (ngModelChange)="onInputChange()"
+        required
+        #nationalIdTypeField="ngModel"
+        [class.is-invalid]="nationalIdTypeField.invalid && (nationalIdTypeField.dirty || nationalIdTypeField.touched)"
+      >
+        <option value="" disabled selected>Select ID Type</option>
+        <option *ngFor="let type of nationalIdTypes" [value]="type">{{ type }}</option>
+      </select>
+      <div *ngIf="nationalIdTypeField.invalid && (nationalIdTypeField.dirty || nationalIdTypeField.touched)" class="invalid-feedback">
+        <div *ngIf="nationalIdTypeField.errors?.['required']">National ID Type is required.</div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="nationalIdNumber">National ID Number <span class="text-danger">*</span></label>
+      <input
+        type="text"
+        id="nationalIdNumber"
+        name="nationalIdNumber"
+        class="form-control"
+        [(ngModel)]="personalDetails.nationalIdNumber"
+        (ngModelChange)="onInputChange()"
+        required
+        pattern="^\d{12}$" #nationalIdNumberField="ngModel"
+        [class.is-invalid]="nationalIdNumberField.invalid && (nationalIdNumberField.dirty || nationalIdNumberField.touched)"
+      />
+      <div *ngIf="nationalIdNumberField.invalid && (nationalIdNumberField.dirty || nationalIdNumberField.touched)" class="invalid-feedback">
+        <div *ngIf="nationalIdNumberField.errors?.['required']">National ID Number is required.</div>
+        <div *ngIf="nationalIdNumberField.errors?.['pattern']">Invalid ID format (e.g., must be 12 digits for Aadhaar).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="religion">Religion</label>
+      <input
+        type="text"
+        id="religion"
+        name="religion"
+        class="form-control"
+        [(ngModel)]="personalDetails.religion"
+        (ngModelChange)="onInputChange()"
+      />
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="casteCategory">Caste Category</label>
+      <select
+        id="casteCategory"
+        name="casteCategory"
+        class="form-select"
+        [(ngModel)]="personalDetails.casteCategory"
+        (ngModelChange)="onInputChange()"
+      >
+        <option value="">Select Category</option>
+        <option *ngFor="let cat of casteCategories" [value]="cat">{{ cat }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label for="motherTongue">Mother Tongue</label>
+      <input
+        type="text"
+        id="motherTongue"
+        name="motherTongue"
+        class="form-control"
+        [(ngModel)]="personalDetails.motherTongue"
+        (ngModelChange)="onInputChange()"
+      />
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="bloodGroup">Blood Group</label>
+      <select
+        id="bloodGroup"
+        name="bloodGroup"
+        class="form-select"
+        [(ngModel)]="personalDetails.bloodGroup"
+        (ngModelChange)="onInputChange()"
+      >
+        <option value="">Select Blood Group</option>
+        <option *ngFor="let bg of bloodGroups" [value]="bg">{{ bg }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="hasDisability"
+          name="hasDisability"
+          [(ngModel)]="personalDetails.hasDisability"
+          (ngModelChange)="onInputChange(); updateDisabilityDetailsRequired()"
+        />
+        <label class="form-check-label" for="hasDisability">
+          Has Disability?
+        </label>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3" *ngIf="personalDetails.hasDisability">
+      <label for="disabilityDetails">Disability Details <span class="text-danger">*</span></label>
+      <textarea
+        id="disabilityDetails"
+        name="disabilityDetails"
+        class="form-control"
+        rows="2"
+        [(ngModel)]="personalDetails.disabilityDetails"
+        (ngModelChange)="onInputChange()"
+        required #disabilityDetailsField="ngModel"
+        [class.is-invalid]="disabilityDetailsField.invalid && (disabilityDetailsField.dirty || disabilityDetailsField.touched)"
+      ></textarea>
+      <div *ngIf="disabilityDetailsField.invalid && (disabilityDetailsField.dirty || disabilityDetailsField.touched)" class="invalid-feedback">
+        <div *ngIf="disabilityDetailsField.errors?.['required']">Disability details are required.</div>
+      </div>
+    </div>
+  </div>
+</form>

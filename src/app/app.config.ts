@@ -28,10 +28,10 @@ export const appConfig: ApplicationConfig = {
         library.addIcons(
           faGear, faFileLines, faChartBar, faUserCheck, faUser, faCircleUser, faInfoCircle,
           faGaugeHigh,
-          faUsers, faBook, faGraduationCap, faFacebookF, faTwitter, farStar, faMoneyBill, faUserGraduate, faIdCard,
+          faUsers, faBook, faFacebookF, faTwitter, farStar, faUserGraduate, 
           faPlus, faEye, faPencil, faTrash, faFilter, faSearch, faSave, faTimes,
-        faSpinner, faCheckCircle, faXmarkCircle, faIdCard, faUserCheck, faRightToBracket,
-        faGear, faFileLines, faChartBar, faUser, faCircleUser, faUsers, faBook, faGraduationCap, faMoneyBill, faGaugeHigh, faExclamationCircle
+        faSpinner, faCheckCircle, faXmarkCircle, faIdCard, faRightToBracket,
+              faGraduationCap, faMoneyBill,  faExclamationCircle
         );
         return library;
       }

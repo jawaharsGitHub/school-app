@@ -1,0 +1,11 @@
+o reiterate the main categories of details:
+
+Student Personal & Demographic Information: Basic identification like name, date of birth, gender, nationality, and ID numbers.
+Contact Information: How to reach the student (phone, email) and their address.
+Academic History: Details of previous schools/colleges, examination results, and entrance exam scores.
+Program/Course Selection: The specific course, grade, or program the student is applying for.
+Parent/Guardian Information: Names, occupations, and contact details for parents or legal guardians.
+Emergency Contact: Who to contact in case of an emergency.
+Required Document Uploads: A list of necessary digital copies like photos, mark sheets, ID proofs, and certificates.
+Additional Information (Optional): Such as how they heard about the institution, extracurricular activities, or a statement of purpose.
+Declarations & Consents: Agreements regarding the accuracy of information and data processing.

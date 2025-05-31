@@ -1,36 +1,32 @@
 import {Component, input} from '@angular/core';
-import {Aviator, UserProfile, WizardStep} from '../../../shared/Models/UserModels';
+import {Aviator, UserProfile, WizardStep, PersonalDetails,createEmptyUserProfile } from '../../../shared/Models/UserModels';
 import {NgFor, NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
 import { AppAccountInfoComponent } from "../childs/app-account-info/app-account-info.component";
  import { AppPreviewComponent } from "../childs/app-preview/app-preview.component";
-import { AppPersonalDetailsComponent } from "../childs/app-personal-details/app-personal-details.component";
+import { PersonalDetailsFormComponent } from "../childs/app-personal-details/app-personal-details.component";
 import {AppProfilePictureComponent} from "../childs/app-profile-picture/app-profile-picture.component";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'wizard-manager',
   standalone: true,
-  imports: [NgFor, NgIf, NgSwitch, AppAccountInfoComponent, AppPreviewComponent, AppPersonalDetailsComponent, AppProfilePictureComponent, NgSwitchCase],
+  imports: [FontAwesomeModule, NgFor, NgIf, NgSwitch, AppAccountInfoComponent, AppPreviewComponent, PersonalDetailsFormComponent, AppProfilePictureComponent, NgSwitchCase, PersonalDetailsFormComponent],
   templateUrl: './wizard-manager-main.component.html',
   styleUrl: './wizard-manager-main.component.scss'
 })
 export class WizardManagerMainComponent {
 
-
-
   steps: WizardStep[] = [
     { id: 'accountInfo', label: 'Account Information', isValid: false },
-    { id: 'personalDetails', label: 'Personal Details', isValid: false },
+    { id: 'personalDetails', label: 'Personal Details', isValid: true },
     { id: 'profilePicture', label: 'Profile Picture', isValid: false },
     { id: 'preview', label: 'Preview & Confirm', isValid: true },
   ];
+
   currentStepIndex = 0;
 
-
-  userProfile: UserProfile = {
-    accountInfo: { username: '', email: '' },
-    personalDetails: {firstName: '',lastName: '', dateOfBirth: ''},
-    profilePicture: { file: new File( [],''), urlDisplay: '' },
-  };
+  userProfile: UserProfile = createEmptyUserProfile();
+  
   get isLastStep(): boolean {
     return this.currentStepIndex === this.steps.length - 1;
   }
@@ -58,7 +54,9 @@ export class WizardManagerMainComponent {
   }
 
   onStepValidityChange(isValid: boolean): void {
+    console.log('Step Validity Changed:', isValid);
     this.steps[this.currentStepIndex].isValid = isValid;
+
   }
 
   // Update account information
@@ -69,7 +67,7 @@ export class WizardManagerMainComponent {
   }
 
   // Update personal details
-  onPersonalDetailsChange(personalDetails: { firstName: string; lastName: string; dateOfBirth: string }): void {
+  onPersonalDetailsChange(personalDetails: PersonalDetails): void {
     this.userProfile.personalDetails = personalDetails;
   }
 

@@ -1,5 +1,6 @@
 .wizard-container {
-    width: 100%;
+    min-width: 95%;
+    min-height: 700px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ddd;
@@ -26,7 +27,7 @@
   }
   
   .wizard-steps li.active {
-    background-color: #007bff;
+    background-color: #113C60; /* Bootstrap primary color */
     color: #fff;
   }
   
@@ -39,3 +40,37 @@
     justify-content: space-between;
   }
   
+  /* Style for invalid steps */
+.wizard-steps li.invalid-step {
+  background-color: #ffcccc; /* Light red background */
+  color: #dc3545; /* Darker red text */
+}
+
+/* Style for the invalid icon */
+.invalid-icon {
+  color: #dc3545; /* Red color */
+  margin-left: 8px; /* Space between label and icon */
+  font-size: 1.2em; /* Make icon slightly larger */
+}
+
+/* Optional: Hide icon on active/valid step if you want */
+.wizard-steps li.active .invalid-icon {
+    display: none;
+}
+.wizard-steps li:not(.invalid-step) .invalid-icon {
+    display: none;
+}
+
+/* ... (your existing wizard-steps, li, active, invalid-step styles) ... */
+
+.invalid-icon-color {
+  color: red; /* Or a specific hex code like #dc3545 */
+  margin-left: 8px; /* Space from the label */
+  font-size: 1.2em; /* Adjust size if needed */
+}
+
+.valid-icon-color {
+  color: green; /* Or a specific hex code like #dc3545 */
+  margin-left: 8px; /* Space from the label */
+  font-size: 1.2em; /* Adjust size if needed */
+}
