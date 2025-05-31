@@ -5,7 +5,7 @@ export interface WizardStep {
   }
 
   export interface UserProfile {
-    accountInfo: { username: string; email: string };
+    accountInfo: AccountInfo;
     personalDetails: PersonalDetails;
     profilePicture: Aviator;
   }

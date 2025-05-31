@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AccountInfo, createEmptyAccountInfo } from '../../../../shared/Models/UserModels';
 //import { validateEmail, validatePhoneNumber } from 'uthavu';
 
 @Component({
@@ -11,8 +12,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   styleUrl: './app-account-info.component.scss'
 })
 export class AppAccountInfoComponent {
-  @Input() accountInfo = { username: '', email: '' };
-  @Output() accountInfoChange = new EventEmitter<{ username: string; email: string }>();
+  @Input() accountInfo = createEmptyAccountInfo();;
+  @Output() accountInfoChange = new EventEmitter<AccountInfo>();
   @Output() stepValidity = new EventEmitter<boolean>(); 
 
 

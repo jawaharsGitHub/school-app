@@ -1,19 +1,22 @@
-<form #personalDetailsNgForm="ngForm">
+<form [formGroup]="personalDetailsForm">
   <div class="row">
     <div class="col-md-4 mb-3">
-      <label for="firstName">First Name <span class="text-danger">*</span></label>
+      <label for="firstName"
+        >First Name <span class="text-danger">*</span></label
+      >
       <input
         type="text"
         id="firstName"
-        name="firstName" class="form-control"
-        [(ngModel)]="personalDetails.firstName"
-        (ngModelChange)="onInputChange()"
-        required
-        #firstNameField="ngModel" [class.is-invalid]="firstNameField.invalid && (firstNameField.dirty || firstNameField.touched)"
+        formControlName="firstName"
+        class="form-control"
+        [class.is-invalid]="
+          getControl('firstName')?.invalid &&
+          (getControl('firstName')?.dirty || getControl('firstName')?.touched)
+        "
       />
-      <div *ngIf="firstNameField.invalid && (firstNameField.dirty || firstNameField.touched)" class="invalid-feedback">
-        <div *ngIf="firstNameField.errors?.['required']">First Name is required.</div>
-      </div>
+      <!-- <div *ngIf="getControl('firstName')?.invalid && (getControl('firstName')?.dirty || getControl('firstName')?.touched)" class="invalid-feedback">
+        <div *ngIf="getControl('firstName')?.errors?.['required']">First Name is required123.</div>
+      </div> -->
     </div>
 
     <div class="col-md-4 mb-3">
@@ -21,10 +24,8 @@
       <input
         type="text"
         id="middleName"
-        name="middleName"
+        formControlName="middleName"
         class="form-control"
-        [(ngModel)]="personalDetails.middleName"
-        (ngModelChange)="onInputChange()"
       />
     </div>
 
@@ -33,17 +34,16 @@
       <input
         type="text"
         id="lastName"
-        name="lastName"
+        formControlName="lastName"
         class="form-control"
-        [(ngModel)]="personalDetails.lastName"
-        (ngModelChange)="onInputChange()"
-        required
-        #lastNameField="ngModel"
-        [class.is-invalid]="lastNameField.invalid && (lastNameField.dirty || lastNameField.touched)"
+        [class.is-invalid]="
+          getControl('lastName')?.invalid &&
+          (getControl('lastName')?.dirty || getControl('lastName')?.touched)
+        "
       />
-      <div *ngIf="lastNameField.invalid && (lastNameField.dirty || lastNameField.touched)" class="invalid-feedback">
-        <div *ngIf="lastNameField.errors?.['required']">Last Name is required.</div>
-      </div>
+      <!-- <div *ngIf="getControl('lastName')?.invalid && (getControl('lastName')?.dirty || getControl('lastName')?.touched)" class="invalid-feedback">
+        <div *ngIf="getControl('lastName')?.errors?.['required']">Last Name is required.</div>
+      </div>-->
     </div>
   </div>
 
@@ -53,154 +53,168 @@
       <input
         type="date"
         id="dob"
-        name="dateOfBirth"
+        formControlName="dateOfBirth"
         class="form-control"
-        [(ngModel)]="personalDetails.dateOfBirth"
-        (ngModelChange)="onInputChange()"
-        required
-        #dobField="ngModel"
-        [class.is-invalid]="dobField.invalid && (dobField.dirty || dobField.touched)"
+        [class.is-invalid]="
+          getControl('dateOfBirth')?.invalid &&
+          (getControl('dateOfBirth')?.dirty ||
+            getControl('dateOfBirth')?.touched)
+        "
       />
-      <div *ngIf="dobField.invalid && (dobField.dirty || dobField.touched)" class="invalid-feedback">
-        <div *ngIf="dobField.errors?.['required']">Date of Birth is required.</div>
-      </div>
+      <!-- <div *ngIf="getControl('dateOfBirth')?.invalid && (getControl('dateOfBirth')?.dirty || getControl('dateOfBirth')?.touched)" class="invalid-feedback">
+        <div *ngIf="getControl('dateOfBirth')?.errors?.['required']">Date of Birth is required.</div>
+      </div> -->
     </div>
 
     <div class="col-md-6 mb-3">
       <label for="gender">Gender <span class="text-danger">*</span></label>
       <select
         id="gender"
-        name="gender"
+        formControlName="gender"
         class="form-select"
-        [(ngModel)]="personalDetails.gender"
-        (ngModelChange)="onInputChange()"
-        required
-        #genderField="ngModel"
-        [class.is-invalid]="genderField.invalid && (genderField.dirty || genderField.touched)"
+        [class.is-invalid]="
+          getControl('gender')?.invalid &&
+          (getControl('gender')?.dirty || getControl('gender')?.touched)
+        "
       >
-        <option value="" disabled selected>Select Gender</option>
+        <option value="" disabled>Select Gender</option>
         <option *ngFor="let g of genders" [value]="g">{{ g }}</option>
       </select>
-      <div *ngIf="genderField.invalid && (genderField.dirty || genderField.touched)" class="invalid-feedback">
-        <div *ngIf="genderField.errors?.['required']">Gender is required.</div>
-      </div>
+      <!-- <div *ngIf="getControl('gender')?.invalid && (getControl('gender')?.dirty || getControl('gender')?.touched)" class="invalid-feedback">
+        <div *ngIf="getControl('gender')?.errors?.['required']">Gender is required.</div>
+      </div> -->
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="nationality">Nationality <span class="text-danger">*</span></label>
+      <label for="nationality"
+        >Nationality <span class="text-danger">*</span></label
+      >
       <input
         type="text"
         id="nationality"
-        name="nationality"
+        formControlName="nationality"
         class="form-control"
-        [(ngModel)]="personalDetails.nationality"
-        (ngModelChange)="onInputChange()"
-        required
-        #nationalityField="ngModel"
-        [class.is-invalid]="nationalityField.invalid && (nationalityField.dirty || nationalityField.touched)"
+        [class.is-invalid]="
+          getControl('nationality')?.invalid &&
+          (getControl('nationality')?.dirty ||
+            getControl('nationality')?.touched)
+        "
       />
-      <div *ngIf="nationalityField.invalid && (nationalityField.dirty || nationalityField.touched)" class="invalid-feedback">
-        <div *ngIf="nationalityField.errors?.['required']">Nationality is required.</div>
-      </div>
+      <!-- <div *ngIf="getControl('nationality')?.invalid && (getControl('nationality')?.dirty || getControl('nationality')?.touched)" class="invalid-feedback">
+        <div *ngIf="getControl('nationality')?.errors?.['required']">Nationality is required.</div>
+      </div> -->
     </div>
 
     <div class="col-md-6 mb-3">
-      <label for="placeOfBirthCity">Place of Birth (City) <span class="text-danger">*</span></label>
+      <label for="placeOfBirthCity"
+        >Place of Birth (City) <span class="text-danger">*</span></label
+      >
       <input
         type="text"
         id="placeOfBirthCity"
-        name="placeOfBirthCity"
+        formControlName="placeOfBirthCity"
         class="form-control"
-        [(ngModel)]="personalDetails.placeOfBirthCity"
-        (ngModelChange)="onInputChange()"
-        required
-        #placeOfBirthCityField="ngModel"
-        [class.is-invalid]="placeOfBirthCityField.invalid && (placeOfBirthCityField.dirty || placeOfBirthCityField.touched)"
+        [class.is-invalid]="
+          getControl('placeOfBirthCity')?.invalid &&
+          (getControl('placeOfBirthCity')?.dirty ||
+            getControl('placeOfBirthCity')?.touched)
+        "
       />
-      <div *ngIf="placeOfBirthCityField.invalid && (placeOfBirthCityField.dirty || placeOfBirthCityField.touched)" class="invalid-feedback">
-        <div *ngIf="placeOfBirthCityField.errors?.['required']">Place of Birth (City) is required.</div>
-      </div>
+      <!-- <div *ngIf="getControl('placeOfBirthCity')?.invalid && (getControl('placeOfBirthCity')?.dirty || getControl('placeOfBirthCity')?.touched)" class="invalid-feedback">
+        <div *ngIf="getControl('placeOfBirthCity')?.errors?.['required']">Place of Birth (City) is required.</div>
+      </div> -->
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="placeOfBirthState">Place of Birth (State/Province) <span class="text-danger">*</span></label>
+      <label for="placeOfBirthState"
+        >Place of Birth (State/Province)
+        <span class="text-danger">*</span></label
+      >
       <input
         type="text"
         id="placeOfBirthState"
-        name="placeOfBirthState"
+        formControlName="placeOfBirthState"
         class="form-control"
-        [(ngModel)]="personalDetails.placeOfBirthState"
-        (ngModelChange)="onInputChange()"
-        required
-        #placeOfBirthStateField="ngModel"
-        [class.is-invalid]="placeOfBirthStateField.invalid && (placeOfBirthStateField.dirty || placeOfBirthStateField.touched)"
+        [class.is-invalid]="
+          getControl('placeOfBirthState')?.invalid &&
+          (getControl('placeOfBirthState')?.dirty ||
+            getControl('placeOfBirthState')?.touched)
+        "
       />
-      <div *ngIf="placeOfBirthStateField.invalid && (placeOfBirthStateField.dirty || placeOfBirthStateField.touched)" class="invalid-feedback">
-        <div *ngIf="placeOfBirthStateField.errors?.['required']">Place of Birth (State/Province) is required.</div>
-      </div>
+      <!-- <div *ngIf="getControl('placeOfBirthState')?.invalid && (getControl('placeOfBirthState')?.dirty || getControl('placeOfBirthState')?.touched)" class="invalid-feedback">
+        <div *ngIf="getControl('placeOfBirthState')?.errors?.['required']">Place of Birth (State/Province) is required.</div>
+      </div> -->
     </div>
 
     <div class="col-md-6 mb-3">
-      <label for="placeOfBirthCountry">Place of Birth (Country) <span class="text-danger">*</span></label>
+      <label for="placeOfBirthCountry"
+        >Place of Birth (Country) <span class="text-danger">*</span></label
+      >
       <input
         type="text"
         id="placeOfBirthCountry"
-        name="placeOfBirthCountry"
+        formControlName="placeOfBirthCountry"
         class="form-control"
-        [(ngModel)]="personalDetails.placeOfBirthCountry"
-        (ngModelChange)="onInputChange()"
-        required
-        #placeOfBirthCountryField="ngModel"
-        [class.is-invalid]="placeOfBirthCountryField.invalid && (placeOfBirthCountryField.dirty || placeOfBirthCountryField.touched)"
+        [class.is-invalid]="
+          getControl('placeOfBirthCountry')?.invalid &&
+          (getControl('placeOfBirthCountry')?.dirty ||
+            getControl('placeOfBirthCountry')?.touched)
+        "
       />
-      <div *ngIf="placeOfBirthCountryField.invalid && (placeOfBirthCountryField.dirty || placeOfBirthCountryField.touched)" class="invalid-feedback">
-        <div *ngIf="placeOfBirthCountryField.errors?.['required']">Place of Birth (Country) is required.</div>
-      </div>
+      <!-- <div *ngIf="getControl('placeOfBirthCountry')?.invalid && (getControl('placeOfBirthCountry')?.dirty || getControl('placeOfBirthCountry')?.touched)" class="invalid-feedback">
+        <div *ngIf="getControl('placeOfBirthCountry')?.errors?.['required']">Place of Birth (Country) is required.</div>
+      </div> -->
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-6 mb-3">
-      <label for="nationalIdType">National ID Type <span class="text-danger">*</span></label>
+      <label for="nationalIdType"
+        >National ID Type <span class="text-danger">*</span></label
+      >
       <select
         id="nationalIdType"
-        name="nationalIdType"
+        formControlName="nationalIdType"
         class="form-select"
-        [(ngModel)]="personalDetails.nationalIdType"
-        (ngModelChange)="onInputChange()"
-        required
-        #nationalIdTypeField="ngModel"
-        [class.is-invalid]="nationalIdTypeField.invalid && (nationalIdTypeField.dirty || nationalIdTypeField.touched)"
+        [class.is-invalid]="
+          getControl('nationalIdType')?.invalid &&
+          (getControl('nationalIdType')?.dirty ||
+            getControl('nationalIdType')?.touched)
+        "
       >
-        <option value="" disabled selected>Select ID Type</option>
-        <option *ngFor="let type of nationalIdTypes" [value]="type">{{ type }}</option>
+        <option value="" disabled>Select ID Type</option>
+        <option *ngFor="let type of nationalIdTypes" [value]="type">
+          {{ type }}
+        </option>
       </select>
-      <div *ngIf="nationalIdTypeField.invalid && (nationalIdTypeField.dirty || nationalIdTypeField.touched)" class="invalid-feedback">
-        <div *ngIf="nationalIdTypeField.errors?.['required']">National ID Type is required.</div>
-      </div>
+      <!-- <div *ngIf="getControl('nationalIdType')?.invalid && (getControl('nationalIdType')?.dirty || getControl('nationalIdType')?.touched)" class="invalid-feedback">
+        <div *ngIf="getControl('nationalIdType')?.errors?.['required']">National ID Type is required.</div>
+      </div> -->
     </div>
 
     <div class="col-md-6 mb-3">
-      <label for="nationalIdNumber">National ID Number <span class="text-danger">*</span></label>
+      <label for="nationalIdNumber"
+        >National ID Number <span class="text-danger">*</span></label
+      >
       <input
         type="text"
         id="nationalIdNumber"
-        name="nationalIdNumber"
+        formControlName="nationalIdNumber"
         class="form-control"
-        [(ngModel)]="personalDetails.nationalIdNumber"
-        (ngModelChange)="onInputChange()"
-        required
-        pattern="^\d{12}$" #nationalIdNumberField="ngModel"
-        [class.is-invalid]="nationalIdNumberField.invalid && (nationalIdNumberField.dirty || nationalIdNumberField.touched)"
+        [class.is-invalid]="
+          getControl('nationalIdNumber')?.invalid &&
+          (getControl('nationalIdNumber')?.dirty ||
+            getControl('nationalIdNumber')?.touched)
+        "
       />
-      <div *ngIf="nationalIdNumberField.invalid && (nationalIdNumberField.dirty || nationalIdNumberField.touched)" class="invalid-feedback">
-        <div *ngIf="nationalIdNumberField.errors?.['required']">National ID Number is required.</div>
-        <div *ngIf="nationalIdNumberField.errors?.['pattern']">Invalid ID format (e.g., must be 12 digits for Aadhaar).</div>
-      </div>
+      <!-- <div *ngIf="getControl('nationalIdNumber')?.invalid && (getControl('nationalIdNumber')?.dirty || getControl('nationalIdNumber')?.touched)" class="invalid-feedback">
+        <div *ngIf="getControl('nationalIdNumber')?.errors?.['required']">National ID Number is required.</div>
+        <div *ngIf="getControl('nationalIdNumber')?.errors?.['pattern']">Invalid ID format (e.g., must be 12 digits for Aadhaar).</div>
+      </div> -->
     </div>
   </div>
 
@@ -210,10 +224,8 @@
       <input
         type="text"
         id="religion"
-        name="religion"
+        formControlName="religion"
         class="form-control"
-        [(ngModel)]="personalDetails.religion"
-        (ngModelChange)="onInputChange()"
       />
     </div>
 
@@ -221,13 +233,13 @@
       <label for="casteCategory">Caste Category</label>
       <select
         id="casteCategory"
-        name="casteCategory"
+        formControlName="casteCategory"
         class="form-select"
-        [(ngModel)]="personalDetails.casteCategory"
-        (ngModelChange)="onInputChange()"
       >
         <option value="">Select Category</option>
-        <option *ngFor="let cat of casteCategories" [value]="cat">{{ cat }}</option>
+        <option *ngFor="let cat of casteCategories" [value]="cat">
+          {{ cat }}
+        </option>
       </select>
     </div>
   </div>
@@ -238,22 +250,14 @@
       <input
         type="text"
         id="motherTongue"
-        name="motherTongue"
+        formControlName="motherTongue"
         class="form-control"
-        [(ngModel)]="personalDetails.motherTongue"
-        (ngModelChange)="onInputChange()"
       />
     </div>
 
     <div class="col-md-6 mb-3">
       <label for="bloodGroup">Blood Group</label>
-      <select
-        id="bloodGroup"
-        name="bloodGroup"
-        class="form-select"
-        [(ngModel)]="personalDetails.bloodGroup"
-        (ngModelChange)="onInputChange()"
-      >
+      <select id="bloodGroup" formControlName="bloodGroup" class="form-select">
         <option value="">Select Blood Group</option>
         <option *ngFor="let bg of bloodGroups" [value]="bg">{{ bg }}</option>
       </select>
@@ -267,9 +271,7 @@
           class="form-check-input"
           type="checkbox"
           id="hasDisability"
-          name="hasDisability"
-          [(ngModel)]="personalDetails.hasDisability"
-          (ngModelChange)="onInputChange(); updateDisabilityDetailsRequired()"
+          formControlName="hasDisability"
         />
         <label class="form-check-label" for="hasDisability">
           Has Disability?
@@ -277,21 +279,37 @@
       </div>
     </div>
 
-    <div class="col-md-6 mb-3" *ngIf="personalDetails.hasDisability">
-      <label for="disabilityDetails">Disability Details <span class="text-danger">*</span></label>
+    <div class="col-md-6 mb-3" *ngIf="getControl('hasDisability')?.value">
+      <label for="disabilityDetails"
+        >Disability Details <span class="text-danger">*</span></label
+      >
       <textarea
         id="disabilityDetails"
-        name="disabilityDetails"
+        formControlName="disabilityDetails"
         class="form-control"
         rows="2"
-        [(ngModel)]="personalDetails.disabilityDetails"
-        (ngModelChange)="onInputChange()"
-        required #disabilityDetailsField="ngModel"
-        [class.is-invalid]="disabilityDetailsField.invalid && (disabilityDetailsField.dirty || disabilityDetailsField.touched)"
+        [class.is-invalid]="
+          getControl('disabilityDetails')?.invalid &&
+          (getControl('disabilityDetails')?.dirty ||
+            getControl('disabilityDetails')?.touched)
+        "
       ></textarea>
-      <div *ngIf="disabilityDetailsField.invalid && (disabilityDetailsField.dirty || disabilityDetailsField.touched)" class="invalid-feedback">
-        <div *ngIf="disabilityDetailsField.errors?.['required']">Disability details are required.</div>
+      <div
+        *ngIf="
+          getControl('disabilityDetails')?.invalid &&
+          (getControl('disabilityDetails')?.dirty ||
+            getControl('disabilityDetails')?.touched)
+        "
+        class="invalid-feedback"
+      >
+        <!-- <div *ngIf="getControl('disabilityDetails')?.errors?.['required']">
+          Disability details are required.
+        </div> -->
       </div>
     </div>
   </div>
+
+  <!-- <button type="submit" class="btn btn-primary mt-3" (click)="onSubmit()" [disabled]="personalDetailsForm.invalid">
+    Submit
+  </button> -->
 </form>

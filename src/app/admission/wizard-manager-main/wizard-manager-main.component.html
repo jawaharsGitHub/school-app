@@ -23,37 +23,28 @@
 
   <!-- Step Content -->
   <div class="wizard-content">
-    <ng-container [ngSwitch]="currentStepIndex">
-      <!-- Step 1: Account Information -->
-      <app-account-info
-        *ngSwitchCase="0"
-        [accountInfo]="userProfile.accountInfo"
-        (accountInfoChange)="onAccountInfoChange($event)"
-        (stepValidity)="onStepValidityChange($event)"
-      ></app-account-info>
+    <app-account-info
+      [hidden]="currentStepIndex !== 0" [accountInfo]="userProfile.accountInfo"
+      (accountInfoChange)="onAccountInfoChange($event)"
+      (stepValidity)="onStepValidityChange($event)"
+    ></app-account-info>
 
-      <!-- Step 2: Personal Details -->
-      <app-personal-details
-        *ngSwitchCase="1"
-        [personalDetails]="userProfile.personalDetails"
-        (personalDetailsChange)="onPersonalDetailsChange($event)"
-        (stepValidity)="onStepValidityChange($event)"
-      ></app-personal-details>
+    <app-personal-details
+      [hidden]="currentStepIndex !== 1" [personalDetails]="userProfile.personalDetails"
+      (personalDetailsChange)="onPersonalDetailsChange($event)"
+      (stepValidity)="onStepValidityChange($event)"
+      (formStatusChange)="onFormStateChange($event)"
+    ></app-personal-details>
 
-      <!-- Step 3: Profile Picture -->
-      <app-profile-picture
-        *ngSwitchCase="2"
-        (profilePictureChange)="onProfilePictureChange($event)"
-        (stepValidity)="onStepValidityChange($event)"
-      ></app-profile-picture>
+    <app-profile-picture
+      [hidden]="currentStepIndex !== 2" (profilePictureChange)="onProfilePictureChange($event)"
+      (stepValidity)="onStepValidityChange($event)"
+    ></app-profile-picture>
 
-      <!-- Step 4: Preview and Confirm -->
-      <app-preview
-        *ngSwitchCase="3"
-        [imageURL]="userProfile.profilePicture.urlDisplay"
-        [userProfile]="userProfile"
-      ></app-preview>
-    </ng-container>
+    <app-preview
+      [hidden]="currentStepIndex !== 3" [imageURL]="userProfile.profilePicture.urlDisplay"
+      [userProfile]="userProfile"
+    ></app-preview>
   </div>
 
   <!-- Navigation Controls -->

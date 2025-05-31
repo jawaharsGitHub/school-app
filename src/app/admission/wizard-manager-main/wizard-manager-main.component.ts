@@ -1,6 +1,6 @@
 import {Component, input} from '@angular/core';
-import {Aviator, UserProfile, WizardStep, PersonalDetails,createEmptyUserProfile } from '../../../shared/Models/UserModels';
-import {NgFor, NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
+import {Aviator, UserProfile, WizardStep, PersonalDetails,createEmptyUserProfile, AccountInfo } from '../../../shared/Models/UserModels';
+import {NgFor, NgIf} from '@angular/common';
 import { AppAccountInfoComponent } from "../childs/app-account-info/app-account-info.component";
  import { AppPreviewComponent } from "../childs/app-preview/app-preview.component";
 import { PersonalDetailsFormComponent } from "../childs/app-personal-details/app-personal-details.component";
@@ -10,17 +10,32 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @Component({
   selector: 'wizard-manager',
   standalone: true,
-  imports: [FontAwesomeModule, NgFor, NgIf, NgSwitch, AppAccountInfoComponent, AppPreviewComponent, PersonalDetailsFormComponent, AppProfilePictureComponent, NgSwitchCase, PersonalDetailsFormComponent],
+  imports: [FontAwesomeModule, NgFor, NgIf, AppAccountInfoComponent, AppPreviewComponent, PersonalDetailsFormComponent, AppProfilePictureComponent, PersonalDetailsFormComponent],
   templateUrl: './wizard-manager-main.component.html',
   styleUrl: './wizard-manager-main.component.scss'
 })
 export class WizardManagerMainComponent {
 
+onFormStateChange(isValid: boolean) {
+  console.log('Form State Changed:', isValid);
+this.steps[this.currentStepIndex].isValid = isValid;
+
+//  setTimeout(() => {
+//      this.steps[this.currentStepIndex].isValid = isValid;
+//      // If you also had logic here to change currentStepIndex based on form validity,
+//      // that might also cause the issue.
+//      // For example:
+//      // if (isFormValid && this.currentStepIndex === SOME_STEP) {
+//      //   this.currentStepIndex = NEXT_STEP; // This would cause the error if already checked.
+//      // }
+//   }, 0);
+}
+
   steps: WizardStep[] = [
     { id: 'accountInfo', label: 'Account Information', isValid: false },
-    { id: 'personalDetails', label: 'Personal Details', isValid: true },
+    { id: 'personalDetails', label: 'Personal Details', isValid: false },
     { id: 'profilePicture', label: 'Profile Picture', isValid: false },
-    { id: 'preview', label: 'Preview & Confirm', isValid: true },
+    { id: 'preview', label: 'Preview & Confirm', isValid: false },
   ];
 
   currentStepIndex = 0;
@@ -60,15 +75,18 @@ export class WizardManagerMainComponent {
   }
 
   // Update account information
-  onAccountInfoChange(accountInfo: { username: string; email: string }): void {
+  onAccountInfoChange(accountInfo: AccountInfo): void {
     //alert(JSON.stringify(accountInfo));
     console.log('Account Info Changed:', accountInfo);
     this.userProfile.accountInfo = accountInfo;
+    console.log('userProfile Info Changed:', this.userProfile);
   }
 
   // Update personal details
   onPersonalDetailsChange(personalDetails: PersonalDetails): void {
+    console.log('Personal Details Changed:', personalDetails);
     this.userProfile.personalDetails = personalDetails;
+    console.log('Updated User Profile:', this.userProfile);
   }
 
   // Update profile picture
