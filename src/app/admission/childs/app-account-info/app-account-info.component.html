@@ -1,21 +1,27 @@
-<div class="form-group">
-    <label for="username">Username:</label>
+<form [formGroup]="accountDetailsForm">
+  <div>
+    <label for="username">User Name: <span class="text-danger">*</span></label>
     <input
       type="text"
       id="username"
+      formControlName="username"
       class="form-control"
-      [(ngModel)]="accountInfo.username"
-      (ngModelChange)="accountInfoChange.emit(accountInfo); validateForm()"
+      [class.is-invalid]="
+        getControl('username')?.invalid && (getControl('username')?.touched || getControl('username')?.dirty)
+      "
     />
   </div>
-  <div class="form-group">
-    <label for="email">Email:</label>
+
+  <div>
+    <label for="email">Email : <span class="text-danger">*</span></label>
     <input
-      type="email"
+      type="text"
       id="email"
+      formControlName="email"
       class="form-control"
-      [(ngModel)]="accountInfo.email"
-      (ngModelChange)="accountInfoChange.emit(accountInfo); validateForm()"
+      [class.is-invalid]="
+        getControl('email')?.invalid &&(getControl('email')?.touched || getControl('email')?.dirty)
+      "
     />
   </div>
-  
+</form>

@@ -24,7 +24,7 @@ export class PersonalDetailsFormComponent implements OnInit, OnDestroy {
   @Output() formValidityChange = new EventEmitter<boolean>(); // Emit validity to parent
    @Output() stepValidity = new EventEmitter<boolean>(); 
 
-   @Output() formStatusChange = new EventEmitter<boolean>();
+   //@Output() formStatusChange = new EventEmitter<boolean>();
 
   @ViewChild('personalDetailsNgForm') personalDetailsNgForm!: NgForm; // Access the NgForm instance
 
@@ -34,7 +34,7 @@ export class PersonalDetailsFormComponent implements OnInit, OnDestroy {
   bloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
   casteCategories = ['General', 'OBC', 'SC', 'ST', 'EWS', 'Other']; // Customize as per local context
 
-  private initialValidityEmitted = false;
+  //private initialValidityEmitted = false;
 
   constructor(private fb: FormBuilder) { }
   
@@ -68,7 +68,7 @@ export class PersonalDetailsFormComponent implements OnInit, OnDestroy {
     this.formStatusSubscription = this.personalDetailsForm.valueChanges.subscribe(() => {
       // Emit the form's validity status to the parent whenever any value changes
       console.log('Form value changed:', this.personalDetailsForm.value);
-      this.formStatusChange.emit(this.personalDetailsForm.valid);
+      this.stepValidity.emit(this.personalDetailsForm.valid);
       this.personalDetailsChange.emit(this.personalDetailsForm.value as PersonalDetails); // Emit the updated personal details
     });
 
@@ -88,7 +88,7 @@ export class PersonalDetailsFormComponent implements OnInit, OnDestroy {
     this.personalDetailsForm.markAllAsTouched();
    
     // Emit initial form validity state
-    this.formStatusChange.emit(this.personalDetailsForm.valid);
+    this.stepValidity.emit(this.personalDetailsForm.valid);
 
     
 

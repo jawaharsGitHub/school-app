@@ -1,21 +1,20 @@
-<!-- 
-<div class="form-group">
-  <label for="profilePicture">Upload Profile Picture:<span class="text-danger">*</span></label>
-  <input type="file" id="profilePicture" class="form-control" required (change)="onFileSelected($event)"  accept="image/*" />
-   <div *ngIf="profilePicture() && profilePicture()[0].urlDisplay !== null">
-    <img [src]="profilePicture()[0].urlDisplay" alt="Preview" class="img-thumbnail profile-preview" />
-  </div> 
-</div> -->
 
-<form [formGroup]="profilePictureForm"> <div class="form-group">
-    <label for="profilePicture">Upload Profile Picture:<span class="text-danger">*</span></label>
+<form [formGroup]="profilePictureForm">
+  <div class="form-group">
+    <label for="profilePicture"
+      >Upload Profile Picture:<span class="text-danger">*</span></label
+    >
     <input
       type="file"
       id="profilePicture"
-      [formControl]="profilePictureFileControl" class="form-control"
+      [formControl]="profilePictureFileControl"
+      class="form-control"
       (change)="onFileSelected($event)"
       accept="image/*"
-      [class.is-invalid]="profilePictureFileControl?.invalid && (profilePictureFileControl?.dirty || profilePictureFileControl?.touched)"
+      [class.is-invalid]="
+        profilePictureFileControl.invalid &&
+        (profilePictureFileControl.dirty || profilePictureFileControl.touched)
+      "
     />
 
     <!-- <div *ngIf="profilePictureFileControl?.invalid && (profilePictureFileControl?.dirty || profilePictureFileControl?.touched)" class="invalid-feedback">
@@ -26,7 +25,11 @@
     </div> -->
 
     <div *ngIf="profilePicture() && profilePicture()[0].urlDisplay !== null">
-      <img [src]="profilePicture()[0].urlDisplay" alt="Preview" class="img-thumbnail profile-preview" />
+      <img
+        [src]="profilePicture()[0].urlDisplay"
+        alt="Preview"
+        class="img-thumbnail profile-preview"
+      />
     </div>
   </div>
 </form>

@@ -11,7 +11,7 @@ import { MainComponent } from "../../main/main.component";
 @Component({
   selector: 'app-master',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, HeaderComponent, SideNavComponent, MainComponent],
+  imports: [RouterOutlet, RouterModule, HeaderComponent, SideNavComponent],
   templateUrl: './master.component.html',
   styleUrl: './master.component.css'
 })

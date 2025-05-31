@@ -28,7 +28,6 @@ import { CdkStepperModule, CdkStepper } from '@angular/cdk/stepper';
     DocumentsFormComponent,
     StepperComponent,
     CdkStepperModule,
-    CdkStepper
 ],
   templateUrl: './admission-form.component.html',
   styleUrls: ['./admission-form.component.css']
