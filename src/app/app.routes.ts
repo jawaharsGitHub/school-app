@@ -6,6 +6,7 @@ import { AuthGuard } from "./core/auth.guard";
 import { MainComponent } from "./features/main/main.component";
 import { AdmissionListComponent } from "./features/admission/admission-list/admission-list.component";
 import { AdmissionMainComponent } from "./features/admission/admission-form-main/admission-form-main.component";
+import { ApplicationFormComponent } from "./features/admission/application-form/application-form.component";
 
 export const routes: Routes = [
   { path: 'login', component: SignInComponent },
@@ -17,7 +18,9 @@ export const routes: Routes = [
       { path: 'dashboard', component: MainComponent },
       { path: 'admin/applicants', component: AdmissionListComponent },
       { path: 'admin/applicants/new', component: AdmissionMainComponent },
-      { path: 'admin/applicants/edit/:id', component: AdmissionMainComponent }, // <--- Important!
+      { path: 'admin/applicants/edit/:id', component: AdmissionMainComponent },
+      { path: 'admin/application/new', component: ApplicationFormComponent },
+      { path: 'admin/application/edit/:id', component: ApplicationFormComponent }, 
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },

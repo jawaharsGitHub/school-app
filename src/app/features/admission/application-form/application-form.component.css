@@ -1,0 +1,18 @@
+/* src/app/features/admission/pages/application-form/application-form.component.css */
+
+/*
+   Most styling is now handled by Bootstrap classes.
+   You might only need this file for very specific, component-level overrides
+   that Bootstrap doesn't directly support, or for highly custom elements.
+*/
+
+/* Example: If you wanted a slightly different padding or max-width than default container */
+.container {
+  max-width: 800px; /* Adjust container width */
+}
+
+/* You might need a specific class for the form if you reuse .form-control widely */
+/* For example, if you wanted unique styling for THIS form's labels */
+/* .application-form-container label {
+  font-weight: 600;
+} */

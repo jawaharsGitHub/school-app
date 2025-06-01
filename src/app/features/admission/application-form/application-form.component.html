@@ -1,0 +1,91 @@
+<div class="container my-5">
+  <div class="card shadow-lg">
+    <div class="card-header bg-primary text-white text-center py-4">
+      <h2 class="mb-0">Student Admission Application</h2>
+      <p class="lead mb-0">Fill out the form below to apply</p>
+    </div>
+    <div class="card-body p-4">
+      <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName" class="form-label">First Name:</label>
+            <input id="firstName" type="text" formControlName="firstName" class="form-control"
+                   [class.is-invalid]="applicationForm.get('firstName')?.invalid && applicationForm.get('firstName')?.touched"
+                   placeholder="Enter first name">
+            <div *ngIf="applicationForm.get('firstName')?.invalid && applicationForm.get('firstName')?.touched" class="invalid-feedback">
+              <span *ngIf="applicationForm.get('firstName')?.errors?.['required']">First Name is required.</span>
+              <span *ngIf="applicationForm.get('firstName')?.errors?.['minlength']">First Name must be at least 2 characters.</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="lastName" class="form-label">Last Name:</label>
+            <input id="lastName" type="text" formControlName="lastName" class="form-control"
+                   [class.is-invalid]="applicationForm.get('lastName')?.invalid && applicationForm.get('lastName')?.touched"
+                   placeholder="Enter last name">
+            <div *ngIf="applicationForm.get('lastName')?.invalid && applicationForm.get('lastName')?.touched" class="invalid-feedback">
+              <span *ngIf="applicationForm.get('lastName')?.errors?.['required']">Last Name is required.</span>
+              <span *ngIf="applicationForm.get('lastName')?.errors?.['minlength']">Last Name must be at least 2 characters.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input id="email" type="email" formControlName="email" class="form-control"
+                   [class.is-invalid]="applicationForm.get('email')?.invalid && applicationForm.get('email')?.touched"
+                   placeholder="Enter email address">
+            <div *ngIf="applicationForm.get('email')?.invalid && applicationForm.get('email')?.touched" class="invalid-feedback">
+              <span *ngIf="applicationForm.get('email')?.errors?.['required']">Email is required.</span>
+              <span *ngIf="applicationForm.get('email')?.errors?.['email']">Please enter a valid email address.</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="dob" class="form-label">Date of Birth:</label>
+            <input id="dob" type="date" formControlName="dob" class="form-control"
+                   [class.is-invalid]="applicationForm.get('dob')?.invalid && applicationForm.get('dob')?.touched">
+            <div *ngIf="applicationForm.get('dob')?.invalid && applicationForm.get('dob')?.touched" class="invalid-feedback">
+              <span *ngIf="applicationForm.get('dob')?.errors?.['required']">Date of Birth is required.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="mobile" class="form-label">Mobile Number:</label>
+            <input id="mobile" type="tel" formControlName="mobile" class="form-control"
+                   [class.is-invalid]="applicationForm.get('mobile')?.invalid && applicationForm.get('mobile')?.touched"
+                   placeholder="e.g., 9876543210">
+            <div *ngIf="applicationForm.get('mobile')?.invalid && applicationForm.get('mobile')?.touched" class="invalid-feedback">
+              <span *ngIf="applicationForm.get('mobile')?.errors?.['required']">Mobile Number is required.</span>
+              <span *ngIf="applicationForm.get('mobile')?.errors?.['pattern']">Please enter a 10-digit mobile number.</span>
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="gradeApplyingFor" class="form-label">Grade/Program Applying For:</label>
+            <input id="gradeApplyingFor" type="text" formControlName="gradeApplyingFor" class="form-control"
+                   placeholder="e.g., 10th Grade, Computer Science Program">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg w-100 mt-4" [disabled]="applicationForm.invalid || submitting">
+          <span *ngIf="submitting" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          {{ submitting ? 'Submitting...' : 'Submit Application' }}
+        </button>
+
+        <div *ngIf="submittedSuccessfully" class="alert alert-success mt-4 text-center" role="alert">
+          Application submitted successfully! Your application ID is: <strong>{{ submittedApplicantId }}</strong>
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger mt-4 text-center" role="alert">
+          <h3>Submission Error!</h3>
+          <p>{{ errorMessage }}</p>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

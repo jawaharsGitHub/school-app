@@ -1,17 +1,1 @@
-[
-  {
-    "createdAt": "2025-06-01T13:21:21.088Z",
-    "updatedAt": "2025-06-01T13:21:21.088Z",
-    "firstName": "123",
-    "lastName": "789",
-    "email": "jawahars@live.in",
-    "applicationStatus": "Submitted",
-    "applicationDate": "2025-06-01T13:21:21.088Z",
-    "userId": "1",
-    "gradeApplyingFor": "",
-    "studentId": "",
-    "documentFolderPath": "",
-    "tempFolder": "",
-    "id": 1
-  }
-]
+[{"createdAt":"2025-06-01T13:21:21.088Z","updatedAt":"2025-06-01T13:21:21.088Z","firstName":"123","lastName":"789","email":"jawahars@live.in","applicationStatus":"Submitted","applicationDate":"2025-06-01T13:21:21.088Z","userId":"1","gradeApplyingFor":"","studentId":"","documentFolderPath":"","tempFolder":"","id":1,"mobile":""},{"createdAt":"2025-06-01T15:04:39.477Z","updatedAt":"2025-06-01T15:04:39.477Z","firstName":"jawahar","lastName":"jawahar","email":"sdd@sdaf.co","applicationStatus":"Submitted","applicationDate":"2025-06-01T15:04:39.477Z","userId":"1","gradeApplyingFor":"df","studentId":"","documentFolderPath":"","tempFolder":"","id":2,"mobile":""},{"createdAt":"2025-06-01T15:30:00.635Z","updatedAt":"2025-06-01T15:30:00.635Z","firstName":"jawahar","lastName":"jawahar","email":"sdd@sdaf.co","applicationStatus":"Submitted","applicationDate":"2025-06-01T15:30:00.635Z","userId":"1","gradeApplyingFor":"10","studentId":"","documentFolderPath":"","tempFolder":"","id":3,"mobile":""},{"createdAt":"2025-06-01T15:43:18.855Z","updatedAt":"2025-06-01T15:43:18.855Z","firstName":"1234566","lastName":"789","email":"jawahars@live.in","applicationStatus":"Submitted","applicationDate":"2025-06-01T15:43:18.856Z","dob":"2025-06-04T00:00:00.000Z","userId":"1","gradeApplyingFor":"10","mobile":"1312313131","studentId":"","documentFolderPath":"","tempFolder":"","id":4},{"createdAt":"2025-06-01T15:43:49.730Z","updatedAt":"2025-06-01T15:43:49.731Z","firstName":"jawahar","lastName":"jawahar","email":"sdd@sdaf.co","applicationStatus":"Submitted","applicationDate":"2025-06-01T15:43:49.731Z","dob":"2001-01-01T00:00:00.000Z","userId":"1","gradeApplyingFor":"10","mobile":"1234561234","studentId":"","documentFolderPath":"","tempFolder":"","id":5},{"createdAt":"2025-06-01T15:44:22.648Z","updatedAt":"2025-06-01T15:44:22.648Z","firstName":"123","lastName":"789","email":"jawahars@live.in","applicationStatus":"Submitted","applicationDate":"2025-06-01T15:44:22.648Z","dob":"2025-07-10T00:00:00.000Z","userId":"1","gradeApplyingFor":"123","mobile":"1231231231","studentId":"","documentFolderPath":"","tempFolder":"","id":6},{"createdAt":"2025-06-01T15:46:49.727Z","updatedAt":"2025-06-01T15:52:06.253Z","firstName":"666","lastName":"123","email":"s@s.com","applicationStatus":"Submitted","applicationDate":"2025-06-01T15:46:49.727Z","dob":"2000-01-01T00:00:00.000Z","userId":"1","gradeApplyingFor":"9","mobile":"9999999999","studentId":"","documentFolderPath":"","tempFolder":"","id":7}]

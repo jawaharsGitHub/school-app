@@ -11,7 +11,7 @@ import { TaskController } from './controllers/TaskController';
 //import { AuthController } from '../shared/Controller/AuthController';
 import { UserInfo } from '../shared/entities/UserInfo';
 import { Applicant } from '../shared/entities/applicant';
-import { AdmissionProcessController } from './controllers/admission-process.controller.ts';
+import { AdmissionProcessController } from './controllers/admission-process.controller';
 //import { EmailService } from './backend-services/email.service';
 //import { StudentPhotoController } from '../shared/Controller/StudentController';
 

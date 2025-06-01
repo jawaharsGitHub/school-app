@@ -87,7 +87,7 @@ export class AdmissionListComponent implements OnInit {
   }
 
   editApplication(id: number): void {
-    this.router.navigate(['/admin/applicants/edit', id]);
+    this.router.navigate(['/admin/application/edit', id]);
   }
 
   async deleteApplication(application: Applicant): Promise<void> {

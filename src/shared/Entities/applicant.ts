@@ -17,13 +17,13 @@ export enum ApplicationStatus {
 @Entity('applicants', {
   allowApiCrud: Allow.authenticated, // All authenticated users can read/write their own applications
   allowApiInsert: Allow.authenticated, // Applicants can submit new applications
-  allowApiUpdate: () => {
-    const user = remult.user;
-    return !!(
-      user?.roles?.includes(UserRole.Admin) ||
-      user?.roles?.includes(UserRole.Staff)
-    );
-  },
+  // allowApiUpdate: () => {
+  //   const user = remult.user;
+  //   return !!(
+  //     user?.roles?.includes(UserRole.Admin) ||
+  //     user?.roles?.includes(UserRole.Staff)
+  //   );
+  // },
   allowApiDelete: () => {
     const user = remult.user;
     return !!(
@@ -71,6 +71,9 @@ export class Applicant extends BaseEntity {
   @Fields.date({ allowApiUpdate: false })
   applicationDate?: Date;
 
+  @Fields.date({ allowApiUpdate: true })
+  dob?: Date;
+
   @Fields.uuid({
     allowApiUpdate: false,
     defaultValue: () => remult.user?.id || '',
@@ -80,6 +83,9 @@ export class Applicant extends BaseEntity {
   // You can add more application-specific fields here (e.g., grade, desired program)
   @Fields.string()
   gradeApplyingFor?: string;
+
+   @Fields.string()
+  mobile?: string;
 
   @Fields.string()
   studentId = ''; // e.g., STU12345
