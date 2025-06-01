@@ -22,11 +22,11 @@ export interface WizardStep {
   
   export interface Aviator {
     file: File;
-    urlDisplay: string;
+    urlDisplay: string | null; // URL for displaying the image, can be null if not set
   }
 
   export function createEmptyProfilePicture(): Aviator {
-        return { file: new File( [],''), urlDisplay: '' };
+        return { file: new File( [],''), urlDisplay: null };
     }
 
 

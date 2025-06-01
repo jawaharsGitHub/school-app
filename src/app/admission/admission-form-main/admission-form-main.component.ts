@@ -48,29 +48,15 @@ import { UserProfileMapperService } from '../../../shared/Services/Mapper/user-p
 })
 export class AdmissionMainComponent implements OnInit {
   mainWizardForm!: FormGroup; // Your main Reactive Form Group
-  // onFormStateChange(isValid: boolean) {
-  //   console.log('Form State Changed:', isValid);
-  // this.steps[this.currentStepIndex].isValid = isValid;
-
-  // //  setTimeout(() => {
-  // //      this.steps[this.currentStepIndex].isValid = isValid;
-  // //      // If you also had logic here to change currentStepIndex based on form validity,
-  // //      // that might also cause the issue.
-  // //      // For example:
-  // //      // if (isFormValid && this.currentStepIndex === SOME_STEP) {
-  // //      //   this.currentStepIndex = NEXT_STEP; // This would cause the error if already checked.
-  // //      // }
-  // //   }, 0);
-  // }
 
   isEditMode = false;
   isLoading = false;
   applicationId: string | null = null;
 
   steps: WizardStep[] = [
-    { id: 'accountInfo', label: 'Account Information', isValid: false },
-    { id: 'personalDetails', label: 'Personal Details', isValid: false },
-    { id: 'profilePicture', label: 'Profile Picture', isValid: false },
+    { id: 'accountDetailsForm', label: 'Account Information', isValid: false },
+    { id: 'personalDetailsForm', label: 'Personal Details', isValid: false },
+    { id: 'profilePictureForm', label: 'Profile Picture', isValid: false },
     { id: 'preview', label: 'Preview & Confirm', isValid: false },
   ];
 
@@ -192,9 +178,12 @@ export class AdmissionMainComponent implements OnInit {
 
    updateStepValidity(): void {
     this.steps.forEach(step => {
-      if (step.label) {
-        const formGroup = this.mainWizardForm.get(step.label) as FormGroup;
-        step.isValid = formGroup ? formGroup.valid : true;
+      if (step.id) {
+        console.log('Checking validity for step:', step.id);
+        const formGroup = this.mainWizardForm.get(step.id) as FormGroup;
+        console.log('FormGroup for step:', step.id, 'is', formGroup);
+        step.isValid = formGroup ? formGroup.valid : false;
+        console.log('Step:', step.id, 'isValid:', step.isValid);
       } else {
         step.isValid = this.mainWizardForm.valid;
       }
@@ -226,18 +215,20 @@ export class AdmissionMainComponent implements OnInit {
   goToStep(index: number): void {
     //if (this.steps[this.currentStepIndex].isValid) {
     //this.currentStepIndex = selectedStepIndex;
-    const currentStepForm = this.currentStepFormGroup;
-    if (currentStepForm && currentStepForm.invalid && index > this.currentStepIndex) {
-      currentStepForm.markAllAsTouched();
-      alert('Please complete the current step before proceeding.');
-      return;
-    }
+    // const currentStepForm = this.currentStepFormGroup;
+    // if (currentStepForm && currentStepForm.invalid && index > this.currentStepIndex) {
+    //   currentStepForm.markAllAsTouched();
+    //   alert('Please complete the current step before proceeding.');
+    //   return;
+    // }
+    console.log('Navigating to step:', index);
     this.currentStepIndex = index;
+    this.updateStepValidity();
     //}
   }
 
   get currentStepFormGroup(): FormGroup | null {
-    const key = this.steps[this.currentStepIndex].label;
+    const key = this.steps[this.currentStepIndex].id;
     return key ? (this.mainWizardForm.get(key) as FormGroup) : null;
   }
 
@@ -298,7 +289,7 @@ export class AdmissionMainComponent implements OnInit {
     } else {
       alert('Please correct the errors in the form.');
     }
-    console.log('User Profile Submitted:', this.userProfile);
+    //console.log('User Profile Submitted:', this.userProfile);
     //alert('Profile submitted successfully!');
   }
 }
