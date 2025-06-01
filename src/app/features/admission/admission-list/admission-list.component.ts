@@ -7,6 +7,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // For ico
 import { FormsModule } from '@angular/forms'; // For ngModel in filters
 
 import { Applicant, ApplicationStatus } from '../../../../shared/entities/applicant'; // Import your AdmissionApplication entity
+import { ApplicantService } from '../../../angular-services/applicant.service';
+import { AdminAdmissionService } from '../../../angular-services/admin-admission.service';
 
 @Component({
   selector: 'app-admission-list',
@@ -33,7 +35,7 @@ export class AdmissionListComponent implements OnInit {
   // Remult repository for AdmissionApplication
   private applicationRepo;
 
-  constructor(private router: Router) { 
+  constructor(private router: Router, private applicationService: AdminAdmissionService) { 
 
     // Initialize the Remult repository for AdmissionApplication
     this.applicationRepo = remult.repo(Applicant);
@@ -49,20 +51,22 @@ export class AdmissionListComponent implements OnInit {
     try {
       const whereClause: any = {};
       if (this.selectedStatus) {
-        whereClause.status = this.selectedStatus;
+        whereClause.applicationStatus = this.selectedStatus;
       }
       if (this.selectedGrade) {
         whereClause.gradeApplyingFor = this.selectedGrade;
       }
       if (this.searchQuery) {
         // Simple case-insensitive search on applicantName
-        whereClause.applicantName = { $contains: this.searchQuery };
+        whereClause.firstName = { $contains: this.searchQuery };
       }
 
-      this.applications = await this.applicationRepo.find({
-        where: whereClause,
-        orderBy: { applicationDate: 'desc' } // Order by newest first
-      });
+      this.applications = await this.applicationService.getApplications(whereClause);
+
+      // this.applications = await this.applicationRepo.find({
+      //   where: whereClause,
+      //   orderBy: { applicationDate: 'desc' } // Order by newest first
+      // });
     } catch (error) {
       console.error('Failed to load applications:', error);
       alert('Error loading applications. Please check console.');

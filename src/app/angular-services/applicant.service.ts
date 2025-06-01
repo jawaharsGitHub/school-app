@@ -21,10 +21,5 @@ export class ApplicantService {
     return await this.applicantRepo.save(newApplicant);
   }
 
-  async getMyApplications(): Promise<Applicant[]> {
-    // This leverages the row-level security defined in the entity
-    return await this.applicantRepo.find({
-      orderBy: { applicationDate: 'desc' }
-    });
-  }
+  
 }

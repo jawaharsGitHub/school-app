@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { remult } from 'remult';
 import { Applicant, ApplicationStatus } from '../../shared/entities/applicant';
 import { Student, EnrollmentStatus } from '../../shared/entities/student';
-// import { AdmissionProcessController } from '../../../server/controllers/admission-process.controller';
-import { AdmissionProcessController } from '../../server/controllers/admission-process.controller.ts';
+import { AdmissionProcessController } from '../../server/controllers/admission-process.controller'
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,6 @@ import { AdmissionProcessController } from '../../server/controllers/admission-p
 export class AdminAdmissionService {
   private applicantRepo = remult.repo(Applicant);
   private studentRepo = remult.repo(Student);
-  //private admissionController = remult.getController(AdmissionProcessController);
 
   constructor() { }
 
@@ -29,5 +27,14 @@ export class AdminAdmissionService {
 
   async finalizeEnrollment(studentId: number): Promise<string> {
     return await AdmissionProcessController.finalizeStudentEnrollment(studentId);
+  }
+
+  async getApplications(whereClause: any): Promise<Applicant[]> {
+    console.log('Fetching applications with where clause:', whereClause);
+    // This leverages the row-level security defined in the entity
+    return await this.applicantRepo.find({
+      where: whereClause,
+      orderBy: { applicationDate: 'desc' }
+    });
   }
 }
