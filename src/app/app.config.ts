@@ -8,11 +8,11 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 // Import the specific icons you want to use globally
 import { faGear, faFileLines, faChartBar, faUserCheck, faUser, faCircleUser, faUsers, faBook, faGraduationCap, faMoneyBill, faUserGraduate, faIdCard, faGaugeHigh, faSpinner,
   faPlus, faEye, faPencil, faTrash, faFilter, faSearch, faSave, faTimes, faCheckCircle, faXmarkCircle, faRightToBracket,
-  faInfoCircle, faExclamationCircle, faThumbsUp, faThumbsDown, faClock, faCalendar, faBell, faFlag, faLock, faUnlock, faArrowRight, faArrowLeft, faArrowUp, faArrowDown
+  faInfoCircle, faExclamationCircle, faThumbsUp, faThumbsDown, faClock, faCalendar, faBell, faFlag, faLock, faUnlock, faArrowRight, faArrowLeft, faArrowUp, faArrowDown,
+  faHourglassHalf, faHourglassEnd, faHourglassStart, faSpinner as faSpinnerSolid, faCheckCircle as faCheckCircleSolid, faXmarkCircle as faXmarkCircleSolid
  } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter } from '@fortawesome/free-brands-svg-icons'; // Example for brand icons
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons'; // Example for regular icons with alias
-import { CdkStepperModule } from '@angular/cdk/stepper'; // Import CdkStepperModule if you need stepper functionality
 
 
 export const appConfig: ApplicationConfig = {
@@ -31,7 +31,8 @@ export const appConfig: ApplicationConfig = {
           faUsers, faBook, faFacebookF, faTwitter, farStar, faUserGraduate, 
           faPlus, faEye, faPencil, faTrash, faFilter, faSearch, faSave, faTimes,
         faSpinner, faCheckCircle, faXmarkCircle, faIdCard, faRightToBracket,
-              faGraduationCap, faMoneyBill,  faExclamationCircle, faThumbsUp, faThumbsDown, faClock, faCalendar, faBell, faFlag, faLock, faUnlock, faArrowRight, faArrowLeft, faArrowUp, faArrowDown
+              faGraduationCap, faMoneyBill,  faExclamationCircle, faThumbsUp, faThumbsDown, faClock, faCalendar, faBell, faFlag, faLock, faUnlock, faArrowRight, faArrowLeft, faArrowUp, faArrowDown,
+              faHourglassHalf, faHourglassEnd, faHourglassStart
         );
         return library;
       }

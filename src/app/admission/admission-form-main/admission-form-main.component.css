@@ -69,6 +69,12 @@
   font-size: 1.2em; /* Adjust size if needed */
 }
 
+.waiting-color {
+  color:orange; /* Or a specific hex code like #dc3545 */
+  margin-left: 8px; /* Space from the label */
+  font-size: 1.2em; /* Adjust size if needed */
+}
+
 .valid-icon-color {
   color: green; /* Or a specific hex code like #dc3545 */
   margin-left: 8px; /* Space from the label */
