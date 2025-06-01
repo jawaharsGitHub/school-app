@@ -8,6 +8,7 @@ import fs from 'fs'; // For file system operations (saving the photo)
 //import { StudentPhotoController } from "../shared/Controller/StudentController";
 import session from 'cookie-session';
 import { authRouter } from "./auth";
+import { uploadRouter } from "../shared/Controller/upload.controller";
 
 
 
@@ -37,6 +38,8 @@ app.listen(3002, () => {
 app.get("/api", (req, res) => {
   res.send("Welcome to Uthavu School App API");
 });
+
+app.use('/api', uploadRouter)
 
 
 // Configure multer for file uploads

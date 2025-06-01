@@ -72,10 +72,19 @@ export class AdmissionApplication {
   })
   internalNotes?: string;
 
-  // For simplicity, just storing document names/paths as an array of strings
-  // In a real app, this would be a more complex relationship/field type
-  @Fields.json<string[]>({
-    allowNull: true
-  })
-  documents?: string[];
+  // // For simplicity, just storing document names/paths as an array of strings
+  // // In a real app, this would be a more complex relationship/field type
+  // @Fields.json<string[]>({
+  //   allowNull: true
+  // })
+  // documents?: string[];
+
+  @Fields.string()
+  studentId = '' // e.g., STU12345
+
+  @Fields.string()
+  documentFolderPath = ''
+
+  @Fields.string()
+  tempFolder = '' // UUID for temp upload folder
 }

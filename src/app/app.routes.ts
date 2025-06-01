@@ -15,9 +15,9 @@ export const routes: Routes = [
     //canActivate: [AuthGuard], // Optional: protect access, if we enable this, remult.user is undefined
     children: [
       { path: 'dashboard', component: MainComponent },
-      { path: 'admin/admissions', component: AdmissionListComponent },
-      { path: 'admin/admissions/new', component: AdmissionMainComponent },
-      { path: 'admin/admissions/edit/:id', component: AdmissionMainComponent }, // <--- Important!
+      { path: 'admin/applicants', component: AdmissionListComponent },
+      { path: 'admin/applicants/new', component: AdmissionMainComponent },
+      { path: 'admin/applicants/edit/:id', component: AdmissionMainComponent }, // <--- Important!
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },
