@@ -36,7 +36,7 @@ export class AppProfilePictureComponent implements OnInit {
     //   profilePictureFile: [null, Validators.required]
     // });
 
-    //this.profilePictureForm.markAllAsTouched();
+    this.profilePictureForm.markAllAsTouched();
 
     // You might want to update your parent component about validity
     // this.profilePictureForm.statusChanges.subscribe(status => {

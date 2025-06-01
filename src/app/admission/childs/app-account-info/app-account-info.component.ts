@@ -54,7 +54,7 @@ export class AppAccountInfoComponent implements OnInit {
     //     ); // Emit the updated personal details
     //   });
 
-    // this.accountDetailsForm.markAllAsTouched();
+    this.accountDetailsForm.markAllAsTouched();
   }
 
   getControl(name: string): AbstractControl | null {

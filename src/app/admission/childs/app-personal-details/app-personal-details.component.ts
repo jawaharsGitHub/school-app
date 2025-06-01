@@ -85,7 +85,7 @@ export class PersonalDetailsFormComponent implements OnInit, OnDestroy {
     //   }
     // });
 
-    //this.personalDetailsForm.markAllAsTouched();
+    this.personalDetailsForm.markAllAsTouched();
    
     // Emit initial form validity state
     //this.stepValidity.emit(this.personalDetailsForm.valid);
