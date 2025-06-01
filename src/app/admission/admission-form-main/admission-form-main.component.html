@@ -52,9 +52,8 @@
       ></app-profile-picture>
 
       <app-preview
-        
         *ngIf="currentStepIndex === 3"
-        [imageURL]="userProfile?.profilePicture?.urlDisplay ?? ''"
+        [imageURL]="userProfile.profilePicture.urlDisplay ?? ''"
         [userProfile]="userProfile"
       ></app-preview>
     </div>
