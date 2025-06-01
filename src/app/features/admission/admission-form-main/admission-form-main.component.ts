@@ -48,7 +48,7 @@ import { ApplicantService } from '../../../angular-services/applicant.service';
   styleUrl: './admission-form-main.component.css',
 })
 export class AdmissionMainComponent implements OnInit {
-  mainWizardForm!: FormGroup; // Your main Reactive Form Group
+  applicantForm!: FormGroup; // Your main Reactive Form Group
 
   isEditMode = false;
   isLoading = false;
@@ -83,7 +83,7 @@ export class AdmissionMainComponent implements OnInit {
     let emptyAccountInfo = createEmptyAccountInfo();
     let emptyPersonalDetails = createEmptyPersonalDetails();
 
-    this.mainWizardForm = this.fb.group({
+    this.applicantForm = this.fb.group({
       accountDetailsForm: this.fb.group({
         username: [emptyAccountInfo.username, Validators.required],
         email: [
@@ -133,7 +133,7 @@ export class AdmissionMainComponent implements OnInit {
       // Add other top-level form groups for other steps if you have them
     });
 
-    this.mainWizardForm.valueChanges.subscribe((value) => {
+    this.applicantForm.valueChanges.subscribe((value) => {
       this.userProfile = {
         ...this.userProfile,
         accountInfo: value.accountDetailsForm,
@@ -165,7 +165,7 @@ export class AdmissionMainComponent implements OnInit {
         const formPatchValue =
           this.userProfileMapper.mapApplicationToFormValue(application);
         //console.log('Form Patch Value:', formPatchValue);
-        this.mainWizardForm.patchValue(formPatchValue);
+        this.applicantForm.patchValue(formPatchValue);
       } else {
         alert('Application not found!');
         this.router.navigate(['/admin/admissions']);
@@ -182,12 +182,12 @@ export class AdmissionMainComponent implements OnInit {
     this.steps.forEach((step) => {
       if (step.id) {
         //console.log('Checking validity for step:', step.id);
-        const formGroup = this.mainWizardForm.get(step.id) as FormGroup;
+        const formGroup = this.applicantForm.get(step.id) as FormGroup;
         //console.log('FormGroup for step:', step.id, 'is', formGroup);
         step.isValid = formGroup ? formGroup.valid : false;
         //console.log('Step:', step.id, 'isValid:', step.isValid);
       } else {
-        step.isValid = this.mainWizardForm.valid;
+        step.isValid = this.applicantForm.valid;
       }
     });
 
@@ -218,7 +218,7 @@ export class AdmissionMainComponent implements OnInit {
 
   get currentStepFormGroup(): FormGroup | null {
     const key = this.steps[this.currentStepIndex].id;
-    return key ? (this.mainWizardForm.get(key) as FormGroup) : null;
+    return key ? (this.applicantForm.get(key) as FormGroup) : null;
   }
 
   previousStep(): void {
@@ -236,30 +236,30 @@ export class AdmissionMainComponent implements OnInit {
     // check all stpes except last step
 
     //return this.steps.slice(0, this.steps.length - 1).every((s) => s.isValid);
-    return this.mainWizardForm.valid;
+    return this.applicantForm.valid;
   }
 
   get accountDetailsForm(): FormGroup {
-    return this.mainWizardForm.get('accountDetailsForm') as FormGroup;
+    return this.applicantForm.get('accountDetailsForm') as FormGroup;
   }
   get personalDetailsForm(): FormGroup {
-    return this.mainWizardForm.get('personalDetailsForm') as FormGroup;
+    return this.applicantForm.get('personalDetailsForm') as FormGroup;
   }
 
   get profilePictureForm(): FormGroup {
-    return this.mainWizardForm.get('profilePictureForm') as FormGroup;
+    return this.applicantForm.get('profilePictureForm') as FormGroup;
   }
   async onSubmit() {
-    if (this.mainWizardForm.valid) {
-      console.log('Submitting Form:', this.mainWizardForm.value);
+    if (this.applicantForm.valid) {
+      console.log('Submitting Form:', this.applicantForm.value);
       this.submittedApplicant =
         await this.applicantService.submitNewApplication(
-          this.userProfileMapper.mapFormValueToApplicant(this.mainWizardForm.value)
+          this.userProfileMapper.mapFormValueToApplicant(this.applicantForm.value)
         );
-      this.mainWizardForm.reset();
+      this.applicantForm.reset();
       alert('Form submitted successfully!');
     } else {
-      this.mainWizardForm.markAllAsTouched();
+      this.applicantForm.markAllAsTouched();
       alert('Please correct the errors in the form.');
     }
   }
