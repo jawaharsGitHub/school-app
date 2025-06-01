@@ -16,20 +16,7 @@ app.use(session({
   secret: 'my_secret'
 }));
 
-// Configure multer for file uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const uploadPath = path.join(__dirname, '../public/uploads/student-photos'); // Adjust your upload directory
-    if (!fs.existsSync(uploadPath)) {
-      fs.mkdirSync(uploadPath, { recursive: true });
-    }
-    cb(null, uploadPath);
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
-  },
-});
+
 
 app.use(express.json()); // To parse JSON request bodies
 app.use(api);
@@ -49,6 +36,22 @@ app.listen(3002, () => {
 
 app.get("/api", (req, res) => {
   res.send("Welcome to Uthavu School App API");
+});
+
+
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const uploadPath = path.join(__dirname, '../public/uploads/student-photos'); // Adjust your upload directory
+    if (!fs.existsSync(uploadPath)) {
+      fs.mkdirSync(uploadPath, { recursive: true });
+    }
+    cb(null, uploadPath);
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
+  },
 });
 
 app.post('/api/students/:id/photo', multer({ storage }).single('studentPhoto'), async (req, res) => {
