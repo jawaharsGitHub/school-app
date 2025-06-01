@@ -64,9 +64,14 @@
 
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h4>Applications ({{ applications.length }})</h4>
-  <a routerLink="/admin/applicants/new" class="btn btn-success">
-    <fa-icon icon="plus"></fa-icon> Add New Application
-  </a>
+  <div class="btn-group">
+    <a routerLink="/admin/applicants/new" class="btn btn-success">
+      <fa-icon icon="plus"></fa-icon> Add New Application
+    </a>
+    <a routerLink="/admin/students/new" class="btn btn-success">
+      <fa-icon icon="plus"></fa-icon> Enroll New Student
+    </a>
+  </div>
 </div>
 
 <div *ngIf="isLoading" class="text-center my-4">
@@ -109,12 +114,14 @@
             class="badge"
             [ngClass]="{
               'bg-info':
-                app.applicationStatus === 'Submitted' || app.applicationStatus === 'Under Review',
+                app.applicationStatus === 'Submitted' ||
+                app.applicationStatus === 'Under Review',
               'bg-warning':
                 app.applicationStatus === 'Interview Scheduled' ||
                 app.applicationStatus === 'Waitlisted',
               'bg-success':
-                app.applicationStatus === 'Accepted' || app.applicationStatus === 'Enrolled',
+                app.applicationStatus === 'Accepted' ||
+                app.applicationStatus === 'Enrolled',
               'bg-danger': app.applicationStatus === 'Rejected'
             }"
           >
