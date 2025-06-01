@@ -2,11 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { remult } from 'remult';
-import { UserInfo } from '../../../shared/entities/UserInfo'; // Adjust the path as necessary
+import { UserInfo } from '../../../../shared/entities/UserInfo'; // Adjust the path as necessary
 import { retry } from 'rxjs';
-import { HeaderComponent } from "../../header/header.component";
-import { SideNavComponent } from "../../side-nav/side-nav.component";
-import { MainComponent } from "../../main/main.component";
+import { SideNavComponent } from "../side-nav/side-nav.component";
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-master',

@@ -1,9 +1,9 @@
 import { Routes } from "@angular/router";
-import { MasterComponent } from "./layout/master/master.component";
-import { SignInComponent } from "./sign-in/sign-in.component";
-import { TodoComponent } from "./todo/todo.component";
+import { MasterComponent } from "./features/layout/master/master.component";
+import { SignInComponent } from "./features/sign-in/sign-in.component";
+import { TodoComponent } from "./features/todo/todo.component";
 import { AuthGuard } from "../auth.guard";
-import { MainComponent } from "./main/main.component";
+import { MainComponent } from "./features/main/main.component";
 import { AdmissionListComponent } from "./admission/admission-list/admission-list.component";
 import { AdmissionMainComponent } from "./admission/admission-form-main/admission-form-main.component";
 
