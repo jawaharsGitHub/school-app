@@ -27,7 +27,7 @@ import {
   ApplicationStatus,
 } from '../../../../shared/entities/AdmissionApplication';
 import { remult } from 'remult';
-import { UserProfileMapperService } from '../../../services/Mapper/user-profile-mapper.service';
+import { UserProfileMapperService } from '../../../angular-services/Mapper/user-profile-mapper.service';
 
 @Component({
   selector: 'admission-form-main',
