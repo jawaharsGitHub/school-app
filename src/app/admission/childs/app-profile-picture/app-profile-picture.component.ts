@@ -70,6 +70,8 @@ export class AppProfilePictureComponent implements OnInit {
         urlDisplay: URL.createObjectURL(file),
       };
 
+      console.log('Selected file:', file);
+
       // Add the new object to the signal
 
       this.profilePicture.update((pictures) => [...pictures, imageObj]);

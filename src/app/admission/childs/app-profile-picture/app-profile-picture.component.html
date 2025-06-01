@@ -24,7 +24,7 @@
       </div>
     </div> -->
 
-    <div *ngIf="profilePicture() && profilePicture()[0].urlDisplay !== null">
+    <div *ngIf="profilePicture() && profilePicture()[0]?.urlDisplay !== null">
       <img
         [src]="profilePicture()[0].urlDisplay"
         alt="Preview"
