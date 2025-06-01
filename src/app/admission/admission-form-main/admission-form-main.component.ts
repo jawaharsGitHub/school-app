@@ -132,22 +132,13 @@ export class AdmissionMainComponent implements OnInit {
 
     
     this.mainWizardForm.valueChanges.subscribe(value => {
-      console.log('VALUECHANGES: userProfile before update:', this.userProfile);
-
-      // Update userProfile with the latest form values
-      // this.userProfile.accountInfo = value.accountDetailsForm;
-      // this.userProfile.personalDetails = value.personalDetailsForm;
-      // this.userProfile.profilePicture = value.profilePictureForm;
-
- 
-
       this.userProfile = {
         ...this.userProfile,
         accountInfo: value.accountDetailsForm,
         personalDetails: value.personalDetailsForm,
         profilePicture: value.profilePictureForm
       };
-      console.log('Form Value Changed123456:', this.userProfile);
+      //console.log('Form Value Changed123456:', this.userProfile);
       this.updateStepValidity();
     });
 
@@ -168,10 +159,10 @@ export class AdmissionMainComponent implements OnInit {
     try {
       const application = await this.applicationRepo.findId(id);
       if (application) {
-       console.log('Loaded Application:', application);
+       //console.log('Loaded Application:', application);
       //console.log('User Profile Account Info:', this.userProfile.accountInfo);
         const formPatchValue = this.userProfileMapper.mapApplicationToFormValue(application);
-        console.log('Form Patch Value:', formPatchValue);
+        //console.log('Form Patch Value:', formPatchValue);
         this.mainWizardForm.patchValue(formPatchValue);
        
       } else {
@@ -212,13 +203,13 @@ export class AdmissionMainComponent implements OnInit {
 
    nextStep(): void {
     const currentStepForm = this.currentStepFormGroup;
-    if (currentStepForm) {
-      if (currentStepForm.invalid) {
-        currentStepForm.markAllAsTouched();
-        alert('Please complete the current step before proceeding.');
-        return;
-      }
-    }
+    // if (currentStepForm) {
+    //   if (currentStepForm.invalid) {
+    //     currentStepForm.markAllAsTouched();
+    //     alert('Please complete the current step before proceeding.');
+    //     return;
+    //   }
+    // }
     if (this.currentStepIndex < this.steps.length - 1) {
       this.currentStepIndex++;
     }

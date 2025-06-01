@@ -13,7 +13,7 @@
     >
       <span class="step-number">{{ step.label }}</span>
 
-      @if(i === 3) { @if (allStepsValid) { &nbsp;<fa-icon
+      @if(i === steps.length-1) { @if (allStepsValid) { &nbsp;<fa-icon
         [icon]="'thumbs-up'"
         class="valid-icon-color"
       ></fa-icon>
