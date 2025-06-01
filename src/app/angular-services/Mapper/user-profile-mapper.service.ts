@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AdmissionApplication } from '../../../shared/entities/AdmissionApplication'; // Adjust path to your AdmissionApplication entity
-import { UserProfile, AccountInfo, PersonalDetails, Aviator } from  '../../../shared/models/UserModels'; // Adjust path to your UserModels
+import { Applicant } from '../../../shared/entities/applicant'; // Adjust path to your AdmissionApplication entity
+import { UserProfile, AccountInfo, PersonalDetails, Aviator, createEmptyApplicant } from  '../../../shared/models/UserModels'; // Adjust path to your UserModels
 import { createEmptyUserProfile } from '../../../shared/models/UserModels';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class UserProfileMapperService {
   constructor() { }
 
  
-  mapApplicationToFormValue(application: AdmissionApplication): {
+  mapApplicationToFormValue(application: Applicant): {
     accountDetailsForm?: Partial<AccountInfo>;
     personalDetailsForm?: Partial<PersonalDetails>;
     profilePictureForm?: Partial<Aviator>;
@@ -27,14 +27,14 @@ export class UserProfileMapperService {
 
     return {
       accountDetailsForm: {
-        username: application.applicantName, // Mapping applicantName to username
+        username: application.firstName, // Mapping applicantName to username
         email: application.email,
       },
       personalDetailsForm: {
-        firstName: application.applicantName, // Mapping applicantName to firstName
+        firstName: application.firstName, // Mapping applicantName to firstName
         // Assuming other personal details fields exist on application or are derived
         lastName: '', // You'll need to map this from application if available
-        dateOfBirth: formatDateToInput(application.applicantDob),
+        dateOfBirth: formatDateToInput(application.applicationDate),
         gender: '', // Map from application if available
         nationality: '', // Map from application if available
         placeOfBirthCity: '', // Map from application if available
@@ -66,28 +66,28 @@ export class UserProfileMapperService {
    * Optionally, you can also have a method to map the form's value back to a UserProfile
    * if your UserProfile structure is different from the form's structure.
    */
-  mapFormValueToUserProfile(formValue: any): UserProfile {
-    const userProfile: UserProfile = createEmptyUserProfile(); // Start with an empty profile
+  mapFormValueToApplicant(formValue: any): Applicant {
+    const applicant: Applicant = createEmptyApplicant(); // Start with an empty profile
 
     // Map accountInfo
     if (formValue.accountDetailsForm) {
-      userProfile.accountInfo.username = formValue.accountDetailsForm.username;
-      userProfile.accountInfo.email = formValue.accountDetailsForm.email;
+      applicant.firstName = formValue.accountDetailsForm.username;
+      applicant.email = formValue.accountDetailsForm.email;
     }
 
     // Map personalDetails
     if (formValue.personalDetailsForm) {
-      userProfile.personalDetails.firstName = formValue.personalDetailsForm.firstName;
-      userProfile.personalDetails.lastName = formValue.personalDetailsForm.lastName;
-      userProfile.personalDetails.dateOfBirth = formValue.personalDetailsForm.dateOfBirth;
+      applicant.firstName = formValue.personalDetailsForm.firstName;
+      applicant.lastName = formValue.personalDetailsForm.lastName;
+      //applicant.dateOfBirth = formValue.personalDetailsForm.dateOfBirth;
       // ... map other personal details
     }
 
     // Map profilePicture
     if (formValue.profilePictureForm) {
-      userProfile.profilePicture.urlDisplay = formValue.profilePictureForm.urlDisplay;
+      //applicant.urlDisplay = formValue.profilePictureForm.urlDisplay;
     }
 
-    return userProfile;
+    return applicant;
   }
 }

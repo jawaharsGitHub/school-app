@@ -23,11 +23,12 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
-  AdmissionApplication,
+  Applicant,
   ApplicationStatus,
-} from '../../../../shared/entities/AdmissionApplication';
+} from '../../../../shared/entities/applicant';
 import { remult } from 'remult';
 import { UserProfileMapperService } from '../../../angular-services/Mapper/user-profile-mapper.service';
+import { ApplicantService } from '../../../angular-services/applicant.service';
 
 @Component({
   selector: 'admission-form-main',
@@ -52,6 +53,7 @@ export class AdmissionMainComponent implements OnInit {
   isEditMode = false;
   isLoading = false;
   applicationId: string | null = null;
+  submittedApplicant: Applicant | null = null;
 
   steps: WizardStep[] = [
     { id: 'accountDetailsForm', label: 'Account Information', isValid: false },
@@ -65,14 +67,15 @@ export class AdmissionMainComponent implements OnInit {
   //wizardForm!: FormGroup;
 
   public applicationStatuses = Object.values(ApplicationStatus);
-  private applicationRepo = remult.repo(AdmissionApplication);
+  private applicationRepo = remult.repo(Applicant);
 
   constructor(
     private fb: FormBuilder,
     //private remult: Remult,
     private userProfileMapper: UserProfileMapperService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private applicantService: ApplicantService
   ) {}
 
   ngOnInit(): void {
@@ -130,23 +133,21 @@ export class AdmissionMainComponent implements OnInit {
       // Add other top-level form groups for other steps if you have them
     });
 
-    
-    this.mainWizardForm.valueChanges.subscribe(value => {
+    this.mainWizardForm.valueChanges.subscribe((value) => {
       this.userProfile = {
         ...this.userProfile,
         accountInfo: value.accountDetailsForm,
         personalDetails: value.personalDetailsForm,
-        profilePicture: value.profilePictureForm
+        profilePicture: value.profilePictureForm,
       };
       //console.log('Form Value Changed123456:', this.userProfile);
       this.updateStepValidity();
     });
 
-
     this.applicationId = this.route.snapshot.paramMap.get('id');
     if (this.applicationId) {
       this.isEditMode = true;
-      this.loadApplicationData(this.applicationId);
+      this.loadApplicationData(Number(this.applicationId));
     }
   }
 
@@ -154,17 +155,17 @@ export class AdmissionMainComponent implements OnInit {
     this.updateStepValidity();
   }
 
-  async loadApplicationData(id: string): Promise<void> {
+  async loadApplicationData(id: number): Promise<void> {
     this.isLoading = true;
     try {
       const application = await this.applicationRepo.findId(id);
       if (application) {
-       //console.log('Loaded Application:', application);
-      //console.log('User Profile Account Info:', this.userProfile.accountInfo);
-        const formPatchValue = this.userProfileMapper.mapApplicationToFormValue(application);
+        //console.log('Loaded Application:', application);
+        //console.log('User Profile Account Info:', this.userProfile.accountInfo);
+        const formPatchValue =
+          this.userProfileMapper.mapApplicationToFormValue(application);
         //console.log('Form Patch Value:', formPatchValue);
         this.mainWizardForm.patchValue(formPatchValue);
-       
       } else {
         alert('Application not found!');
         this.router.navigate(['/admin/admissions']);
@@ -177,8 +178,8 @@ export class AdmissionMainComponent implements OnInit {
     }
   }
 
-   updateStepValidity(): void {
-    this.steps.forEach(step => {
+  updateStepValidity(): void {
+    this.steps.forEach((step) => {
       if (step.id) {
         //console.log('Checking validity for step:', step.id);
         const formGroup = this.mainWizardForm.get(step.id) as FormGroup;
@@ -201,30 +202,15 @@ export class AdmissionMainComponent implements OnInit {
     return this.currentStepIndex === 0;
   }
 
-   nextStep(): void {
+  nextStep(): void {
     const currentStepForm = this.currentStepFormGroup;
-    // if (currentStepForm) {
-    //   if (currentStepForm.invalid) {
-    //     currentStepForm.markAllAsTouched();
-    //     alert('Please complete the current step before proceeding.');
-    //     return;
-    //   }
-    // }
+
     if (this.currentStepIndex < this.steps.length - 1) {
       this.currentStepIndex++;
     }
   }
 
   goToStep(index: number): void {
-    //if (this.steps[this.currentStepIndex].isValid) {
-    //this.currentStepIndex = selectedStepIndex;
-    // const currentStepForm = this.currentStepFormGroup;
-    // if (currentStepForm && currentStepForm.invalid && index > this.currentStepIndex) {
-    //   currentStepForm.markAllAsTouched();
-    //   alert('Please complete the current step before proceeding.');
-    //   return;
-    // }
-    //console.log('Navigating to step:', index);
     this.currentStepIndex = index;
     this.updateStepValidity();
     //}
@@ -246,27 +232,6 @@ export class AdmissionMainComponent implements OnInit {
     this.steps[this.currentStepIndex].isValid = isValid;
   }
 
-  // // Update account information
-  // onAccountInfoChange(accountInfo: AccountInfo): void {
-  //   //alert(JSON.stringify(accountInfo));
-  //   console.log('Account Info Changed:', accountInfo);
-  //   this.userProfile.accountInfo = accountInfo;
-  //   console.log('userProfile Info Changed:', this.userProfile);
-  // }
-
-  // // Update personal details
-  // onPersonalDetailsChange(personalDetails: PersonalDetails): void {
-  //   console.log('Personal Details Changed:', personalDetails);
-  //   this.userProfile.personalDetails = personalDetails;
-  //   //console.log('Updated User Profile:', this.userProfile);
-  // }
-
-  // // Update profile picture
-  // onProfilePictureChange(profilePicture: Aviator): void {
-  //   this.userProfile.profilePicture.urlDisplay = profilePicture.urlDisplay;
-  //   this.userProfile.profilePicture.file = profilePicture.file;
-  // }
-
   get allStepsValid(): boolean {
     // check all stpes except last step
 
@@ -284,15 +249,18 @@ export class AdmissionMainComponent implements OnInit {
   get profilePictureForm(): FormGroup {
     return this.mainWizardForm.get('profilePictureForm') as FormGroup;
   }
-  onSubmit(): void {
-    this.mainWizardForm.markAllAsTouched();
+  async onSubmit() {
     if (this.mainWizardForm.valid) {
       console.log('Submitting Form:', this.mainWizardForm.value);
+      this.submittedApplicant =
+        await this.applicantService.submitNewApplication(
+          this.userProfileMapper.mapFormValueToApplicant(this.mainWizardForm.value)
+        );
+      this.mainWizardForm.reset();
       alert('Form submitted successfully!');
     } else {
+      this.mainWizardForm.markAllAsTouched();
       alert('Please correct the errors in the form.');
     }
-    //console.log('User Profile Submitted:', this.userProfile);
-    //alert('Profile submitted successfully!');
   }
 }

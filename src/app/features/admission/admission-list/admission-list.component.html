@@ -99,9 +99,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let app of applications">
-        <td>{{ app.applicantName }}</td>
+        <td>{{ app.firstName }}</td>
         <td>{{ app.gradeApplyingFor }}</td>
-        <td>{{ app.parentName }}</td>
+        <td>{{ app.lastName }}</td>
         <td>{{ app.email }}</td>
         <td>{{ app.applicationDate | date : "shortDate" }}</td>
         <td>
@@ -109,16 +109,16 @@
             class="badge"
             [ngClass]="{
               'bg-info':
-                app.status === 'Submitted' || app.status === 'Under Review',
+                app.applicationStatus === 'Submitted' || app.applicationStatus === 'Under Review',
               'bg-warning':
-                app.status === 'Interview Scheduled' ||
-                app.status === 'Waitlisted',
+                app.applicationStatus === 'Interview Scheduled' ||
+                app.applicationStatus === 'Waitlisted',
               'bg-success':
-                app.status === 'Accepted' || app.status === 'Enrolled',
-              'bg-danger': app.status === 'Rejected'
+                app.applicationStatus === 'Accepted' || app.applicationStatus === 'Enrolled',
+              'bg-danger': app.applicationStatus === 'Rejected'
             }"
           >
-            {{ app.status }}
+            {{ app.applicationStatus }}
           </span>
         </td>
         <td>
@@ -138,7 +138,7 @@
               <fa-icon icon="trash"></fa-icon>
             </button>
             <button
-              *ngIf="app.status === 'Accepted'"
+              *ngIf="app.applicationStatus === 'Accepted'"
               class="btn btn-sm btn-primary"
               (click)="enrollStudent(app)"
               title="Enroll Student"

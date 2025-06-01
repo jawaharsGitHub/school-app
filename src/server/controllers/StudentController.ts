@@ -1,5 +1,5 @@
 import { BackendMethod, remult } from 'remult'
-import { Student  } from '../../shared/entities/Student';
+import { Student  } from '../../shared/entities/student';
 
 export class StudentController {
 

@@ -1,0 +1,17 @@
+[
+  {
+    "createdAt": "2025-06-01T13:21:21.088Z",
+    "updatedAt": "2025-06-01T13:21:21.088Z",
+    "firstName": "123",
+    "lastName": "789",
+    "email": "jawahars@live.in",
+    "applicationStatus": "Submitted",
+    "applicationDate": "2025-06-01T13:21:21.088Z",
+    "userId": "1",
+    "gradeApplyingFor": "",
+    "studentId": "",
+    "documentFolderPath": "",
+    "tempFolder": "",
+    "id": 1
+  }
+]

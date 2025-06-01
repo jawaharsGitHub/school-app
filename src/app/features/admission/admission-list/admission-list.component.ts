@@ -6,7 +6,7 @@ import { Remult, remult } from 'remult'; // Import Remult for data access
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // For icons
 import { FormsModule } from '@angular/forms'; // For ngModel in filters
 
-import { AdmissionApplication, ApplicationStatus } from '../../../../shared/entities/AdmissionApplication'; // Import your AdmissionApplication entity
+import { Applicant, ApplicationStatus } from '../../../../shared/entities/applicant'; // Import your AdmissionApplication entity
 
 @Component({
   selector: 'app-admission-list',
@@ -21,7 +21,7 @@ import { AdmissionApplication, ApplicationStatus } from '../../../../shared/enti
   styleUrls: ['./admission-list.component.css']
 })
 export class AdmissionListComponent implements OnInit {
-  applications: AdmissionApplication[] = [];
+  applications: Applicant[] = [];
   isLoading = false;
   searchQuery = '';
   selectedStatus: ApplicationStatus | '' = '';
@@ -36,7 +36,7 @@ export class AdmissionListComponent implements OnInit {
   constructor(private router: Router) { 
 
     // Initialize the Remult repository for AdmissionApplication
-    this.applicationRepo = remult.repo(AdmissionApplication);
+    this.applicationRepo = remult.repo(Applicant);
     // Optionally, you can set up any additional configuration or services here
   } // Inject Remult and Router
 
@@ -82,12 +82,12 @@ export class AdmissionListComponent implements OnInit {
     this.loadApplications();
   }
 
-  editApplication(id: string): void {
+  editApplication(id: number): void {
     this.router.navigate(['/admin/applicants/edit', id]);
   }
 
-  async deleteApplication(application: AdmissionApplication): Promise<void> {
-    if (confirm(`Are you sure you want to delete ${application.applicantName}'s application?`)) {
+  async deleteApplication(application: Applicant): Promise<void> {
+    if (confirm(`Are you sure you want to delete ${application.firstName}'s application?`)) {
       try {
         await this.applicationRepo.delete(application);
         this.applications = this.applications.filter(app => app.id !== application.id); // Remove from local list
@@ -100,9 +100,9 @@ export class AdmissionListComponent implements OnInit {
   }
 
   // Quick update status from list (optional)
-  async updateApplicationStatus(application: AdmissionApplication, newStatus: ApplicationStatus): Promise<void> {
+  async updateApplicationStatus(application: Applicant, newStatus: ApplicationStatus): Promise<void> {
     try {
-      application.status = newStatus;
+      application.applicationStatus = newStatus;
       await this.applicationRepo.save(application);
       alert('Status updated successfully!');
     } catch (error) {
@@ -113,12 +113,12 @@ export class AdmissionListComponent implements OnInit {
 
   // Simulate "Enroll Student" - In a real app, this would trigger a backend process
   // to create a student record and potentially update the admission status to "Enrolled"
-  async enrollStudent(application: AdmissionApplication): Promise<void> {
-    if (confirm(`Are you sure you want to enroll ${application.applicantName}? This will change their status to 'Enrolled'.`)) {
+  async enrollStudent(application: Applicant): Promise<void> {
+    if (confirm(`Are you sure you want to enroll ${application.firstName}? This will change their status to 'Enrolled'.`)) {
       try {
-        application.status = ApplicationStatus.Enrolled;
+        application.applicationStatus = ApplicationStatus.Enrolled;
         await this.applicationRepo.save(application);
-        alert(`${application.applicantName} enrolled successfully!`);
+        alert(`${application.firstName} enrolled successfully!`);
         // In a real app, you might redirect to a student profile page or trigger a backend student creation process.
       } catch (error) {
         console.error('Failed to enroll student:', error);

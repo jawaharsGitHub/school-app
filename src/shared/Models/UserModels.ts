@@ -1,36 +1,36 @@
+import { Applicant, ApplicationStatus } from '../entities/applicant';
+
 export interface WizardStep {
-    id: string;
-    label: string;
-    isValid: boolean;
-  }
+  id: string;
+  label: string;
+  isValid: boolean;
+}
 
-  export interface UserProfile {
-    accountInfo: AccountInfo;
-    personalDetails: PersonalDetails;
-    profilePicture: Aviator;
-  }
+export interface UserProfile {
+  accountInfo: AccountInfo;
+  personalDetails: PersonalDetails;
+  profilePicture: Aviator;
+}
 
-  
-  export interface AccountInfo {
-    username: string;
-    email: string;
-  }
+export interface AccountInfo {
+  username: string;
+  email: string;
+}
 
-    export function createEmptyAccountInfo(): AccountInfo {
-        return { username: '', email: '' };
-    }
-  
-  export interface Aviator {
-    file: File;
-    urlDisplay: string | null; // URL for displaying the image, can be null if not set
-  }
+export function createEmptyAccountInfo(): AccountInfo {
+  return { username: '', email: '' };
+}
 
-  export function createEmptyProfilePicture(): Aviator {
-        return { file: new File( [],''), urlDisplay: null };
-    }
+export interface Aviator {
+  file: File;
+  urlDisplay: string | null; // URL for displaying the image, can be null if not set
+}
 
+export function createEmptyProfilePicture(): Aviator {
+  return { file: new File([], ''), urlDisplay: null };
+}
 
-  // src/app/shared/models/personal-details.model.ts
+// src/app/shared/models/personal-details.model.ts
 
 export interface PersonalDetails {
   firstName: string;
@@ -80,11 +80,26 @@ export function createEmptyPersonalDetails(): PersonalDetails {
   };
 }
 
+export function createEmptyApplicant(): Applicant {
+  return {
+    id: 0, // Assuming this is a string, adjust if it's a different type
+    firstName: '',
+    lastName: '',
+    email: '',
+    applicationStatus: ApplicationStatus.Submitted, // Default initial status
+    applicationDate: new Date(),
+    userId: '', // Assuming this is a string, adjust if it's a different type
+    gradeApplyingFor: '',
+    studentId: '', // e.g., STU12345
+    documentFolderPath: '',
+    tempFolder: '', // UUID for temp upload folder
+  };
+}
+
 export function createEmptyUserProfile(): UserProfile {
   return {
     accountInfo: createEmptyAccountInfo(),
     personalDetails: createEmptyPersonalDetails(),
-    profilePicture: createEmptyProfilePicture()
+    profilePicture: createEmptyProfilePicture(),
   };
 }
-  
