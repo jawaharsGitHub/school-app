@@ -64,7 +64,7 @@
 /* ... (your existing wizard-steps, li, active, invalid-step styles) ... */
 
 .invalid-icon-color {
-  color: red; /* Or a specific hex code like #dc3545 */
+  color: rgb(204, 98, 98); /* Or a specific hex code like #dc3545 */
   margin-left: 8px; /* Space from the label */
   font-size: 1.2em; /* Adjust size if needed */
 }

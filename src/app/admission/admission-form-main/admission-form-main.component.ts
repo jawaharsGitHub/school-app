@@ -132,12 +132,22 @@ export class AdmissionMainComponent implements OnInit {
 
     
     this.mainWizardForm.valueChanges.subscribe(value => {
+      console.log('VALUECHANGES: userProfile before update:', this.userProfile);
+
+      // Update userProfile with the latest form values
+      // this.userProfile.accountInfo = value.accountDetailsForm;
+      // this.userProfile.personalDetails = value.personalDetailsForm;
+      // this.userProfile.profilePicture = value.profilePictureForm;
+
+ 
+
       this.userProfile = {
         ...this.userProfile,
-        accountInfo: value.accountInfo,
-        personalDetails: value.personalDetails,
-        profilePicture: value.profilePicture
+        accountInfo: value.accountDetailsForm,
+        personalDetails: value.personalDetailsForm,
+        profilePicture: value.profilePictureForm
       };
+      console.log('Form Value Changed123456:', this.userProfile);
       this.updateStepValidity();
     });
 
@@ -159,7 +169,7 @@ export class AdmissionMainComponent implements OnInit {
       const application = await this.applicationRepo.findId(id);
       if (application) {
        console.log('Loaded Application:', application);
-      console.log('User Profile Account Info:', this.userProfile.accountInfo);
+      //console.log('User Profile Account Info:', this.userProfile.accountInfo);
         const formPatchValue = this.userProfileMapper.mapApplicationToFormValue(application);
         console.log('Form Patch Value:', formPatchValue);
         this.mainWizardForm.patchValue(formPatchValue);
@@ -179,15 +189,17 @@ export class AdmissionMainComponent implements OnInit {
    updateStepValidity(): void {
     this.steps.forEach(step => {
       if (step.id) {
-        console.log('Checking validity for step:', step.id);
+        //console.log('Checking validity for step:', step.id);
         const formGroup = this.mainWizardForm.get(step.id) as FormGroup;
-        console.log('FormGroup for step:', step.id, 'is', formGroup);
+        //console.log('FormGroup for step:', step.id, 'is', formGroup);
         step.isValid = formGroup ? formGroup.valid : false;
-        console.log('Step:', step.id, 'isValid:', step.isValid);
+        //console.log('Step:', step.id, 'isValid:', step.isValid);
       } else {
         step.isValid = this.mainWizardForm.valid;
       }
     });
+
+    //console.log('after updateStepValidity:', this.userProfile);
   }
 
   get isLastStep(): boolean {
@@ -221,7 +233,7 @@ export class AdmissionMainComponent implements OnInit {
     //   alert('Please complete the current step before proceeding.');
     //   return;
     // }
-    console.log('Navigating to step:', index);
+    //console.log('Navigating to step:', index);
     this.currentStepIndex = index;
     this.updateStepValidity();
     //}
@@ -243,26 +255,26 @@ export class AdmissionMainComponent implements OnInit {
     this.steps[this.currentStepIndex].isValid = isValid;
   }
 
-  // Update account information
-  onAccountInfoChange(accountInfo: AccountInfo): void {
-    //alert(JSON.stringify(accountInfo));
-    console.log('Account Info Changed:', accountInfo);
-    this.userProfile.accountInfo = accountInfo;
-    console.log('userProfile Info Changed:', this.userProfile);
-  }
+  // // Update account information
+  // onAccountInfoChange(accountInfo: AccountInfo): void {
+  //   //alert(JSON.stringify(accountInfo));
+  //   console.log('Account Info Changed:', accountInfo);
+  //   this.userProfile.accountInfo = accountInfo;
+  //   console.log('userProfile Info Changed:', this.userProfile);
+  // }
 
-  // Update personal details
-  onPersonalDetailsChange(personalDetails: PersonalDetails): void {
-    console.log('Personal Details Changed:', personalDetails);
-    this.userProfile.personalDetails = personalDetails;
-    console.log('Updated User Profile:', this.userProfile);
-  }
+  // // Update personal details
+  // onPersonalDetailsChange(personalDetails: PersonalDetails): void {
+  //   console.log('Personal Details Changed:', personalDetails);
+  //   this.userProfile.personalDetails = personalDetails;
+  //   //console.log('Updated User Profile:', this.userProfile);
+  // }
 
-  // Update profile picture
-  onProfilePictureChange(profilePicture: Aviator): void {
-    this.userProfile.profilePicture.urlDisplay = profilePicture.urlDisplay;
-    this.userProfile.profilePicture.file = profilePicture.file;
-  }
+  // // Update profile picture
+  // onProfilePictureChange(profilePicture: Aviator): void {
+  //   this.userProfile.profilePicture.urlDisplay = profilePicture.urlDisplay;
+  //   this.userProfile.profilePicture.file = profilePicture.file;
+  // }
 
   get allStepsValid(): boolean {
     // check all stpes except last step

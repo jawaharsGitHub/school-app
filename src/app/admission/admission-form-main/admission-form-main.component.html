@@ -35,7 +35,7 @@
 
   <!-- Step Content -->
   <form [formGroup]="mainWizardForm">
-    <div class="wizard-content" >
+    <div class="wizard-content">
       <app-account-info
         [hidden]="currentStepIndex !== 0"
         [accountDetailsForm]="accountDetailsForm"
@@ -52,7 +52,8 @@
       ></app-profile-picture>
 
       <app-preview
-        [hidden]="currentStepIndex !== 3"
+        
+        *ngIf="currentStepIndex === 3"
         [imageURL]="userProfile?.profilePicture?.urlDisplay ?? ''"
         [userProfile]="userProfile"
       ></app-preview>
