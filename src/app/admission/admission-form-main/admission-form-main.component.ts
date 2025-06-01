@@ -27,6 +27,7 @@ import {
   ApplicationStatus,
 } from '../../../shared/Entities/AdmissionApplication';
 import { remult } from 'remult';
+import { UserProfileMapperService } from '../../../shared/Services/Mapper/user-profile-mapper.service';
 
 @Component({
   selector: 'admission-form-main',
@@ -83,6 +84,7 @@ export class AdmissionMainComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     //private remult: Remult,
+    private userProfileMapper: UserProfileMapperService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -91,6 +93,7 @@ export class AdmissionMainComponent implements OnInit {
     //this.initForm();
     let emptyAccountInfo = createEmptyAccountInfo();
     let emptyPersonalDetails = createEmptyPersonalDetails();
+
     this.mainWizardForm = this.fb.group({
       accountDetailsForm: this.fb.group({
         username: [emptyAccountInfo.username, Validators.required],
@@ -141,6 +144,18 @@ export class AdmissionMainComponent implements OnInit {
       // Add other top-level form groups for other steps if you have them
     });
 
+    
+    this.mainWizardForm.valueChanges.subscribe(value => {
+      this.userProfile = {
+        ...this.userProfile,
+        accountInfo: value.accountInfo,
+        personalDetails: value.personalDetails,
+        profilePicture: value.profilePicture
+      };
+      this.updateStepValidity();
+    });
+
+
     this.applicationId = this.route.snapshot.paramMap.get('id');
     if (this.applicationId) {
       this.isEditMode = true;
@@ -148,42 +163,21 @@ export class AdmissionMainComponent implements OnInit {
     }
   }
 
+  ngAfterViewInit(): void {
+    this.updateStepValidity();
+  }
+
   async loadApplicationData(id: string): Promise<void> {
     this.isLoading = true;
     try {
       const application = await this.applicationRepo.findId(id);
       if (application) {
-        console.log('Loaded Application:', application);
-
-        console.log('User Profile Account Info:', this.userProfile.accountInfo);
-        // this.mainWizardForm.get('basicDetails')?.patchValue({
-        //   applicantName: application.applicantName,
-        //   applicantDob: application.applicantDob.toISOString().substring(0, 10),
-        //   gradeApplyingFor: application.gradeApplyingFor,
-        //   applicationDate: application.applicationDate
-        //     .toISOString()
-        //     .substring(0, 10),
-        // });
-        // this.admissionForm.get('contacts')?.patchValue({
-        //   parentName: application.parentName,
-        //   contactEmail: application.contactEmail,
-        //   contactPhone: application.contactPhone,
-        // });
-
-        this.mainWizardForm.patchValue(
-          {
-            accountDetailsForm: {
-              username: application.applicantName,
-              email: application.email,
-            },
-            personalDetailsForm: {
-              firstName: application.applicantName,
-            },
-          }
-          
-            
-          
-        );
+       console.log('Loaded Application:', application);
+      console.log('User Profile Account Info:', this.userProfile.accountInfo);
+        const formPatchValue = this.userProfileMapper.mapApplicationToFormValue(application);
+        console.log('Form Patch Value:', formPatchValue);
+        this.mainWizardForm.patchValue(formPatchValue);
+       
       } else {
         alert('Application not found!');
         this.router.navigate(['/admin/admissions']);
@@ -196,6 +190,17 @@ export class AdmissionMainComponent implements OnInit {
     }
   }
 
+   updateStepValidity(): void {
+    this.steps.forEach(step => {
+      if (step.label) {
+        const formGroup = this.mainWizardForm.get(step.label) as FormGroup;
+        step.isValid = formGroup ? formGroup.valid : true;
+      } else {
+        step.isValid = this.mainWizardForm.valid;
+      }
+    });
+  }
+
   get isLastStep(): boolean {
     return this.currentStepIndex === this.steps.length - 1;
   }
@@ -204,16 +209,36 @@ export class AdmissionMainComponent implements OnInit {
     return this.currentStepIndex === 0;
   }
 
-  nextStep(): void {
+   nextStep(): void {
+    const currentStepForm = this.currentStepFormGroup;
+    if (currentStepForm) {
+      if (currentStepForm.invalid) {
+        currentStepForm.markAllAsTouched();
+        alert('Please complete the current step before proceeding.');
+        return;
+      }
+    }
+    if (this.currentStepIndex < this.steps.length - 1) {
+      this.currentStepIndex++;
+    }
+  }
+
+  goToStep(index: number): void {
     //if (this.steps[this.currentStepIndex].isValid) {
-    this.currentStepIndex++;
+    //this.currentStepIndex = selectedStepIndex;
+    const currentStepForm = this.currentStepFormGroup;
+    if (currentStepForm && currentStepForm.invalid && index > this.currentStepIndex) {
+      currentStepForm.markAllAsTouched();
+      alert('Please complete the current step before proceeding.');
+      return;
+    }
+    this.currentStepIndex = index;
     //}
   }
 
-  goToStep(selectedStepIndex: number): void {
-    //if (this.steps[this.currentStepIndex].isValid) {
-    this.currentStepIndex = selectedStepIndex;
-    //}
+  get currentStepFormGroup(): FormGroup | null {
+    const key = this.steps[this.currentStepIndex].label;
+    return key ? (this.mainWizardForm.get(key) as FormGroup) : null;
   }
 
   previousStep(): void {
@@ -251,7 +276,8 @@ export class AdmissionMainComponent implements OnInit {
   get allStepsValid(): boolean {
     // check all stpes except last step
 
-    return this.steps.slice(0, this.steps.length - 1).every((s) => s.isValid);
+    //return this.steps.slice(0, this.steps.length - 1).every((s) => s.isValid);
+    return this.mainWizardForm.valid;
   }
 
   get accountDetailsForm(): FormGroup {
@@ -265,7 +291,14 @@ export class AdmissionMainComponent implements OnInit {
     return this.mainWizardForm.get('profilePictureForm') as FormGroup;
   }
   onSubmit(): void {
+    this.mainWizardForm.markAllAsTouched();
+    if (this.mainWizardForm.valid) {
+      console.log('Submitting Form:', this.mainWizardForm.value);
+      alert('Form submitted successfully!');
+    } else {
+      alert('Please correct the errors in the form.');
+    }
     console.log('User Profile Submitted:', this.userProfile);
-    alert('Profile submitted successfully!');
+    //alert('Profile submitted successfully!');
   }
 }
