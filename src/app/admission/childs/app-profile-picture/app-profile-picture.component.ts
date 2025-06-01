@@ -8,7 +8,7 @@ import {
   signal,
   WritableSignal,
 } from '@angular/core';
-import { UserProfile, Aviator } from '../../../../shared/Models/UserModels';
+import { UserProfile, Aviator } from '../../../../shared/models/UserModels';
 import { CommonModule, NgIf,  } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';

@@ -1,5 +1,5 @@
 import {Component, input, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import { UserProfile } from '../../../../shared/Models/UserModels';
+import { UserProfile } from '../../../../shared/models/UserModels';
 
 @Component({
   selector: 'app-preview',

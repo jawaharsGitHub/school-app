@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AdmissionApplication } from '../../Entities/AdmissionApplication'; // Adjust path to your AdmissionApplication entity
-import { UserProfile, AccountInfo, PersonalDetails, Aviator } from  '../../Models/UserModels'; // Adjust path to your UserModels
-import { createEmptyUserProfile } from '../../Models/UserModels';
+import { AdmissionApplication } from '../../../shared/entities/AdmissionApplication'; // Adjust path to your AdmissionApplication entity
+import { UserProfile, AccountInfo, PersonalDetails, Aviator } from  '../../../shared/models/UserModels'; // Adjust path to your UserModels
+import { createEmptyUserProfile } from '../../../shared/models/UserModels';
 
 @Injectable({
   providedIn: 'root' // Makes the service a singleton and available throughout the app

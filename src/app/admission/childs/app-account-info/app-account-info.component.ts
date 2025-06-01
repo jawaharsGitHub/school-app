@@ -11,7 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   AccountInfo,
   createEmptyAccountInfo,
-} from '../../../../shared/Models/UserModels';
+} from '../../../../shared/models/UserModels';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 //import { validateEmail, validatePhoneNumber } from 'uthavu';

@@ -7,8 +7,8 @@ import path from 'path';
 import fs from 'fs'; // For file system operations (saving the photo)
 //import { StudentPhotoController } from "../shared/Controller/StudentController";
 import session from 'cookie-session';
-import { authRouter } from "./auth";
-import { uploadRouter } from "../shared/Controller/upload.controller";
+import { authRouter } from "./controllers/auth.controller";
+import { uploadRouter } from "./controllers/upload.controller";
 
 
 

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Task } from '../../shared/Entities/Task';
+import { Task } from '../../shared/entities/Task';
 import { remult } from 'remult';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { StudentController } from '../../shared/Controller/StudentController';
+import { StudentController } from '../../server/controllers/StudentController';
 
 
 @Component({

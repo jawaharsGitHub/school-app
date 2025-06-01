@@ -4,7 +4,7 @@ import { Component, Input, Output, EventEmitter, ViewChild, OnInit, DoCheck, Aft
 import { CommonModule } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms'; // Import FormsModule and NgForm
 
-import { createEmptyPersonalDetails, PersonalDetails } from '../../../../shared/Models/UserModels'; // Adjust the import path as necessary
+import { createEmptyPersonalDetails, PersonalDetails } from '../../../../shared/models/UserModels'; // Adjust the import path as necessary
 import { Subscription } from 'rxjs';
 
 @Component({

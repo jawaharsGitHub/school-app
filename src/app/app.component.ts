@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { remult } from 'remult';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { HttpClient } from '@angular/common/http';
-import { UserInfo } from '../shared/Entities/UserInfo';
+import { UserInfo } from '../shared/entities/UserInfo';
 //import { UserInfo } from 'remult';
 import { MasterComponent } from './layout/master/master.component';
 import { retry } from 'rxjs';

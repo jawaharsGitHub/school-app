@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import { UserInfo } from "../shared/Entities/UserInfo";
+import { UserInfo } from "../../shared/entities/UserInfo";
 import { remult, withRemult } from 'remult'
 
 

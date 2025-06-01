@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { RemultService } from '../../shared/Services/remult.service';
-import { Student } from '../../shared/Entities/Student';
-import { StudentProof } from '../../shared/Entities/StudentProof';
+import { RemultService } from '../services/remult.service';
+import { Student } from '../../shared/entities/Student';
+import { StudentProof } from '../../shared/entities/StudentProof';
 import { CommonModule } from '@angular/common';
 
 @Component({

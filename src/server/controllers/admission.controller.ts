@@ -1,7 +1,7 @@
 import { remult } from 'remult'
 import fs from 'fs'
 import path from 'path'
-import { AdmissionApplication, ApplicationStatus } from '../Entities/AdmissionApplication'
+import { AdmissionApplication, ApplicationStatus } from '../../shared/entities/AdmissionApplication'
 
 export async function enrollStudent(admissionId: string) {
   const repo = remult.repo(AdmissionApplication)

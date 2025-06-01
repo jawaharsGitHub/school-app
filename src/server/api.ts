@@ -1,16 +1,16 @@
 import { remultApi, remultExpress  } from 'remult/remult-express';
-import { Task } from '../shared/Entities/Task';
+import { Task } from '../shared/entities/Task';
 //import { JsonDataProvider } from 'remult'; 
 
 import { JsonDataProvider } from "remult"
 import { JsonEntityFileStorage } from "remult/server"
-import { Student } from '../shared/Entities/Student';
-import { StudentProof } from '../shared/Entities/StudentProof';
-import { StudentController } from '../shared/Controller/StudentController';
-import { TaskController } from '../shared/Controller/TaskController';
+import { Student } from '../shared/entities/Student';
+import { StudentProof } from '../shared/entities/StudentProof';
+import { StudentController } from './controllers/StudentController';
+import { TaskController } from './controllers/TaskController';
 //import { AuthController } from '../shared/Controller/AuthController';
-import { UserInfo } from '../shared/Entities/UserInfo';
-import { AdmissionApplication } from '../shared/Entities/AdmissionApplication';
+import { UserInfo } from '../shared/entities/UserInfo';
+import { AdmissionApplication } from '../shared/entities/AdmissionApplication';
 //import { StudentPhotoController } from '../shared/Controller/StudentController';
 
 export const api = remultApi({
