@@ -6,7 +6,7 @@ import { Remult, remult } from 'remult'; // Import Remult for data access
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'; // For icons
 import { FormsModule } from '@angular/forms'; // For ngModel in filters
 
-import { AdmissionApplication, ApplicationStatus } from '../../../shared/entities/AdmissionApplication'; // Import your AdmissionApplication entity
+import { AdmissionApplication, ApplicationStatus } from '../../../../shared/entities/AdmissionApplication'; // Import your AdmissionApplication entity
 
 @Component({
   selector: 'app-admission-list',

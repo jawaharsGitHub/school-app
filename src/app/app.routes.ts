@@ -2,10 +2,10 @@ import { Routes } from "@angular/router";
 import { MasterComponent } from "./features/layout/master/master.component";
 import { SignInComponent } from "./features/sign-in/sign-in.component";
 import { TodoComponent } from "./features/todo/todo.component";
-import { AuthGuard } from "../auth.guard";
+import { AuthGuard } from "./core/auth.guard";
 import { MainComponent } from "./features/main/main.component";
-import { AdmissionListComponent } from "./admission/admission-list/admission-list.component";
-import { AdmissionMainComponent } from "./admission/admission-form-main/admission-form-main.component";
+import { AdmissionListComponent } from "./features/admission/admission-list/admission-list.component";
+import { AdmissionMainComponent } from "./features/admission/admission-form-main/admission-form-main.component";
 
 export const routes: Routes = [
   { path: 'login', component: SignInComponent },

@@ -8,7 +8,7 @@ import {
   AccountInfo,
   createEmptyAccountInfo,
   createEmptyPersonalDetails,
-} from '../../../shared/models/UserModels';
+} from '../../../../shared/models/UserModels';
 import { NgFor, NgIf } from '@angular/common';
 import { AppAccountInfoComponent } from '../childs/app-account-info/app-account-info.component';
 import { AppPreviewComponent } from '../childs/app-preview/app-preview.component';
@@ -25,9 +25,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {
   AdmissionApplication,
   ApplicationStatus,
-} from '../../../shared/entities/AdmissionApplication';
+} from '../../../../shared/entities/AdmissionApplication';
 import { remult } from 'remult';
-import { UserProfileMapperService } from '../../services/Mapper/user-profile-mapper.service';
+import { UserProfileMapperService } from '../../../services/Mapper/user-profile-mapper.service';
 
 @Component({
   selector: 'admission-form-main',
