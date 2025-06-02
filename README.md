@@ -4,7 +4,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Requirements:
 node
+
 npm
+
+git
 
 Later (Not Now)
 Postgres 
@@ -13,7 +16,11 @@ pgAdmin
 
 # Initial Setup
 
-clone the project
+clone the project:
+
+create your project director
+run the below command
+git clone https://github.com/jawaharsGitHub/school-app.git
 
 create a new branch
 develop your task
