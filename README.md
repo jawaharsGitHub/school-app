@@ -25,7 +25,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 npm run app --> will run the angular application
+
 npm run api --> will run the back end server api
+
 
 ![image](https://github.com/user-attachments/assets/8f2480ac-f6d2-4b39-9e55-af85a26599c6)
 
