@@ -31,6 +31,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
+open the terminal and run this comment ---> npm install
+
 npm run app --> will run the angular application
 
 npm run api --> will run the back end server api
