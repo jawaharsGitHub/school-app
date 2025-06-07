@@ -1,8 +1,10 @@
 # SchoolApp
 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.4.
 
 # Requirements:
+
 node
 
 npm
@@ -15,6 +17,25 @@ pgAdmin
 
 
 # Initial Setup
+Microsoft Windows [Version 10.0.19041.388]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\xampp\htdocs\allwin-school>git clone https://github.com/jawaharsGitHub/school-app.git
+Cloning into 'school-app'...
+remote: Enumerating objects: 986, done.
+remote: Counting objects: 100% (279/279), done.
+remote: Compressing objects: 100% (211/211), done.
+remote: Total 986 (delta 152), reused 169 (delta 59), pack-reused 707 (from 1)
+Receiving objects: 100% (986/986), 563.46 KiB | 961.00 KiB/s, done.
+Resolving deltas: 100% (565/565), done.
+
+C:\xampp\htdocs\allwin-school>cd school-app
+
+C:\xampp\htdocs\allwin-school\school-app>code .
+
+C:\xampp\htdocs\allwin-school\school-app>
+
+
 
 clone the project:
 
