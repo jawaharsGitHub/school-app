@@ -49,10 +49,26 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/libs/jsvectormap/jsvectormap.min.css",
+  "src/assets/libs/swiper/swiper-bundle.min.css",
+  "src/assets/css/bootstrap.min.css",
+  "src/assets/css/icons.min.css",
+  "src/assets/css/app.min.css",
+  "src/assets/css/custom.min.css",
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+                "src/assets/js/layout.js",
+  "src/assets/libs/simplebar/simplebar.min.js",
+  "src/assets/libs/node-waves/waves.min.js",
+  "src/assets/libs/feather-icons/feather.min.js",
+  "src/assets/js/pages/plugins/lord-icon-2.1.0.js",
+  "src/assets/js/plugins.js",
+  "src/assets/libs/apexcharts/apexcharts.min.js",
+  "src/assets/libs/swiper/swiper-bundle.min.js",
+  "src/assets/js/pages/dashboard-ecommerce.init.js",
+  "src/assets/js/app.js"
             ]
           },
           "configurations": {
@@ -120,5 +136,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

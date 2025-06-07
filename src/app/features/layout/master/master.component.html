@@ -1,17 +1,41 @@
-<div class="header">
+<div id="layout-wrapper">
   <app-header></app-header>
-</div>
-<div class="main-container">
-  <div class="side-nav">
-    <app-side-nav></app-side-nav>
-  </div>
-  <div
-    class="main"
-  
-  >
-    <router-outlet></router-outlet>
-  </div>
 
+<div class="app-menu navbar-menu">
+    <app-side-nav></app-side-nav>
+</div>
+<div class="vertical-overlay"></div>
+ <div class="main-content">
+  <div class="page-content">
+   <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div>  
+</div>  
+
+
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <script>document.write(new Date().getFullYear())</script> © Allwin School.
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="text-sm-end d-none d-sm-block">
+                                Design & Develop by YuvanUthavu 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+     </div>
+        <!-- end main content-->
+
+ </div>
+    <!-- END layout-wrapper -->
+        <!-- end main content-->
+ 
+    <!-- END layout-wrapper -->
   <!-- <div class="container-fluid p-0 vh-100 d-flex flex-column">
 
   <div class="d-flex justify-content-end align-items-center bg-light p-2 border-bottom">
@@ -48,4 +72,4 @@
     </main>
   </div>
 </div> -->
-</div>
+ 

@@ -1,4 +1,4 @@
-<div class="nav-items">
+<!--<div class="nav-items">
   <div class="nav-item" routerLink="/dashboard" routerLinkActive="active">
     <fa-icon [icon]="'gauge-high'"></fa-icon>
     <span>Dashboard</span>
@@ -27,4 +27,358 @@
     <fa-icon [icon]="'user'"></fa-icon>
     <span>Profile</span>
   </div>
-  </div>
+  </div>-->
+  
+        <!-- ========== App Menu ========== -->
+     
+            <!-- LOGO -->
+            <div class="navbar-brand-box">
+                <!-- Dark Logo-->
+                <a href="index.php" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="assets/images/logo-dashboard.png" alt="">
+                    </span>
+                </a>
+                <!-- Light Logo-->
+                <a href="index.php" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="assets/images/logo-sm.png" alt="" height="22">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="assets/images/logo-dashboard.png" alt=""  >
+                    </span>
+                </a>
+                <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
+                    <i class="ri-record-circle-line"></i>
+                </button>
+            </div>
+
+            <div id="scrollbar">
+                <div class="container-fluid">
+
+                    <div id="two-column-menu">
+                    </div>
+                    <ul class="navbar-nav" id="navbar-nav">
+                        <li class="menu-title"><span data-key="t-menu"> Current Session: 2024-25</span></li>
+<li class="nav-item">
+  <a class="nav-link menu-link" [routerLink]="['admin/dashboard-suganya']" routerLinkActive="active">
+    <i class="mdi mdi-puzzle-outline"></i>
+    <span data-key="t-widgets">Dashboard</span>
+  </a>
+</li>
+
+
+                        <li class="nav-item">
+                          
+                            <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards"> Front Office</span>
+                            </a>  
+							<div class="collapse menu-dropdown" id="sidebarDashboards">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link"> Admission Enquiry </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Visitor Book </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Phone Call Log </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Complaint </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Postal Dispatch</a>
+                                    </li>
+										<li class="nav-item">
+                                        <a href="#" class="nav-link"> Postal Receive</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Setup Front Office </a>
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                        </li> <!-- end Dashboard Menu -->
+						 <li class="nav-item">
+                            <a class="nav-link menu-link" href="#studentinfo" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="studentinfo">
+                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards"> Student Information</span>
+                            </a>  
+							<div class="collapse menu-dropdown" id="studentinfo">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link"> Student Details </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="student_create.php" class="nav-link"> Student Admission</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Online Admission </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Disabled Students </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Multi Class Student</a>
+                                    </li>
+										<li class="nav-item">
+                                        <a href="#" class="nav-link"> Bulk Delete</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Student Categories </a>
+                                    </li>
+                                   <li class="nav-item">
+                                        <a href="#" class="nav-link"> Student House </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Disable Reason </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> <!-- end Dashboard Menu -->
+										 <li class="nav-item">
+                            <a class="nav-link menu-link" href="#fees" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="fees">
+                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">  Fees Collection</span>
+                            </a>  
+							<div class="collapse menu-dropdown" id="fees">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link"> Collect Fees</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Offline Bank Payments</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Search Fees Payment</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Search Due Fees </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link">  Fees Master</a>
+                                    </li>
+										<li class="nav-item">
+                                        <a href="#" class="nav-link"> Fees Group</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Fees Type </a>
+                                    </li>
+                                   <li class="nav-item">
+                                        <a href="#" class="nav-link"> Fees Discount </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Fees Carry Forward </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Fees Reminder</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> <!-- end Dashboard Menu -->
+										 
+										 <li class="nav-item">
+                            <a class="nav-link menu-link" href="#Expenses" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="Expenses">
+                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">  Expenses</span>
+                            </a>  
+							<div class="collapse menu-dropdown" id="Expenses">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link"> Add Expense </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Search Expense</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Expense Head </a>
+                                    </li>
+								 
+                                </ul>
+                            </div>
+                        </li> <!-- end Dashboard Menu -->
+									 
+							 <li class="nav-item">
+                            <a class="nav-link menu-link" href="#Attendance" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="Attendance">
+                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards"> Attendance</span>
+                            </a>  
+							<div class="collapse menu-dropdown" id="Attendance">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link"> Student Attendance </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Approve Leave</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Attendance By Date</a>
+                                    </li>
+								 
+                                </ul>
+                            </div>
+                        </li> <!-- end Dashboard Menu -->
+									
+										
+									 <li class="nav-item">
+                            <a class="nav-link menu-link" href="#Human" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="Human">
+                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">   Staff Information</span>
+                            </a>  
+							<div class="collapse menu-dropdown" id="Human">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">Staff Directory</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Staff Attendance</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Payroll</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Approve Leave Request </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Apply Leave</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Leave Type</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Teachers Rating</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Department</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Designation</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Disabled Staff</a>
+                                    </li>
+							 
+                                </ul>
+                            </div>
+                        </li> <!-- end Dashboard Menu -->
+							 
+							 
+							 <li class="nav-item">
+                            <a class="nav-link menu-link" href="#Library" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="Library">
+                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">   Library</span>
+                            </a>  
+							<div class="collapse menu-dropdown" id="Library">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">Book List</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Issue - Return</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Add Student</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Add Staff Member </a>
+                                    </li>
+									 
+                                </ul>
+                            </div>
+                        </li> <!-- end Dashboard Menu -->
+							 <li class="nav-item">
+                            <a class="nav-link menu-link" href="#Transport" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="Transport">
+                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards"> Transport</span>
+                            </a>  
+							<div class="collapse menu-dropdown" id="Transport">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">Fees Master</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link">Pickup Point</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Routes</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Vehicles </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Assign Vehicle</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link">Route Pickup Point</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Student Transport Fees</a>
+                                    </li>
+								 
+							 
+                                </ul>
+                            </div>
+                        </li> <!-- end Dashboard Menu -->
+							 
+								 
+								 <li class="nav-item">
+                            <a class="nav-link menu-link" href="#Reports" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="Reports">
+                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">  Reports</span>
+                            </a>  
+							<div class="collapse menu-dropdown" id="Reports">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">Student Information</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link">Finance</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link">Attendance</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Examinations </a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link"> Online Examinations</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link">Lesson Plan</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link">Human Resource</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link">Homework</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link">Library</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link">Inventory</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link">Transport</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#" class="nav-link">Alumni</a>
+                                    </li>
+								 
+							 
+                                </ul>
+                            </div>
+                        </li> <!-- end Dashboard Menu -->
+                  <!-- <li class="nav-item">
+                            <a class="nav-link menu-link" href="#">
+                                <i class="mdi mdi-puzzle-outline"></i> <span data-key="t-widgets"> System Setting</span>
+                            </a>
+                        </li>-->
+
+                  
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+            </div>
+
+            <div class="sidebar-background"></div>
+           <div class="vertical-overlay"></div>
+
+        <!-- Left Sidebar End -->
+ 

@@ -7,6 +7,7 @@ import { MainComponent } from "./features/main/main.component";
 import { AdmissionListComponent } from "./features/admission/admission-list/admission-list.component";
 import { AdmissionMainComponent } from "./features/admission/admission-form-main/admission-form-main.component";
 import { ApplicationFormComponent } from "./features/admission/application-form/application-form.component";
+import { DashboardSuganyaComponent } from "./dashboard-suganya/dashboard-suganya.component";
 
 export const routes: Routes = [
   { path: 'login', component: SignInComponent },
@@ -21,6 +22,7 @@ export const routes: Routes = [
       { path: 'admin/applicants/edit/:id', component: AdmissionMainComponent },
       { path: 'admin/application/new', component: ApplicationFormComponent },
       { path: 'admin/application/edit/:id', component: ApplicationFormComponent }, 
+      { path: 'admin/dashboard-suganya', component: DashboardSuganyaComponent }, 
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },

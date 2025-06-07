@@ -14,33 +14,8 @@ export enum ApplicationStatus {
   Enrolled = 'Enrolled', // Once converted to a full student record
 }
 
-@Entity('applicants', {
-  allowApiCrud: Allow.authenticated, // All authenticated users can read/write their own applications
-  allowApiInsert: Allow.authenticated, // Applicants can submit new applications
-  // allowApiUpdate: () => {
-  //   const user = remult.user;
-  //   return !!(
-  //     user?.roles?.includes(UserRole.Admin) ||
-  //     user?.roles?.includes(UserRole.Staff)
-  //   );
-  // },
-  allowApiDelete: () => {
-    const user = remult.user;
-    return !!(
-      user?.roles?.includes(UserRole.Admin)
-    );
-  },
+@Entity('applicants')
 
-  // Example of row-level security: Applicants can only see/update their own application
-  //allowApiRead: (applicant) => Allow.roles(UserRole.Admin, UserRole.Staff).or(applicant.userId === remult.currentUser?.id),
-  //allowApiUpdate: (applicant) => Allow.roles(UserRole.Admin, UserRole.Staff).or(applicant.userId === remult.currentUser?.id),
-
-  saving: async (task: Applicant, e) => {
-    if (e.isNew) {
-      task.applicationDate = new Date(); // Set the creation date for new tasks.
-    }
-  },
-})
 export class Applicant extends BaseEntity {
   @Fields.string({ validate: [Validators.required, Validators.minLength(2)] })
   firstName!: string;
